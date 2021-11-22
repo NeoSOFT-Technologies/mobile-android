@@ -63,7 +63,7 @@ Let's go ahead and talk about the architectural part turns we're going to review
 ![image](https://user-images.githubusercontent.com/47377857/142868929-53bdf534-a12e-4d2f-a93f-2da2a195f6ea.png)
 
 
-## Comparision
+## Comparison
 
 Primitive Types and Objects Size
 
