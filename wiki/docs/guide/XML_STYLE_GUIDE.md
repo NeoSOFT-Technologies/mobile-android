@@ -102,8 +102,8 @@ Some of the most used abbreviations are given below
 | RadioButton       | rb           |
 | ToggleButton      | tb           |
 | Spinner           | spn          |
-| JawwyButton       | jb           |
-| JawwyInputField   | jif          |
-| JawwyTextView     | jtv          |
-| JawwyMenu         | jm           |
-
+| NSButton          | jb           |
+| NSInputField      | jif          |
+| NSTextView        | jtv          |
+| NSMenu            | jm           |
+                    
