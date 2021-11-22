@@ -7,8 +7,9 @@ This lets you creatively focus on your project by minimizing the amount of code 
 
 Architecture Design Pattern
 --------------
-MVVM - Model View ViewModel
-Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
+**MVVM - Model View ViewModel**
+* Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
+* [Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
 
 Libraries Used
 --------------
@@ -46,7 +47,7 @@ Common Features
 
 # Project Architecture Guidelines
 
-* App Architecture Design Pattern = **MVVM**
+* [App Architecture Design Pattern](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) = **MVVM**
 * Every Activity needs to extend BaseActivity
 * Every Activity will have a DataBinding object and ViewModel object defined in this way:
 
