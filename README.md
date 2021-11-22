@@ -5,8 +5,6 @@ Its goal is to enable you to develop projects much faster than you could if you 
 
 This lets you creatively focus on your project by minimizing the amount of code needed for a given task. 
 
-**Application Architecture :**
-
 Architecture Design Pattern
 --------------
 MVVM - Model View ViewModel
@@ -30,8 +28,8 @@ Libraries Used
   * [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
 
 
-**Common Features **
-
+Common Features
+-------------------
 * Adhering to SOLID Principles 
 * Repository Pattern for code separations 
 * Dependency Injection 
@@ -80,5 +78,5 @@ Contributions are welcome from anyone and everyone. We encourage you to review t
 
 # App Versioning Syntax
 
-[Android Mobile App Versioning](wiki/docs/versioning.md)
+[Android Mobile App Versioning](wiki/docs/guide/VERSIONING_GUIDE.md)
 
