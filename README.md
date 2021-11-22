@@ -16,14 +16,14 @@ Libraries Used
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Store UI-related data that isn't destroyed on app rotations. Easily schedule asynchronous tasks for optimal execution. 
   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Build data objects that notify views when the underlying database changes. 
   * [Lifecycles](https://developer.android.com/topic/libraries/architecture/lifecycle) - Create a UI that automatically responds to lifecycle events. 
-  * [Data Binding](https://developer.android.com/topic/libraries/data-binding/)
-* [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection)
-  * [HILT](https://developer.android.com/training/dependency-injection/hilt-android)
+  * [Data Binding](https://developer.android.com/topic/libraries/data-binding/) - Library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
+* [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) 
+  * [HILT](https://developer.android.com/training/dependency-injection/hilt-android) - Hilt is built on top of the popular DI library Dagger to benefit from the compile time correctness, runtime performance, scalability, and Android Studio support that Dagger provides. Recommended by Android.
 * Logging
-  * [Timber](https://github.com/JakeWharton/timber)
+  * [Timber](https://github.com/JakeWharton/timber) - A logger with a small, extensible API which provides utility on top of Android's normal Log class.
   * [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
 * Networking
-  * [Retrofit](https://square.github.io/retrofit/)
+  * [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android
   * [Coroutines](https://developer.android.com/kotlin/coroutines) - Light wight threads for asynchronous programming
   * [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
 
