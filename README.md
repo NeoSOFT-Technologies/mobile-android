@@ -9,7 +9,6 @@ Architecture Design Pattern
 --------------
 **MVVM - Model View ViewModel**
 * Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
-* [Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
 
 Libraries Used
 --------------
@@ -72,6 +71,49 @@ Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/e
 - [Kotlin Style Guide](wiki/docs/guide/KOTLIN_STYLE_GUIDE.md)
 - [XML Style Guide](wiki/docs/guide/XML_STYLE_GUIDE.md)
 
+# Discussion
+* [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
+
+* What is Coroutines? 
+**Coroutines:** Is light wight threads for asynchronous programming, Coroutines not only open the doors to asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc. 
+
+**Coroutines VS RXJava**
+They're different tools with different strengths. Like a tank and a cannon, they have a lot of overlap but are more or less desirable under different circumstances. - Coroutines Is light wight threads for asynchronous programming. - RX-Kotlin/RX-Java is functional reactive programming, its core pattern relay on observer design pattern, so you can use it to handle user interaction with UI while you still using coroutines as main core for background work. 
+
+**How does Coroutines concept work?**
+Kotlin coroutine is a way of doing things asynchronously in a sequential manner. Creating a coroutine is a lot cheaper vs creating a thread. 
+
+**When I can choose Coroutines or RX-Kotlin to do some behaviour?**
+**Coroutines:** When we have concurrent tasks , like you would fetch data from Remote connections , database , any background processes , sure you can use RX in such cases too, but it looks like you use a tank to kill ant. 
+
+**RX-Kotlin:** When you would to handle stream of UI actions like : user scrolling , clicks , update UI upon some events .....ect. 
+ 
+
+**What is the Coroutines benefits?**
+ * Writing an asynchronous code is sequential manner. 
+ * Costing of create coroutines are much cheaper to create threads. 
+ * Don't be over engineered to use observable pattern, when no need to use it. 
+ * Parent coroutine can automatically manage the life cycle of its child coroutines for you. 
+
+
+**Why Dependency Injection?** 
+
+Dependency injection is a technique widely used in programming and well suited to Android development. By following the principles of dependency injection, you lay the groundwork for a good app architecture. 
+
+Implementing dependency injection provides you with the following advantages: 
+* Reusability of code. 
+* Ease of refactoring. 
+* Ease of testing. 
+
+**Why HILT?**
+
+Hilt is built on top of the popular DI library Dagger to benefit from the compile time correctness, runtime performance, scalability, and Android Studio support that Dagger provides. 
+
+Since many Android framework classes are instantiated by the OS itself, there's an associated boilerplate when using Dagger in Android apps. Unlike Dagger, Hilt is integrated with Jetpack libraries and Android framework classes and removes most of that boilerplate to let you focus on just the important parts of defining and injecting bindings without worrying about managing all of the Dagger setup and wiring. It automatically generates and provides: 
+
+   * Components for integrating Android framework classes with Dagger that you would otherwise need to create by hand. 
+   * Scope annotations for the components that Hilt generates automatically. 
+   * Predefined bindings and qualifiers. 
 
 # Contributing to this Project
 
