@@ -72,8 +72,8 @@ Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/e
 - [XML Style Guide](wiki/docs/guide/XML_STYLE_GUIDE.md)
 
 # Discussion
+* [Why Kotlin?](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_KOTLIN.md)
 * [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
-
 * What is Coroutines? 
 **Coroutines:** Is light wight threads for asynchronous programming, Coroutines not only open the doors to asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc. 
 
@@ -87,7 +87,7 @@ Kotlin coroutine is a way of doing things asynchronously in a sequential manner.
 **Coroutines:** When we have concurrent tasks , like you would fetch data from Remote connections , database , any background processes , sure you can use RX in such cases too, but it looks like you use a tank to kill ant. 
 
 **RX-Kotlin:** When you would to handle stream of UI actions like : user scrolling , clicks , update UI upon some events .....ect. 
- 
+
 
 **What is the Coroutines benefits?**
  * Writing an asynchronous code is sequential manner. 
