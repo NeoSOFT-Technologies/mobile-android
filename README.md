@@ -74,7 +74,8 @@ Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/e
 # Discussion
 * [Why Kotlin?](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_KOTLIN.md)
 * [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
-* What is Coroutines? 
+
+**What is Coroutines?**
 **Coroutines:** Is light wight threads for asynchronous programming, Coroutines not only open the doors to asynchronous programming, but also provide a wealth of other possibilities such as concurrency, actors, etc. 
 
 **Coroutines VS RXJava**
