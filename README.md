@@ -65,6 +65,12 @@ Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/e
   - ./gradlew ktlintFormat
 - Even after above 2 commands, all the errors might not be solved. You have to solve them manually.
 
+## Gradle Setup 
+
+This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/userguide/kotlin_dsl.html) as well as the [Plugin DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) to setup the build.
+
+Dependencies are inside the *.kt files in the `buildSrc` folder. This provides convenient auto-completion when writing your gradle files.
+
 # Coding Guidelines
 
 - [Kotlin Coding Conventions](https://kotlinlang.org/docs/reference/coding-conventions.html)
