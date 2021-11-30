@@ -1,4 +1,4 @@
-package com.ns.sample
+package com.arch.template
 
 import org.junit.Test
 
