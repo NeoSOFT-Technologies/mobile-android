@@ -54,7 +54,7 @@ jobs:
           name: instrumentation_test_report
           path: app/build/reports/androidTests/connected/
 
-   static-code-analysis:
+  static-code-analysis:
      needs: [instrumentation-test]
      runs-on: ubuntu-latest
      steps:
