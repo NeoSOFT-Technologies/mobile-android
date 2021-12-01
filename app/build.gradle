@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: "../jacoco.gradle"
+apply from: "../sonarqube.gradle"
+
 android {
     compileSdk AppConfig.compileSdk
 
@@ -17,6 +20,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

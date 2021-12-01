@@ -4,6 +4,8 @@ object Versions {
     //app level
     const val gradle = "7.0.3"
     const val kotlin = "1.6.0"
+    const val jacoco = "0.8.6"
+    const val sonarqube = "2.7.1"
 
     //libs
     val coreKtx = "1.7.0"
