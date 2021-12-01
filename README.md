@@ -1,9 +1,10 @@
-# mobile-android
+# mobile-android [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=NeoSOFT-Technologies_mobile-android&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=NeoSOFT-Technologies_mobile-android)
 
 mobile-android is an application development framework - a toolkit - for people who build android apps using kotlin. 
 Its goal is to enable you to develop projects much faster than you could if you were writing code from scratch, by providing a rich set of libraries for commonly needed tasks, as well as a simple interface and logical structure to access these libraries. 
 
 This lets you creatively focus on your project by minimizing the amount of code needed for a given task. 
+
 
 Architecture Design Pattern
 --------------
