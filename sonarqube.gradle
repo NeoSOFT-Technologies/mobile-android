@@ -4,6 +4,7 @@ sonarqube {
     properties {
         property "sonar.host.url", "https://sonarcloud.io/"
         property "sonar.projectKey", "NeoSOFT-Technologies_mobile-android"
+        property "sonar.organization", "neosoft-technologies"
         property "sonar.projectName", "mobile-android"
         property "sonar.login", "b03216e6555d632147510b926a17f7a3978f43d8"
         property "sonar.tests", "src/test/java"
