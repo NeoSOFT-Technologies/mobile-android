@@ -9,6 +9,7 @@ object Versions {
     val coreKtx = "1.7.0"
     val appcompat = "1.4.0"
     val constraintLayout = "2.1.2"
+    val materialApp = "1.4.0"
 
     //test
     val junit = "4.13.2"

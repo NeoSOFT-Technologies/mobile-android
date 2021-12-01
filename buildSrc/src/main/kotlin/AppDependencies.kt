@@ -9,6 +9,7 @@ object AppDependencies {
     private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    private val materialApp = "com.google.android.material:material:${Versions.materialApp}"
 
     //test libs
     private val junit = "junit:junit:${Versions.junit}"
@@ -20,6 +21,7 @@ object AppDependencies {
         add(coreKtx)
         add(appcompat)
         add(constraintLayout)
+        add(materialApp)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {
