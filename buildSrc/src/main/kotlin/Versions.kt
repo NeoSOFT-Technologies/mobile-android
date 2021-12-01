@@ -11,7 +11,7 @@ object Versions {
     val constraintLayout = "2.1.2"
 
     //test
-    val junit = "4.+"
+    val junit = "4.13.2"
     val extJunit = "1.1.3"
     val espresso = "3.4.0"
 }
