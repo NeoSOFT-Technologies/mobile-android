@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="secondaryRedAlert">#E30000</color>
+
+    <color name="green">#33C000</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="primaryDarkNight_72">#B8141414</color>
+
+    <color name="colorToastError">@color/secondaryRedAlert</color>
+    <color name="colorToastSuccess">@color/green</color>
+
 </resources>

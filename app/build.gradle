@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: "../jacoco.gradle"
@@ -32,6 +34,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        dataBinding true
+    }
+    buildFeatures {
+        viewBinding true
+    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -45,5 +53,13 @@ dependencies {
     implementation(AppDependencies.appLibraries)
     //test libs
     testImplementation(AppDependencies.testLibraries)
+    //kpat libs
+    kapt(AppDependencies.kpatLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
+
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
