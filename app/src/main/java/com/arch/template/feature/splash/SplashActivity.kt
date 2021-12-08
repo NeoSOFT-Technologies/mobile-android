@@ -1,12 +1,9 @@
 package com.arch.template.feature.splash
 
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import com.arch.template.R
 import androidx.activity.viewModels
-import com.arch.template.base.BaseActivity
+import com.arch.template.R
 import com.arch.template.databinding.ActivitySplashBinding
+import com.core.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

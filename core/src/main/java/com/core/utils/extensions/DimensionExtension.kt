@@ -1,4 +1,4 @@
-package com.arch.template.utils.extensions
+package com.core.utils.extensions
 
 import android.content.res.Resources
 

@@ -1,9 +1,9 @@
-package com.arch.template.base
+package com.core.base
 
 import androidx.lifecycle.ViewModel
-import com.arch.template.utils.ResourceString
-import com.arch.template.utils.SingleLiveEvent
-import com.arch.template.utils.TextResourceString
+import com.core.utils.ResourceString
+import com.core.utils.SingleLiveEvent
+import com.core.utils.TextResourceString
 
 
 open class BaseViewModel : ViewModel() {

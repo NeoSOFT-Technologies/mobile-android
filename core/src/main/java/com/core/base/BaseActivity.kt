@@ -1,7 +1,6 @@
-package com.arch.template.base
+package com.core.base
 
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -9,9 +8,9 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
-import com.arch.template.R
-import com.arch.template.utils.extensions.showShortToast
-import java.util.Locale
+import com.core.R
+
+import com.core.utils.extensions.showShortToast
 
 abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
