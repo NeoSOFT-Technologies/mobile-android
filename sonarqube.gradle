@@ -17,11 +17,9 @@ sonarqube {
                 '**/*test*/**,' +
                 '**/.gradle/**,' +
                 '**/R.class'
-        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
+
         property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
-        //property "sonar.junit.reportPaths", "**/test-results/**/*.xml"
-        //property "sonar.coverage.jacoco.xmlReportPaths", "**/jacocoTestReport/jacocoTestReport.xml"
+        property "sonar.coverage.jacoco.xmlReportPaths", "**/jacocoTestReport/jacocoTestReport.xml"
         property "sonar.coverage.exclusions", "${coverageExclusions.join(', ')}"
     }
 }
