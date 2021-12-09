@@ -6,12 +6,18 @@ object Versions {
     const val kotlin = "1.6.0"
     const val jacoco = "0.8.7"
     const val sonarqube = "2.7.1"
+    val hiltVersion = "2.38.1"
+
 
     //libs
     val coreKtx = "1.7.0"
     val appcompat = "1.4.0"
     val constraintLayout = "2.1.2"
     val materialApp = "1.4.0"
+    val navigationFramentKtx = "2.3.0"
+    val fragmentKtx = "1.4.0"
+    val lifecycleVersion = "2.4.0"
+
 
     //test
     val junit = "4.13.2"

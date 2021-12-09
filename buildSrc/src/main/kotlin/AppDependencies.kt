@@ -4,12 +4,22 @@ object AppDependencies {
     //std lib
     val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
-    //android ui
+    //android UI
     private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     private val materialApp = "com.google.android.material:material:${Versions.materialApp}"
+
+    //Dependency Injection
+    private val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
+    private val hiltAndroidCompiler =
+        "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+
+    //Architecture components
+    private val lifecycleLivedataKtx =
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleVersion}"
+    private val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 
     //test libs
     private val junit = "junit:junit:${Versions.junit}"
@@ -22,6 +32,9 @@ object AppDependencies {
         add(appcompat)
         add(constraintLayout)
         add(materialApp)
+        add(hiltAndroid)
+        //add(hiltAndroidCompiler)
+        add(fragmentKtx)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {
@@ -31,6 +44,9 @@ object AppDependencies {
 
     val testLibraries = arrayListOf<String>().apply {
         add(junit)
+    }
+    val kpatLibraries = arrayListOf<String>().apply {
+        add(hiltAndroidCompiler)
     }
 }
 

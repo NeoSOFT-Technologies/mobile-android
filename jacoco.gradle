@@ -30,17 +30,27 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
     group = "Reporting"
     description = "Generate Jacoco coverage reports for Debug build"
 
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug/classes", excludes: coverageExclusions)
+    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: coverageExclusions)
+    def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug", excludes: coverageExclusions)
     def mainSrc = "${project.projectDir}/src/main/java"
 
     additionalSourceDirs.from = files(mainSrc)
     sourceDirectories.from = files([mainSrc])
-    classDirectories.from = files([debugTree])
+    classDirectories.from = files([debugTree], [kotlinDebugTree])
 
-    files("$buildDir/jacoco/testDebugUnitTest.exec")
+    executionData(
+            project.fileTree(project.rootDir.absolutePath).include(
+                    "**/*.exec", // JaCoCo unit tests binary report
+                    "**/*.ec" // JaCoCo android tests binary report
+            )
+    )
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+        csv.required.set(true)
+        xml.destination file("$reportsDir/jacoco/jacoco.xml")
+        html.destination file("$reportsDir/jacoco/coverage")
+        csv.destination file("$reportsDir/jacoco/jacoco.csv")
+    }
 }
