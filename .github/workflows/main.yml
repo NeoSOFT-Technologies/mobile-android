@@ -38,11 +38,11 @@ jobs:
           name: report
           path: app/build/reports/jacoco/coverage
 
-      - name: Download Reports Folder
-        uses: actions/download-artifact@v2
-        with:
-          name: report
-          path: app/build/reports/jacoco/coverage
+#      - name: Download Reports Folder
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: report
+#          path: app/build/reports/jacoco/coverage
 
 #  disabled for now
 #  instrumentation-test:
@@ -77,10 +77,28 @@ jobs:
          with:
            java-version: 11
 
-       - name: SonarCloud Scan
-         run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-         env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       - name: Cache SonarCloud packages
+         uses: actions/cache@v1
+         with:
+             path: ~/.sonar/cache
+             key: ${{ runner.os }}-sonar
+             restore-keys: ${{ runner.os }}-sonar
+       - name: Cache Gradle packages
+         uses: actions/cache@v1
+         with:
+             path: ~/.gradle/caches
+             key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+             restore-keys: ${{ runner.os }}-gradle
+        - name: Build and analyze
+          env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+           run: ./gradlew build sonarqube --info
+
+#       - name: SonarCloud Scan
+#         run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #   package:
 #     needs: [static-code-analysis]
