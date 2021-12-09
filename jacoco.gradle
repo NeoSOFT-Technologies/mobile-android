@@ -49,8 +49,8 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
         xml.required.set(true)
         html.required.set(true)
         csv.required.set(true)
-        xml.destination file("${project.buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
-        html.destination file("${buildDir}/reports/jacoco/Html")
-        csv.destination file("${buildDir}/reports/jacoco/jacoco.csv")
+        xml.destination file("$reportsDir/jacoco/jacoco.xml")
+        html.destination file("$reportsDir/jacoco/coverage")
+        csv.destination file("$reportsDir/jacoco/jacoco.csv")
     }
 }
