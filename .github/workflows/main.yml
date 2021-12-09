@@ -13,6 +13,9 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
+      - name: Run lint checks
+        run: ./gradlew lint
+
       - name: Upload html test report
         uses: actions/upload-artifact@v2
         with:
@@ -29,11 +32,17 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      - name: Upload test report
+      - name: Generate reports
         uses: actions/upload-artifact@v2
         with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+          name: report
+          path: app/build/reports/jacoco/coverage
+
+      - name: Download Reports Folder
+        uses: actions/download-artifact@v2
+        with:
+          name: report
+          path: app/build/reports/jacoco/coverage
 
 #  disabled for now
 #  instrumentation-test:
