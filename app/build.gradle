@@ -22,14 +22,28 @@ android {
     }
 
     buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", project.endpoint_release
+        }
         debug {
             testCoverageEnabled true
+            buildConfigField "String", "BASE_URL", project.endpoint_staging
         }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        dev {
+            buildConfigField "String", "BASE_URL", project.endpoint_dev
+        }
+        qa {
+            buildConfigField "String", "BASE_URL", project.endpoint_qa
+        }
+        staging {
+            buildConfigField "String", "BASE_URL", project.endpoint_staging
+        }
+        prod {
+            buildConfigField "String", "BASE_URL", project.endpoint_prod
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,7 +65,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':core')
     implementation project(path: ':crash-reporting')
-    
+    implementation project(path: ':retrofit-network-service')
+
     //app libs
     implementation(AppDependencies.appLibraries)
 

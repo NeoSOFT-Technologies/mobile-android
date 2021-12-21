@@ -10,8 +10,6 @@ android {
     defaultConfig {
         minSdk AppConfig.minSdk
         targetSdk AppConfig.targetSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner AppConfig.androidTestInstrumentation
         consumerProguardFiles "consumer-rules.pro"
@@ -45,6 +43,8 @@ android {
 dependencies {
     //std lib
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':utils')
+
     //app libs
     implementation(AppDependencies.appLibraries)
     //test libs

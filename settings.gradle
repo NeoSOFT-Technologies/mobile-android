@@ -9,3 +9,5 @@ rootProject.name = "Blueprint"
 include(":app")
 include ':core'
 include ':crash-reporting'
+include ':retrofit-network-service'
+include ':utils'
