@@ -23,6 +23,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        dev {
+            initWith buildTypes.release
+        }
+
+        qa {
+            initWith buildTypes.release
+        }
+
+        staging {
+            initWith buildTypes.release
+        }
+
+        prod {
+            initWith buildTypes.release
+        }
 
     }
     compileOptions {
