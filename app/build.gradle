@@ -25,35 +25,37 @@ android {
         release {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", project.endpoint_release
+            resValue "string", "app_name", "Blueprint"
         }
         debug {
             testCoverageEnabled true
             buildConfigField "String", "BASE_URL", project.endpoint_staging
+            resValue "string", "app_name", "Blueprint"
         }
         dev {
             initWith buildTypes.release
             applicationIdSuffix ".dev"
             versionNameSuffix "-DEV"
-            resValue "string", "app_name", "NS App DEV"
+            resValue "string", "app_name", "Blueprint DEV"
             buildConfigField "String", "BASE_URL", project.endpoint_dev
         }
         qa {
             initWith buildTypes.release
             applicationIdSuffix ".qa"
             versionNameSuffix "-QA"
-            resValue "string", "app_name", "NS App QA"
+            resValue "string", "app_name", "Blueprint QA"
             buildConfigField "String", "BASE_URL", project.endpoint_qa
         }
         staging {
             initWith buildTypes.release
             applicationIdSuffix ".staging"
             versionNameSuffix "-STAGING"
-            resValue "string", "app_name", "NS App STAGING"
+            resValue "string", "app_name", "Blueprint STAGING"
             buildConfigField "String", "BASE_URL", project.endpoint_staging
         }
         prod {
             initWith buildTypes.release
-            resValue "string", "app_name", "NS App"
+            resValue "string", "app_name", "Blueprint App"
             buildConfigField "String", "BASE_URL", project.endpoint_prod
         }
     }
