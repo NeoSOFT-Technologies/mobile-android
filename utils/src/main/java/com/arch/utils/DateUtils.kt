@@ -1,4 +1,4 @@
-package com.intigral.jawwytv.data.entity.mapper.utils
+package com.arch.utils
 
 import java.text.SimpleDateFormat
 import java.util.*

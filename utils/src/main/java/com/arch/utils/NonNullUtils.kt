@@ -1,4 +1,4 @@
-package com.intigral.jawwytv.data.entity.mapper.utils
+package com.arch.utils
 
 /**
  * A utility class to eliminate nulls in data types coming in from the response.

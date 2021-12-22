@@ -2,7 +2,7 @@ package com.core.utils.network
 
 import com.arch.utils.Either
 import com.core.entity.remote.error.ErrorResponseEntity
-import com.intigral.jawwytv.data.entity.mapper.utils.NonNullUtils
+import com.arch.utils.NonNullUtils
 
 import com.core.error.NetworkError
 
