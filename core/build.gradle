@@ -10,8 +10,6 @@ android {
     defaultConfig {
         minSdk AppConfig.minSdk
         targetSdk AppConfig.targetSdk
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner AppConfig.androidTestInstrumentation
         consumerProguardFiles "consumer-rules.pro"
@@ -24,6 +22,21 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        dev {
+            initWith buildTypes.release
+        }
+
+        qa {
+            initWith buildTypes.release
+        }
+
+        staging {
+            initWith buildTypes.release
+        }
+
+        prod {
+            initWith buildTypes.release
         }
 
     }
@@ -45,6 +58,8 @@ android {
 dependencies {
     //std lib
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':utils')
+
     //app libs
     implementation(AppDependencies.appLibraries)
     //test libs

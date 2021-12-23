@@ -22,14 +22,44 @@ android {
     }
 
     buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", project.endpoint_release
+            resValue "string", "app_name", "Blueprint"
+        }
         debug {
             testCoverageEnabled true
+            buildConfigField "String", "BASE_URL", project.endpoint_staging
+            resValue "string", "app_name", "Blueprint"
         }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        dev {
+            initWith buildTypes.release
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-DEV"
+            resValue "string", "app_name", "Blueprint DEV"
+            buildConfigField "String", "BASE_URL", project.endpoint_dev
+        }
+        qa {
+            initWith buildTypes.release
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-QA"
+            resValue "string", "app_name", "Blueprint QA"
+            buildConfigField "String", "BASE_URL", project.endpoint_qa
+        }
+        staging {
+            initWith buildTypes.release
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-STAGING"
+            resValue "string", "app_name", "Blueprint STAGING"
+            buildConfigField "String", "BASE_URL", project.endpoint_staging
+        }
+        prod {
+            initWith buildTypes.release
+            resValue "string", "app_name", "Blueprint App"
+            buildConfigField "String", "BASE_URL", project.endpoint_prod
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,7 +81,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':core')
     implementation project(path: ':crash-reporting')
-    
+    implementation project(path: ':retrofit-network-service')
+
     //app libs
     implementation(AppDependencies.appLibraries)
 

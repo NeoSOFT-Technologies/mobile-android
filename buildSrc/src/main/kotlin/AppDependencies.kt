@@ -15,6 +15,15 @@ object AppDependencies {
     private val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     private val hiltAndroidCompiler =
         "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+    private val javaxInject = "javax.inject:javax.inject:${Versions.javaxInjectVersion}"
+
+    // http
+    val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
+    val retrofitCoverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
+    val retrofitLogginInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLoggingVersion}"
+
+    val moshVersion =  "com.squareup.moshi:moshi:${Versions.moshVersion}"
+    val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshVersion}"
 
     //Architecture components
     private val lifecycleLivedataKtx =
@@ -35,6 +44,11 @@ object AppDependencies {
         add(hiltAndroid)
         //add(hiltAndroidCompiler)
         add(fragmentKtx)
+        add(retrofit)
+        add(retrofitCoverterGson)
+        add(retrofitLogginInterceptor)
+        add(moshVersion)
+        add(moshiKotlin)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {
