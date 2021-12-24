@@ -6,7 +6,7 @@ object AppDependencies {
 
     //android UI
     private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     private val materialApp = "com.google.android.material:material:${Versions.materialApp}"
@@ -20,9 +20,10 @@ object AppDependencies {
     // http
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     val retrofitCoverterGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
-    val retrofitLogginInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLoggingVersion}"
+    val retrofitLogginInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLoggingVersion}"
 
-    val moshVersion =  "com.squareup.moshi:moshi:${Versions.moshVersion}"
+    val moshiVersion = "com.squareup.moshi:moshi:${Versions.moshVersion}"
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshVersion}"
 
     //Architecture components
@@ -35,20 +36,18 @@ object AppDependencies {
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 
+    //Room libs
+    val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+    val kaptRoomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
         add(coreKtx)
         add(appcompat)
         add(constraintLayout)
         add(materialApp)
-        add(hiltAndroid)
-        //add(hiltAndroidCompiler)
         add(fragmentKtx)
-        add(retrofit)
-        add(retrofitCoverterGson)
-        add(retrofitLogginInterceptor)
-        add(moshVersion)
-        add(moshiKotlin)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

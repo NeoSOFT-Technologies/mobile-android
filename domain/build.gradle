@@ -1,59 +1,45 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
-
-apply from: "../jacoco.gradle"
-apply from: "../sonarqube.gradle"
 
 android {
     compileSdk AppConfig.compileSdk
 
     defaultConfig {
-        applicationId "com.arch.template"
         minSdk AppConfig.minSdk
         targetSdk AppConfig.targetSdk
-        versionCode AppConfig.versionCode
-        versionName AppConfig.versionName
 
         testInstrumentationRunner AppConfig.androidTestInstrumentation
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
-        release {
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "app_name", "Blueprint"
-        }
         debug {
             testCoverageEnabled true
-            resValue "string", "app_name", "Blueprint"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         dev {
             initWith buildTypes.release
-            applicationIdSuffix ".dev"
-            versionNameSuffix "-DEV"
-            resValue "string", "app_name", "Blueprint DEV"
         }
+
         qa {
             initWith buildTypes.release
-            applicationIdSuffix ".qa"
-            versionNameSuffix "-QA"
-            resValue "string", "app_name", "Blueprint QA"
         }
+
         staging {
             initWith buildTypes.release
-            applicationIdSuffix ".staging"
-            versionNameSuffix "-STAGING"
-            resValue "string", "app_name", "Blueprint STAGING"
         }
+
         prod {
             initWith buildTypes.release
-            resValue "string", "app_name", "Blueprint App"
         }
-    }
 
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -70,23 +56,19 @@ android {
 }
 
 dependencies {
-
     //std lib
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':domain')
-    implementation project(path: ':crash-reporting')
-
+    implementation project(path: ':utils')
 
     //app libs
     implementation(AppDependencies.appLibraries)
-    implementation AppDependencies.hiltAndroid
-    kapt AppDependencies.hiltAndroidCompiler
+
 
     //test libs
     testImplementation(AppDependencies.testLibraries)
-
+    //kpat libs
+    kapt(AppDependencies.kpatLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
-
 }
 
 // Allow references to generated code

@@ -1,7 +1,8 @@
 package com.arch.template.feature.splash
 
 
-import com.core.base.BaseViewModel
+
+import com.arch.template.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

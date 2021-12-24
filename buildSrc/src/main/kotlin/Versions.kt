@@ -22,6 +22,7 @@ object Versions {
     val okhttpLoggingVersion = "4.9.0"
     val javaxInjectVersion = "1"
     val moshVersion = "1.13.0"
+    val roomVersion = "2.4.0"
 
 
     //test
