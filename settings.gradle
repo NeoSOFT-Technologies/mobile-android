@@ -7,7 +7,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Blueprint"
 include(":app")
-include ':core'
+include ':domain'
 include ':crash-reporting'
-include ':retrofit-network-service'
 include ':utils'
+include ':data'
