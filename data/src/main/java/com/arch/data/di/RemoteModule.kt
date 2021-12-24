@@ -2,9 +2,9 @@ package com.arch.data.di
 
 import com.arch.data.BuildConfig
 import com.arch.data.network.RetrofitAppServices
-import com.arch.remote.service.okhttp.OkHttpClientService
+import com.arch.data.network.RetrofitService
+import com.arch.data.network.okhttp.OkHttpClientService
 
-import com.arch.remote.service.retrofit.RetrofitService
 
 import dagger.Module
 import dagger.Provides
