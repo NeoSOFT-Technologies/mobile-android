@@ -1,4 +1,4 @@
-package com.crash_reporting
+package com.reporting
 
 internal interface ExceptionLogger {
     fun setUserId(userId: String)
