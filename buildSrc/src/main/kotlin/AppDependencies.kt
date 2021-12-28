@@ -41,6 +41,9 @@ object AppDependencies {
     val kaptRoomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
 
+    //Logging
+    val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
+
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
         add(coreKtx)
@@ -48,6 +51,7 @@ object AppDependencies {
         add(constraintLayout)
         add(materialApp)
         add(fragmentKtx)
+        add(timber)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

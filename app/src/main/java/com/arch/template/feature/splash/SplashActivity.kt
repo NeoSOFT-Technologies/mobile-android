@@ -4,6 +4,7 @@ import androidx.activity.viewModels
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding
+import com.arch.template.utils.MyAppLogger
 
 import dagger.hilt.android.AndroidEntryPoint
 

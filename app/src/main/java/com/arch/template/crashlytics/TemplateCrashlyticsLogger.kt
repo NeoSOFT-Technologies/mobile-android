@@ -2,7 +2,7 @@ package com.arch.template.crashlytics
 
 import com.crash_reporting.CrashlyticsLogger
 
-class TemplateCrashlyticsLogger : CrashlyticsLogger() {
+object TemplateCrashlyticsLogger : CrashlyticsLogger() {
 
     override fun setUserId(userId: String) {
         TODO("Not yet implemented")

@@ -75,11 +75,12 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':domain')
     implementation project(path: ':crash-reporting')
-
+    implementation project(path: ':logger')
 
     //app libs
     implementation(AppDependencies.appLibraries)
     implementation AppDependencies.hiltAndroid
+
     kapt AppDependencies.hiltAndroidCompiler
 
     //test libs
