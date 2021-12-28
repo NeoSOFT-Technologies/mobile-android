@@ -1,6 +1,6 @@
 package com.arch.template.crashlytics
 
-import com.crash_reporting.CrashlyticsLogger
+import com.reporting.CrashlyticsLogger
 
 object TemplateCrashlyticsLogger : CrashlyticsLogger() {
 
