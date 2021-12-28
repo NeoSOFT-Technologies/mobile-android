@@ -23,6 +23,7 @@ object Versions {
     val javaxInjectVersion = "1"
     val moshVersion = "1.13.0"
     val roomVersion = "2.4.0"
+    val timberVersion = "5.0.1"
 
 
     //test
