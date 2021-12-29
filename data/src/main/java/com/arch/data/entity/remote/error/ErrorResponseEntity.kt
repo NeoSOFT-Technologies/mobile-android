@@ -1,4 +1,4 @@
-package com.core.entity.remote.error
+package com.arch.data.entity.remote.error
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
