@@ -1,3 +1,3 @@
-package com.crash_reporting
+package com.reporting
 
 abstract class CrashlyticsLogger() : ExceptionLogger

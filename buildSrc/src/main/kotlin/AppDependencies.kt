@@ -42,6 +42,9 @@ object AppDependencies {
     val kaptRoomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
 
+    //Logging
+    val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
+
     //ktx
     val reactiveStream= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
 
@@ -52,6 +55,7 @@ object AppDependencies {
         add(constraintLayout)
         add(materialApp)
         add(fragmentKtx)
+        add(timber)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

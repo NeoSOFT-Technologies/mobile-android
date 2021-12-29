@@ -6,6 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding
+import com.arch.template.utils.MyAppLogger
 import com.arch.template.feature.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
