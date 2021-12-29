@@ -1,2 +1,8 @@
 <resources>
+    <string name="login_email_hint">Enter your email</string>
+    <string name="login_password_hint">Enter your password</string>
+    <string name="btn_login">Login</string>
+    <string name="error_empty_email">Please enter email</string>
+    <string name="error_empty_password">Please enter password</string>
+    <string name="error_invalid_email">Please enter valid email</string>
 </resources>

@@ -68,16 +68,17 @@ dependencies {
     implementation project(path:':domain')
 
     //room
-    implementation AppDependencies.roomRuntime
-    implementation AppDependencies.roomKtx
+    api AppDependencies.roomRuntime
+    api AppDependencies.roomKtx
     kapt(AppDependencies.kaptRoomCompiler)
 
     //retrofit
-    implementation AppDependencies.retrofit
-    implementation AppDependencies.retrofitCoverterGson
-    implementation AppDependencies.retrofitLogginInterceptor
-    implementation AppDependencies.moshiVersion
-    implementation AppDependencies.moshiKotlin
+    api AppDependencies.retrofit
+    api AppDependencies.retrofitCoverterGson
+    api AppDependencies.retrofitLogginInterceptor
+    api AppDependencies.moshiVersion
+    api AppDependencies.moshiKotlin
+    kapt AppDependencies.moshiCodeGen
 
 
     implementation AppDependencies.hiltAndroid

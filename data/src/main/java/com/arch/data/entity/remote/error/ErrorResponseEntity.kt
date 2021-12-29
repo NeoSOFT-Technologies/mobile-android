@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ErrorResponseEntity(
-    @Json(name = "error") var error: Error? = null
+    @Json(name = "error") var error: String? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Error(

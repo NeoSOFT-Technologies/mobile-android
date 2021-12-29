@@ -4,6 +4,8 @@ import com.arch.data.BuildConfig
 import com.arch.data.network.RetrofitAppServices
 import com.arch.data.network.RetrofitService
 import com.arch.data.network.okhttp.OkHttpClientService
+import com.arch.data.source.user.remote.UserRemoteDataSource
+import com.arch.data.source.user.remote.UserRemoteDataSourceImpl
 
 
 import dagger.Module
@@ -43,4 +45,8 @@ class RemoteModule {
     fun providesAppService(retrofit: Retrofit): RetrofitAppServices =
         retrofit.create(RetrofitAppServices::class.java)
 
+    @Provides
+    @Singleton
+    fun provideUserRemoteDataSource(retrofitAppServices: RetrofitAppServices): UserRemoteDataSource =
+        UserRemoteDataSourceImpl(retrofitAppServices)
 }

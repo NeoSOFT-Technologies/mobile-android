@@ -25,6 +25,7 @@ object AppDependencies {
 
     val moshiVersion = "com.squareup.moshi:moshi:${Versions.moshVersion}"
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshVersion}"
+    val moshiCodeGen ="com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshVersion}"
 
     //Architecture components
     private val lifecycleLivedataKtx =
@@ -40,6 +41,9 @@ object AppDependencies {
     val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
     val kaptRoomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
     val roomKtx = "androidx.room:room-ktx:${Versions.roomVersion}"
+
+    //ktx
+    val reactiveStream= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
