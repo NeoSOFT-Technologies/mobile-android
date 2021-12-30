@@ -2,31 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.arch.template">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".BlueprintApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".BlueprintApplication"
-        android:theme="@style/Theme.Blueprint">
+        android:theme="@style/Theme.BlueprintApplication">
         <activity
             android:name=".feature.splash.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".feature.login.LoginActivity">
-        </activity>
-        <activity
-            android:name=".feature.resource.ResourceActivity">
-        </activity>
+        <activity android:name=".feature.login.LoginActivity" />
+        <activity android:name=".feature.resource.ResourceActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,19 @@
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- You can use `android:` instead of `app:` for API level >= 26   -->
+    <font
+        app:font="@font/poppins_regular"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+
+    <font
+        app:font="@font/poppins_bold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+
+    <font
+        app:font="@font/poppins_light"
+        app:fontStyle="normal"
+        app:fontWeight="200" />
+
+
+</font-family>
