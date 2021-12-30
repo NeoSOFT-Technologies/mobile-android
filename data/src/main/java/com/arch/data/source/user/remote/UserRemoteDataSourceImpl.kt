@@ -7,7 +7,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class UserRemoteDataSourceImpl @Inject constructor(
-    private val retrofitAppServices: RetrofitAppServices
+    private val retrofitAppServices: RetrofitAppServices,
 ) : UserRemoteDataSource {
     override suspend fun loginUser(email: String, password: String): Response<UserResponseEntity> {
         return retrofitAppServices.login(

@@ -1,4 +1,4 @@
-package com.core.utils.mapperUtil
+package com.core.utils.mapper
 
 /**
  * Implementation of the LayerDataTransformer.

@@ -25,6 +25,7 @@ object Versions {
     val roomVersion = "2.4.0"
     val timberVersion = "5.0.1"
     val reactiveStream = "2.4.0"
+    val paging = "3.1.0"
 
 
     //test

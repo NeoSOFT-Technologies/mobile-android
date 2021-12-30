@@ -1,4 +1,4 @@
-package com.core.utils.mapperUtil
+package com.core.utils.mapper
 
 /**
  * A data transformer interface which is used to enable entity transformation between layers.

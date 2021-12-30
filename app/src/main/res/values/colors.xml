@@ -16,4 +16,14 @@
     <color name="colorToastError">@color/secondaryRedAlert</color>
     <color name="colorToastSuccess">@color/green</color>
 
+    <color name="marine_blue">#002c56</color>
+    <color name="bright_teal">#00e8bf</color>
+    <color name="sunflower_yellow">#ffd600</color>
+    <color name="orange">#ff6310</color>
+    <color name="bright_sky_blue">#00c2ff</color>
+    <color name="teal">#009a7b</color>
+    <color name="turquoise_green">#00e998</color>
+    <color name="brown_grey">#a5a5a5</color>
+    <color name="very_light_pink">#e5e5e5</color>
+
 </resources>

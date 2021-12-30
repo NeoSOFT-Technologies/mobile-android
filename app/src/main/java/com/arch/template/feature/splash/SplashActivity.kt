@@ -6,8 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding
-import com.arch.template.utils.MyAppLogger
-import com.arch.template.feature.login.LoginActivity
+import com.arch.template.feature.resource.ResourceActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -27,7 +26,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
                 if (navigation) {
                     startActivity(
                         Intent(
-                            this@SplashActivity, LoginActivity::class.java
+                            this@SplashActivity, ResourceActivity::class.java
                         )
                     )
                 }

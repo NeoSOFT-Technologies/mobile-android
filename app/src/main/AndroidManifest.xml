@@ -22,8 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.login.LoginActivity"
-            android:exported="true">
+            android:name=".feature.login.LoginActivity">
+        </activity>
+        <activity
+            android:name=".feature.resource.ResourceActivity">
         </activity>
     </application>
 

@@ -48,6 +48,9 @@ object AppDependencies {
     //ktx
     val reactiveStream= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
 
+    //paging
+    val paging= "androidx.paging:paging-runtime:${Versions.paging}"
+
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
         add(coreKtx)
