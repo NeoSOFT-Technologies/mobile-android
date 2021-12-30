@@ -23,7 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".feature.login.LoginActivity" />
-        <activity android:name=".feature.resource.ResourceActivity" />
+        <activity
+            android:name=".feature.resource.ResourceActivity"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
     </application>
 
 </manifest>

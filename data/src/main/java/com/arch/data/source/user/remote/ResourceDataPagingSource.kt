@@ -1,5 +1,6 @@
 package com.arch.data.source.user.remote
 
+import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.arch.data.network.RetrofitAppServices
@@ -7,13 +8,16 @@ import com.core.entity.ResourceData
 import retrofit2.HttpException
 import java.io.IOException
 
-class ResourceDataPagingSource(private val retrofitAppServices: RetrofitAppServices) :
+class ResourceDataPagingSource(
+    private val retrofitAppServices: RetrofitAppServices,
+    private val pageConfig: PagingConfig
+) :
     PagingSource<Int, ResourceData>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResourceData> {
         val pageIndex = params.key ?: 1
         return try {
             val response = retrofitAppServices.getResourceData(
-                perPage = 4,
+                perPage = pageConfig.pageSize,
                 page = pageIndex,
             )
             val resourceData: List<ResourceData> = response.body()?.data?.map {

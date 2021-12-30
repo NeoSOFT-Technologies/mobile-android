@@ -1,6 +1,7 @@
 package com.arch.data.repository
 
 import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import com.arch.data.network.utils.safeApiCall
 import com.arch.data.source.user.remote.ResourceRemoteDataSource
 import com.core.entity.ResourceData
@@ -15,7 +16,7 @@ class ResourceRepositoryImpl @Inject constructor(
 
     override suspend fun getResourceData(): Either<NetworkError, Pager<Int, ResourceData>> {
         return when (val response = safeApiCall {
-            resourceRemoteDataSource.getResourceData()
+            resourceRemoteDataSource.getResourceData(pageConfig = PagingConfig(pageSize = 4))
         }) {
             is Either.Left -> Either.Left(
                 response.left

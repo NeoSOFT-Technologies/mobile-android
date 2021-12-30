@@ -14,16 +14,75 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_marginTop="32dp"
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="fitStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvHeader"
+            app:srcCompat="@drawable/fullcircle" />
+
+        <TextView
+            android:id="@+id/tvHeader"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@id/imageView"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/header_app"
+            tools:text="@string/header_app"
+            android:textColor="@color/marine_blue"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvHeader"
+            app:layout_constraintBottom_toBottomOf="@id/tvHeader"
+            android:layout_marginEnd="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/firstCircle"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/transparent_circle">
+            </View>
+            <View
+                android:layout_marginStart="16dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/transparent_circle">
+            </View>
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/transparent_circle">
+            </View>
+            <View
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/transparent_circle">
+            </View>
+        </RelativeLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvResource"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="vertical"
+            android:layout_marginTop="16dp"
             app:layoutManager="LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader"
             tools:listitem="@layout/resource_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,8 +5,4 @@ data class ResourceData(
     val name: String?="",
     val year: Int?=-1,
     val pantoneValue: String?="",
-){
-    fun getTitle():String{
-        return name +id
-    }
-}
+)

@@ -2,26 +2,26 @@ package com.arch.data.entity.remote.response
 
 import com.core.entity.ResourceData
 import com.core.utils.mapper.BaseLayerDataTransformer
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ResourceDataResponseEntity(
-    @Json(name = "name")
+    @SerializedName(value = "id")
     val id: Int?,
-    @Json(name = "name")
+    @SerializedName(value = "name")
     val name: String?,
-    @Json(name = "year")
+    @SerializedName(value = "year")
     val year: Int?,
-    @Json(name = "pantone_value")
+    @SerializedName(value = "pantone_value")
     val pantoneValue: String?,
 ) : BaseLayerDataTransformer<ResourceDataResponseEntity, ResourceData>() {
     override fun transform(): ResourceData {
         return ResourceData(
-            id,
-            name,
-            year,
-            pantoneValue,
+            id = id,
+            name = name,
+            year = year,
+            pantoneValue = pantoneValue,
         )
     }
 

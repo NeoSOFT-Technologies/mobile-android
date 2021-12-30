@@ -9,4 +9,5 @@
     <string name="error_empty_email">Please enter email</string>
     <string name="error_empty_password">Please enter password</string>
     <string name="error_invalid_email">Please enter valid email</string>
+    <string name="header_app">Blueprint app</string>
 </resources>
