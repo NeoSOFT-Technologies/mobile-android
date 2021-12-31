@@ -24,6 +24,9 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
             }
         }
         viewModel.getResourceData()
+        binding.tvHeader.setOnClickListener {
+            viewModel.tryError()
+        }
     }
 
     private val resourceAdapter by lazy {
