@@ -27,7 +27,7 @@ For list item layout, for eg. `RecyclerView`'s item layout, prefix file name wit
 - `users_item.xml`
 
 
-**BAD**
+**GOOD**
 
 - `item_user.xml`
 
@@ -102,8 +102,8 @@ Some of the most used abbreviations are given below
 | RadioButton       | rb           |
 | ToggleButton      | tb           |
 | Spinner           | spn          |
-| NSButton          | jb           |
-| NSInputField      | jif          |
-| NSTextView        | jtv          |
-| NSMenu            | jm           |
+| NSButton          | nsb           |
+| NSInputField      | nsif          |
+| NSTextView        | nstv          |
+| NSMenu            | nsm           |
                     
