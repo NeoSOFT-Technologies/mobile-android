@@ -3,8 +3,7 @@ package com.core.error
 import android.util.Log
 import com.core.entity.Error
 
-
-abstract class BaseError @JvmOverloads constructor(
+sealed class BaseError @JvmOverloads constructor(
     message: String,
     val error: Error? = null,
     cause: Throwable? = null,

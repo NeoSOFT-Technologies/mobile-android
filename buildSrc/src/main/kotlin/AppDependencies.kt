@@ -25,6 +25,7 @@ object AppDependencies {
 
     val moshiVersion = "com.squareup.moshi:moshi:${Versions.moshVersion}"
     val moshiKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshVersion}"
+    val moshiCodeGen ="com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshVersion}"
 
     //Architecture components
     private val lifecycleLivedataKtx =
@@ -43,6 +44,12 @@ object AppDependencies {
 
     //Logging
     val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
+
+    //ktx
+    val reactiveStream= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
+
+    //paging
+    val paging= "androidx.paging:paging-runtime:${Versions.paging}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)

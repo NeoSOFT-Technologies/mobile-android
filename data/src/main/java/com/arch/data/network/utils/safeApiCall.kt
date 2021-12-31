@@ -17,10 +17,16 @@ suspend fun <T> safeApiCall(
     try {
         val originalResponse = apiCall.invoke()
         val eitherResponse = originalResponse as Response<*>
-        return if (!eitherResponse.isSuccessful) {
-            getError(eitherResponse)
-        } else {
-            Either.Right(originalResponse)
+        return when {
+            !eitherResponse.isSuccessful -> {
+                getError(eitherResponse)
+            }
+            eitherResponse.body()==null -> {
+                getError(eitherResponse)
+            }
+            else -> {
+                Either.Right(originalResponse)
+            }
         }
     } catch (throwable: Throwable) {
         return when (throwable) {

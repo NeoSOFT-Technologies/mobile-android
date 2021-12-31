@@ -1,2 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="splash_label_create_account">Create Account</string>
+    <string name="splash_label_easy_secure">Easy.\nFast.\nSecure.</string>
+    <string name="splash_label_create_account_in_min">Create Your Account in few minutes</string>
+    <string name="login_hint_email">Enter your email</string>
+    <string name="login_hint_password">Enter your password</string>
+    <string name="login_btn_login">Login</string>
+    <string name="app_error_empty_email">Please enter email</string>
+    <string name="app_error_empty_password">Please enter password</string>
+    <string name="app_error_invalid_email">Please enter valid email</string>
+    <string name="dashboard_label_header_app">Blueprint app</string>
 </resources>

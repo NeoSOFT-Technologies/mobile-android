@@ -1,13 +1,10 @@
 package com.arch.data.network.utils
 
 
+import com.arch.data.entity.remote.error.ErrorResponseEntity
 import com.arch.data.utils.NonNullUtils
-import com.core.entity.remote.error.ErrorResponseEntity
-
-
 import com.core.error.NetworkError
 import com.core.utils.Either
-
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import retrofit2.Response
@@ -16,7 +13,7 @@ import retrofit2.Response
  * A function to retrieve error messages from error body if it exists, else fallback to the generic error message from Response class
  */
 
-suspend fun <T> getError(apiResponse: Response<out Any>): Either<NetworkError, T> {
+fun <T> getError(apiResponse: Response<out Any>): Either<NetworkError, T> {
     return apiResponse.errorBody()?.let {
         try {
             val moshi = Moshi.Builder().build()
@@ -27,7 +24,7 @@ suspend fun <T> getError(apiResponse: Response<out Any>): Either<NetworkError, T
                 Either.Left(
                     NetworkError(
                         message = NonNullUtils.getNonNull(
-                            errorResponseEntity.error?.msg ?: errorResponseEntity.error?.message
+                            errorResponseEntity.error
                         ),
                         httpError = apiResponse.code()
                     )

@@ -74,6 +74,7 @@ dependencies {
     //std lib
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(path: ':domain')
+    implementation project(path: ':data')
     implementation project(path: ':crash-reporting')
     implementation project(path: ':logger')
 
@@ -82,6 +83,9 @@ dependencies {
     implementation AppDependencies.hiltAndroid
 
     kapt AppDependencies.hiltAndroidCompiler
+
+    implementation AppDependencies.reactiveStream
+    implementation AppDependencies.paging
 
     //test libs
     testImplementation(AppDependencies.testLibraries)
