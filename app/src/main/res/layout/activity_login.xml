@@ -49,7 +49,7 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:text="@string/login_btn"
+            android:text="@string/login_btn_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edtPassword" />
