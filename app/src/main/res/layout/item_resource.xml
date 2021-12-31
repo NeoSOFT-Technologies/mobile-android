@@ -19,7 +19,8 @@
         android:layout_marginBottom="8dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivFullCircle"
+            android:contentDescription="@string/app_name"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitStart"
@@ -42,7 +43,7 @@
             app:layout_constraintBottom_toTopOf="@+id/tvSubTitle"
             app:layout_constraintEnd_toStartOf="@id/tvValue"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/imageView"
+            app:layout_constraintStart_toEndOf="@id/ivFullCircle"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="title" />
 

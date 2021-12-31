@@ -28,13 +28,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             val password: String = binding.edtPassword.text.toString()
             when {
                 email.isEmpty() -> {
-                    showShortToast(message = this.getString(R.string.error_empty_email))
+                    showShortToast(message = this.getString(R.string.app_error_empty_email))
                 }
                 !email.isValidEmail() -> {
-                    showShortToast(message = this.getString(R.string.error_invalid_email))
+                    showShortToast(message = this.getString(R.string.app_error_invalid_email))
                 }
                 password.isEmpty() -> {
-                    showShortToast(message = this.getString(R.string.error_empty_password))
+                    showShortToast(message = this.getString(R.string.app_error_empty_password))
                 }
                 else -> {
                     viewModel.doLogin(email = email, password = password)

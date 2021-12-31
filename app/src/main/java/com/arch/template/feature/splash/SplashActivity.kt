@@ -7,6 +7,7 @@ import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding
 import com.arch.template.feature.resource.ResourceActivity
+import com.arch.template.utils.MyAppLogger
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -22,7 +23,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.navigationFlow.collect { navigation ->
-                println("navigation is $navigation")
+                MyAppLogger.d("navigation is $navigation")
                 if (navigation) {
                     startActivity(
                         Intent(

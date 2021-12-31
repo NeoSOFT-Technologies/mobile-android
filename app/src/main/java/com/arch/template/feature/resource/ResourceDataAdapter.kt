@@ -7,16 +7,16 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.template.R
-import com.arch.template.databinding.ResourceItemBinding
+import com.arch.template.databinding.ItemResourceBinding
 import com.core.entity.ResourceData
 
 class ResourceDataAdapter :
     PagingDataAdapter<ResourceData, ResourceDataAdapter.ViewHolder>(DiffUtilCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = DataBindingUtil.inflate<ResourceItemBinding>(
+        val binding = DataBindingUtil.inflate<ItemResourceBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.resource_item,
+            R.layout.item_resource,
             parent,
             false
         )
@@ -27,7 +27,8 @@ class ResourceDataAdapter :
         getItem(position)?.let { holder.bind(it) }
     }
 
-    inner class ViewHolder(private val binding: ResourceItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemResourceBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResourceData) {
             with(binding) {
                 resourceData = item
