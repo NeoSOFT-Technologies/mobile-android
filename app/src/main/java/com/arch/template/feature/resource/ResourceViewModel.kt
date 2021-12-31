@@ -1,47 +1,50 @@
 package com.arch.template.feature.resource
 
+
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingData
-import com.arch.error.handler.ExceptionHandler
 import com.arch.error.mappers.ExceptionMappersStorage
 import com.arch.error.presenters.SnackBarDuration
 import com.arch.error.presenters.ToastDuration
-import com.arch.error.presenters.ToastErrorPresenter
 import com.arch.template.base.BaseViewModel
+import com.arch.template.errors.handler.AndroidExceptionHandlerBinder
+import com.arch.template.errors.handler.AndroidExceptionHandlerBinderImpl
+import com.arch.template.errors.presenters.SnackBarAndroidErrorPresenter
+import com.arch.template.errors.presenters.ToastAndroidErrorPresenter
 import com.arch.template.util.RequestManager
+import com.arch.template.utils.MyAppLogger
 import com.core.entity.ResourceData
 import com.core.error.BaseError
 import com.core.repository.ResourceRepository
 import com.core.utils.Either
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.icerock.moko.errors.presenters.SnackBarErrorPresenter
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class ResourceViewModel @Inject constructor(private val resourceRepository: ResourceRepository) :
     BaseViewModel() {
-    val exceptionHandler: ExceptionHandler
+    val exceptionHandler: AndroidExceptionHandlerBinder
 
-    val snackBarErrorPresenter = SnackBarErrorPresenter(
+    private val snackBarErrorPresenter = SnackBarAndroidErrorPresenter(
         duration = SnackBarDuration.SHORT
     )
-    val toastErrorPresenter = ToastErrorPresenter(
+    private val toastErrorPresenter = ToastAndroidErrorPresenter(
         duration = ToastDuration.LONG
     )
 
     init {
-        exceptionHandler = ExceptionHandler(
-            errorPresenter = toastErrorPresenter,
+        exceptionHandler = AndroidExceptionHandlerBinderImpl(
+            androidErrorPresenter = toastErrorPresenter,
             exceptionMapper = ExceptionMappersStorage.throwableMapper(),
             onCatch = {
                 // E.g. here we can log all exceptions that are handled by ExceptionHandler
                 println("Got exception: $it")
+
             }
         )
     }
@@ -65,24 +68,28 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
         }
     }
 
-    private var exceptionFlag = false
+    private var exceptionFlag = true
 
     fun tryError() {
+        MyAppLogger.d("tryError")
         viewModelScope.launch {
             exceptionHandler.handle {
                 if (exceptionFlag) {
                     exceptionFlag = !exceptionFlag
-                    throw IllegalArgumentException()
+                    throw NullPointerException()
                 } else {
                     exceptionFlag = !exceptionFlag
                     throw IllegalArgumentException()
                 }
+                //request
             }.catch<Exception> {
-                println("Got CustomException!")
+                MyAppLogger.d("Got CustomException!")
                 false
             }.finally {
-                println("Got CustomException finally!")
+                MyAppLogger.d("Got CustomException finally!")
             }.execute()
         }
     }
+
+
 }

@@ -1,20 +1,17 @@
-/*
- * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+
 
 package com.arch.error.handler
 
+import com.arch.error.BaseEventsDispatcher
 import com.arch.error.ErrorEventListener
 import com.arch.error.HandlerResult
-import com.arch.error.EventsDispatcher
-
 import kotlin.coroutines.cancellation.CancellationException
 
 private typealias Catcher = (Throwable) -> Boolean
 
 internal class ExceptionHandlerContextImpl<T : Any, R>(
     private val exceptionMapper: ExceptionMapper<T>,
-    private val eventsDispatcher: EventsDispatcher<ErrorEventListener<T>>,
+    private val baseEventsDispatcher: BaseEventsDispatcher<ErrorEventListener<T>>,
     private val onCatch: ((Throwable) -> Unit)?,
     private val block: suspend () -> R
 ) : ExceptionHandlerContext<R>() {
@@ -47,7 +44,7 @@ internal class ExceptionHandlerContextImpl<T : Any, R>(
             val isHandled = isHandledByCustomCatcher(e)
             if (!isHandled) { // If not handled by a custom catcher
                 val errorValue = exceptionMapper(e)
-                eventsDispatcher.dispatchEvent {
+                baseEventsDispatcher.dispatchEvent {
                     showError(e, errorValue)
                 }
             }

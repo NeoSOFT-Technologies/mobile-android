@@ -1,6 +1,4 @@
-/*
- * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+
 
 package com.arch.error.mappers
 
@@ -163,6 +161,7 @@ object ExceptionMappersStorage {
     inline fun <E : Throwable, reified T : Any> throwableMapper(): (e: E) -> T {
         return throwableMapper(T::class)
     }
+
 }
 
 /**
@@ -171,3 +170,4 @@ object ExceptionMappersStorage {
 /*inline fun <reified E : Throwable, reified T : Any> E.mapThrowable(): T {
     return ExceptionMappersStorage.throwableMapper<E, T>(T::class)(this)
 }*/
+

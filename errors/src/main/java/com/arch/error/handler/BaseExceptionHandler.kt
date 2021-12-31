@@ -1,15 +1,13 @@
-/*
- * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+
 
 package com.arch.error.handler
 
+import com.arch.error.BaseEventsDispatcher
 import com.arch.error.ErrorEventListener
-import com.arch.error.EventsDispatcher
-import com.arch.error.presenters.ErrorPresenter
+import com.arch.error.presenters.BaseErrorPresenter
 
 
-interface ExceptionHandler : ExceptionHandlerBinder {
+interface BaseExceptionHandler : BaseExceptionHandlerBinder {
     fun <R> handle(block: suspend () -> R): ExceptionHandlerContext<R>
 
     /**
@@ -20,14 +18,14 @@ interface ExceptionHandler : ExceptionHandlerBinder {
     companion object {
         operator fun <T : Any> invoke(
             exceptionMapper: ExceptionMapper<T>,
-            errorPresenter: ErrorPresenter<T>,
-            errorEventsDispatcher: EventsDispatcher<ErrorEventListener<T>> = EventsDispatcher(),
+            baseErrorPresenter: BaseErrorPresenter<T>,
+            errorBaseEventsDispatcher: BaseEventsDispatcher<ErrorEventListener<T>>,
             onCatch: ((Throwable) -> Unit)? = null
-        ): ExceptionHandler {
+        ): BaseExceptionHandler {
             return PresenterExceptionHandler(
                 exceptionMapper = exceptionMapper,
-                errorPresenter = errorPresenter,
-                errorEventsDispatcher = errorEventsDispatcher,
+                baseErrorPresenter = baseErrorPresenter,
+                errorBaseEventsDispatcher = errorBaseEventsDispatcher,
                 onCatch = onCatch
             )
         }

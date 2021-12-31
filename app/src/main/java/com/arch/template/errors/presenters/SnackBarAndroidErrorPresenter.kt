@@ -1,21 +1,16 @@
-/*
- * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
-package dev.icerock.moko.errors.presenters
+package com.arch.template.errors.presenters
 
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import com.arch.error.presenters.BaseSnackBarErrorPresenter
 import com.arch.error.presenters.SnackBarDuration
-import com.arch.template.errors.presenters.ErrorPresenter
-import com.arch.template.errors.presenters.toAndroidCode
 import com.google.android.material.snackbar.Snackbar
 
- class SnackBarErrorPresenter  constructor(
+class SnackBarAndroidErrorPresenter constructor(
     private val duration: SnackBarDuration
-) : ErrorPresenter<String> {
+) : BaseSnackBarErrorPresenter(duration = duration), AndroidErrorPresenter<String> {
 
     override fun show(throwable: Throwable, activity: FragmentActivity, data: String) {
         val decorView: View = if (activity.hasWindowFocus()) {

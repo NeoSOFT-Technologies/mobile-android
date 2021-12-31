@@ -5,6 +5,6 @@
 package com.arch.error
 
 @Suppress("EmptyDefaultConstructor")
-class EventsDispatcher<ListenerType : Any>() {
-    fun dispatchEvent(block: ListenerType.() -> Unit) {}
+abstract class BaseEventsDispatcher<ListenerType : Any>() {
+    abstract fun dispatchEvent(block: ListenerType.() -> Unit)
 }

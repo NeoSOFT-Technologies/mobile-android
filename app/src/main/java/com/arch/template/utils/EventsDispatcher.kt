@@ -4,14 +4,14 @@
 
 package com.arch.template.utils
 
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.OnLifecycleEvent
+import com.arch.error.BaseEventsDispatcher
 import java.util.concurrent.Executor
-
-import android.os.Handler
-import android.os.Looper
 
 
 fun createExecutorOnMainLooper(): Executor {
@@ -24,7 +24,7 @@ inline fun <reified T : Any> eventsDispatcherOnMain(): EventsDispatcher<T> {
     return EventsDispatcher(createExecutorOnMainLooper())
 }
 
-class EventsDispatcher<ListenerType : Any> {
+class EventsDispatcher<ListenerType : Any> : BaseEventsDispatcher<ListenerType> {
     private var eventsListener: ListenerType? = null
     private val blocks = mutableListOf<ListenerType.() -> Unit>()
     private val executor: Executor
@@ -68,9 +68,10 @@ class EventsDispatcher<ListenerType : Any> {
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
+        MyAppLogger.d("bind()")
     }
 
-    fun dispatchEvent(block: ListenerType.() -> Unit) {
+    override fun dispatchEvent(block: ListenerType.() -> Unit) {
         val eListener = eventsListener
         if (eListener != null) {
             executor.execute { block(eListener) }

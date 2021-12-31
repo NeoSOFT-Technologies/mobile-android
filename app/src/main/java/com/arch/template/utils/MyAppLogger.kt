@@ -1,9 +1,16 @@
 package com.arch.template.utils
 
 import com.arch.logger.AppLogger
+import com.arch.template.BuildConfig
 import timber.log.Timber
 
 object MyAppLogger : AppLogger() {
+
+    init {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
 
     override fun v(message: String?, vararg args: Any?) {
         Timber.v(message, args)
