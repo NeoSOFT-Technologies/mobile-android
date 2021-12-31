@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/tvHeader"
             android:layout_height="wrap_content"
-            android:text="@string/dashboard_header_app"
+            android:text="@string/dashboard_label_header_app"
             app:layout_constraintBottom_toBottomOf="@id/ivFullCircle"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -39,7 +39,7 @@
             android:textColor="@color/marine_blue"
             android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
-            tools:text="@string/dashboard_header_app" />
+            tools:text="@string/dashboard_label_header_app" />
 
         <RelativeLayout
             app:layout_constraintEnd_toEndOf="parent"
