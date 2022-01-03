@@ -2,6 +2,7 @@ package com.arch.template
 
 import android.app.Application
 import com.arch.error.mappers.ExceptionMappersStorage
+import com.core.error.NetworkError
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -16,8 +17,10 @@ class BlueprintApplication : Application() {
     fun initExceptionStorage() {
         ExceptionMappersStorage
             .condition<String>(
-                condition = { it is NullPointerException && it.localizedMessage == "200" },
-                mapper = { "${resources.getString(R.string.app_error_empty_email)}+MR.strings.myExceptionText.desc()" }
+                condition = { it is NetworkError },
+                mapper = {
+                    (it as NetworkError).message ?: ""
+                }
             )
             .register<IllegalArgumentException, String> {
                 "MR.strings.illegalArgumentText.desc()"

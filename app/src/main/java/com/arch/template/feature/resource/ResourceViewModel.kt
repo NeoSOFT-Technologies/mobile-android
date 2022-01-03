@@ -10,12 +10,14 @@ import com.arch.error.presenters.ToastDuration
 import com.arch.template.base.BaseViewModel
 import com.arch.template.errors.handler.AndroidExceptionHandlerBinder
 import com.arch.template.errors.handler.AndroidExceptionHandlerBinderImpl
+import com.arch.template.errors.presenters.SelectorAndroidErrorPresenter
 import com.arch.template.errors.presenters.SnackBarAndroidErrorPresenter
 import com.arch.template.errors.presenters.ToastAndroidErrorPresenter
 import com.arch.template.util.RequestManager
 import com.arch.template.utils.MyAppLogger
 import com.core.entity.ResourceData
 import com.core.error.BaseError
+import com.core.error.NetworkError
 import com.core.repository.ResourceRepository
 import com.core.utils.Either
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -36,15 +38,19 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
     private val toastErrorPresenter = ToastAndroidErrorPresenter(
         duration = ToastDuration.LONG
     )
+    private val selectorErrorPresenter = SelectorAndroidErrorPresenter { throwable ->
+        when (throwable) {
+            is NetworkError -> snackBarErrorPresenter
+            else -> toastErrorPresenter
+        }
+    }
 
     init {
         exceptionHandler = AndroidExceptionHandlerBinderImpl(
-            androidErrorPresenter = toastErrorPresenter,
+            androidErrorPresenter = selectorErrorPresenter,
             exceptionMapper = ExceptionMappersStorage.throwableMapper(),
             onCatch = {
-                // E.g. here we can log all exceptions that are handled by ExceptionHandler
-                println("Got exception: $it")
-
+                MyAppLogger.d("Got exception: $it")
             }
         )
     }
@@ -55,16 +61,24 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
     val resourcePagingFlow: SharedFlow<PagingData<ResourceData>> = _resourcePagingFlow
     fun getResourceData() {
         viewModelScope.launch {
-            object : RequestManager<Pager<Int, ResourceData>>() {
-                override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
-                    return resourceRepository.getResourceData()
-                }
-            }
-                .asFlow().collect {
-                    it.data?.flow?.collect {
-                        _resourcePagingFlow.emit(it)
+            exceptionHandler.handle {
+                object : RequestManager<Pager<Int, ResourceData>>() {
+                    override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
+                        return resourceRepository.getResourceData()
                     }
                 }
+                    .asFlow().collect {
+                        it.data?.flow?.collect {
+                            _resourcePagingFlow.emit(it)
+                        }
+                    }
+                //request
+            }.catch<Exception> {
+                MyAppLogger.d("Got CustomException!")
+                false
+            }.finally {
+                MyAppLogger.d("Got CustomException finally!")
+            }.execute()
         }
     }
 
