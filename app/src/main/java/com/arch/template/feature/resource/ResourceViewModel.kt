@@ -4,20 +4,11 @@ package com.arch.template.feature.resource
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingData
-import com.arch.error.mappers.ExceptionMappersStorage
-import com.arch.error.presenters.SnackBarDuration
-import com.arch.error.presenters.ToastDuration
 import com.arch.template.base.BaseViewModel
-import com.arch.template.errors.handler.AndroidExceptionHandlerBinder
-import com.arch.template.errors.handler.AndroidExceptionHandlerBinderImpl
-import com.arch.template.errors.presenters.SelectorAndroidErrorPresenter
-import com.arch.template.errors.presenters.SnackBarAndroidErrorPresenter
-import com.arch.template.errors.presenters.ToastAndroidErrorPresenter
 import com.arch.template.util.RequestManager
 import com.arch.template.utils.MyAppLogger
 import com.core.entity.ResourceData
 import com.core.error.BaseError
-import com.core.error.NetworkError
 import com.core.repository.ResourceRepository
 import com.core.utils.Either
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,31 +21,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ResourceViewModel @Inject constructor(private val resourceRepository: ResourceRepository) :
     BaseViewModel() {
-    val exceptionHandler: AndroidExceptionHandlerBinder
-
-    private val snackBarErrorPresenter = SnackBarAndroidErrorPresenter(
-        duration = SnackBarDuration.SHORT
-    )
-    private val toastErrorPresenter = ToastAndroidErrorPresenter(
-        duration = ToastDuration.LONG
-    )
-    private val selectorErrorPresenter = SelectorAndroidErrorPresenter { throwable ->
-        when (throwable) {
-            is NetworkError -> snackBarErrorPresenter
-            else -> toastErrorPresenter
-        }
-    }
-
-    init {
-        exceptionHandler = AndroidExceptionHandlerBinderImpl(
-            androidErrorPresenter = selectorErrorPresenter,
-            exceptionMapper = ExceptionMappersStorage.throwableMapper(),
-            onCatch = {
-                MyAppLogger.d("Got exception: $it")
-            }
-        )
-    }
-
     private val _resourcePagingFlow: MutableSharedFlow<PagingData<ResourceData>> =
         MutableSharedFlow()
 
