@@ -11,37 +11,26 @@ import com.arch.template.errors.presenters.SelectorAndroidErrorPresenter
 import com.arch.template.errors.presenters.SnackBarAndroidErrorPresenter
 import com.arch.template.errors.presenters.ToastAndroidErrorPresenter
 import com.arch.template.utils.MyAppLogger
-import com.core.utils.ResourceString
-import com.core.utils.SingleLiveEvent
-import com.core.utils.TextResourceString
 
-/***
- * @ shouldOverrideErrorPresenter true when based on the exception need to pass different
- * errorPresenter
- * please override getSelectorPresenter method and return error presenter based on the exception
- */
-abstract class BaseViewModel(private val shouldOverrideErrorPresenter: Boolean = false) :
+abstract class BaseViewModel :
     ViewModel() {
     val exceptionHandler: AndroidExceptionHandlerBinder
 
-    internal val snackBarErrorPresenter = SnackBarAndroidErrorPresenter(
-        duration = SnackBarDuration.SHORT
-    )
-    internal val toastErrorPresenter = ToastAndroidErrorPresenter(
-        duration = ToastDuration.LONG
-    )
+    val snackBarErrorPresenter by lazy {
+        SnackBarAndroidErrorPresenter(
+            duration = SnackBarDuration.SHORT
+        )
+    }
+    val toastErrorPresenter by lazy {
+        ToastAndroidErrorPresenter(
+            duration = ToastDuration.LONG
+        )
+    }
 
     init {
         exceptionHandler = AndroidExceptionHandlerBinderImpl(
             androidErrorPresenter = SelectorAndroidErrorPresenter { throwable ->
-                when {
-                    shouldOverrideErrorPresenter -> {
-                        getSelectorPresenter(throwable)
-                    }
-                    else -> {
-                        snackBarErrorPresenter
-                    }
-                }
+                getSelectorPresenter(throwable) ?: toastErrorPresenter
             },
             exceptionMapper = ExceptionMappersStorage.throwableMapper(),
             onCatch = {
@@ -50,17 +39,7 @@ abstract class BaseViewModel(private val shouldOverrideErrorPresenter: Boolean =
         )
     }
 
-    open fun getSelectorPresenter(throwable: Throwable): AndroidErrorPresenter<String> {
+    open fun getSelectorPresenter(throwable: Throwable): AndroidErrorPresenter<String>? {
         return toastErrorPresenter
-    }
-
-    internal val toast = SingleLiveEvent<ResourceString>()
-
-    fun showToastWithString(str: String) {
-        toast.value = TextResourceString(str)
-    }
-
-    fun showToastWithStringAsync(str: String) {
-        toast.postValue(TextResourceString(str))
     }
 }

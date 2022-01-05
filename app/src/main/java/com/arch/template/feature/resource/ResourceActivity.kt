@@ -27,12 +27,6 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
         binding.tvHeader.setOnClickListener {
             viewModel.tryError()
         }
-
-
-        viewModel.exceptionHandler.bind(
-            lifecycleOwner = this,
-            activity = this
-        )
     }
 
     private val resourceAdapter by lazy {

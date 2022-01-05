@@ -20,10 +20,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun initViewModel(viewModel: LoginViewModel) {
         binding.viewModel = viewModel
-        viewModel.exceptionHandler.bind(
-            lifecycleOwner = this,
-            activity = this
-        )
         binding.btnLogin.setOnClickListener {
             val email: String = binding.edtEmail.text.toString()
             val password: String = binding.edtPassword.text.toString()
@@ -43,9 +39,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                     }
                     Status.ERROR -> {
                         binding.pbLogin.visibility = View.INVISIBLE
-                        showShortToast(message = tokenResource.error?.message ?: "")
                     }
-
                 }
             }
         }

@@ -1,12 +1,12 @@
 package com.core.utils
 
-import com.core.error.AppError
+import com.core.error.BaseError
 
 data class Resource<out T>(
     val status: Status,
     val data: T?,
     val message: String?,
-    val error: AppError?
+    val error: BaseError?
 ) {
     companion object {
         fun <T> success(data: T?): Resource<T> {
@@ -18,7 +18,7 @@ data class Resource<out T>(
             )
         }
 
-        fun <T> error(msg: String, data: T? = null, appError: AppError? = null): Resource<T> {
+        fun <T> error(msg: String, data: T? = null, appError: BaseError? = null): Resource<T> {
             return Resource(
                 Status.ERROR,
                 data,

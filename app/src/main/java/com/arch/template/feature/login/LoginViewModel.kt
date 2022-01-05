@@ -13,42 +13,45 @@ import com.core.utils.Either
 import com.core.utils.Resource
 import com.core.utils.Validator
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val userRepository: UserRepository) :
-    BaseViewModel(shouldOverrideErrorPresenter = true) {
+    BaseViewModel() {
 
-    private val _tokenFlow: MutableSharedFlow<Resource<User>> = MutableSharedFlow()
+    private val _tokenFlow: MutableStateFlow<Resource<User>> = MutableStateFlow(Resource.error(""))
 
-    val tokenFlow: SharedFlow<Resource<User>> = _tokenFlow
+    val tokenFlow: StateFlow<Resource<User>> = _tokenFlow
 
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
             exceptionHandler.handle {
-                object : RequestManager<User>() {
+                object : RequestManager<User>(onError = {
+                    _tokenFlow.emit(it)
+                    true
+                }, preCheck = {
+                    when {
+                        Validator.isEmpty(email) -> throw AppError(
+                            appErrorType = AppErrorType.EmailEmpty,
+                        )
+                        !Validator.isValidEmail(email) -> throw AppError(
+                            appErrorType = AppErrorType.InvalidEmail,
+                        )
+                        Validator.isEmpty(password) -> throw AppError(
+                            appErrorType = AppErrorType.PasswordEmpty,
+                        )
+                    }
+                }) {
                     override suspend fun createCall(): Either<BaseError, User> {
-                        when {
-                            Validator.isEmpty(email) -> throw AppError(
-                                appErrorType = AppErrorType.EmailEmpty,
-                            )
-                            !Validator.isValidEmail(email) -> throw AppError(
-                                appErrorType = AppErrorType.InvalidEmail,
-                            )
-                            Validator.isEmpty(password) -> throw AppError(
-                                appErrorType = AppErrorType.PasswordEmpty,
-                            )
-                        }
                         return userRepository.login(email, password)
                     }
+                }.asFlow().collect {
+                    _tokenFlow.emit(it)
                 }
-                    .asFlow().collect {
-                        _tokenFlow.emit(it)
-                    }
             }.catch<Exception> {
                 false
             }.execute()

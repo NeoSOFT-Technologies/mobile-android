@@ -28,7 +28,11 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
     fun getResourceData() {
         viewModelScope.launch {
             exceptionHandler.handle {
-                object : RequestManager<Pager<Int, ResourceData>>() {
+                object : RequestManager<Pager<Int, ResourceData>>({
+                    true
+                }, {
+
+                }) {
                     override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
                         return resourceRepository.getResourceData()
                     }
