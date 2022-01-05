@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.arch.template.base.BaseViewModel
 import com.arch.template.errors.presenters.AndroidErrorPresenter
 import com.arch.template.util.RequestManager
+import com.arch.template.utils.MyAppLogger
 import com.core.entity.User
 import com.core.error.AppError
 import com.core.error.AppErrorType
@@ -30,10 +31,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
             exceptionHandler.handle {
-                object : RequestManager<User>(onError = {
-                    _tokenFlow.emit(it)
-                    true
-                }, preCheck = {
+                object : RequestManager<User>(preCheck = {
                     when {
                         Validator.isEmpty(email) -> throw AppError(
                             appErrorType = AppErrorType.EmailEmpty,
@@ -50,7 +48,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
                         return userRepository.login(email, password)
                     }
                 }.asFlow().collect {
-                    _tokenFlow.emit(it)
+                    _tokenFlow.value = it
                 }
             }.catch<Exception> {
                 false
