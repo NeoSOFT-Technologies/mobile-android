@@ -1,10 +1,12 @@
 package com.arch.template.feature.resource
 
+
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingData
 import com.arch.template.base.BaseViewModel
 import com.arch.template.util.RequestManager
+import com.arch.template.utils.MyAppLogger
 import com.core.entity.ResourceData
 import com.core.error.BaseError
 import com.core.repository.ResourceRepository
@@ -25,16 +27,51 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
     val resourcePagingFlow: SharedFlow<PagingData<ResourceData>> = _resourcePagingFlow
     fun getResourceData() {
         viewModelScope.launch {
-            object : RequestManager<Pager<Int, ResourceData>>() {
-                override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
-                    return resourceRepository.getResourceData()
-                }
-            }
-                .asFlow().collect {
-                    it.data?.flow?.collect {
-                        _resourcePagingFlow.emit(it)
+            exceptionHandler.handle {
+                object : RequestManager<Pager<Int, ResourceData>>({
+                    true
+                }) {
+                    override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
+                        return resourceRepository.getResourceData()
                     }
                 }
+                    .asFlow().collect {
+                        it.data?.flow?.collect {
+                            _resourcePagingFlow.emit(it)
+                        }
+                    }
+                //request
+            }.catch<Exception> {
+                MyAppLogger.d("Got CustomException!")
+                false
+            }.finally {
+                MyAppLogger.d("Got CustomException finally!")
+            }.execute()
         }
     }
+
+    private var exceptionFlag = true
+
+    fun tryError() {
+        MyAppLogger.d("tryError")
+        viewModelScope.launch {
+            exceptionHandler.handle {
+                if (exceptionFlag) {
+                    exceptionFlag = !exceptionFlag
+                    throw NullPointerException()
+                } else {
+                    exceptionFlag = !exceptionFlag
+                    throw IllegalArgumentException()
+                }
+                //request
+            }.catch<Exception> {
+                MyAppLogger.d("Got CustomException!")
+                false
+            }.finally {
+                MyAppLogger.d("Got CustomException finally!")
+            }.execute()
+        }
+    }
+
+
 }

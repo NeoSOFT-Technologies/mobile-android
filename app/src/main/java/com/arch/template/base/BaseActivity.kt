@@ -7,10 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import com.core.R
-
-import com.core.utils.extensions.showShortToast
 
 abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
@@ -23,14 +20,10 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewModel(viewModel)
-
-        viewModel.toast.observe(
-            this,
-            Observer { res ->
-                showShortToast(res.format(this))
-            }
+        viewModel.exceptionHandler.bind(
+            lifecycleOwner = this,
+            activity = this
         )
-
     }
 
     @LayoutRes

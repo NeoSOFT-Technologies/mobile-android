@@ -4,10 +4,11 @@ import com.core.entity.Error
 
 
 class AppError(
-    message: String,
+    message: String? = "",
     error: Error? = null,
-    throwable: Throwable? = null
-) : BaseError(message, error, throwable) {
+    throwable: Throwable? = null,
+    val appErrorType: AppErrorType? = AppErrorType.None,
+) : BaseError(message ?: "", error, throwable) {
 
     override fun getFriendlyMessage(): String {
         return message.orEmpty()

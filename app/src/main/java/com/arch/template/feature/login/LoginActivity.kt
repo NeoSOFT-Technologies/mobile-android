@@ -6,10 +6,8 @@ import androidx.lifecycle.lifecycleScope
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityLoginBinding
-import com.arch.utils.isValidEmail
 import com.core.utils.Status
 import com.core.utils.extensions.showShortToast
-
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -22,24 +20,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun initViewModel(viewModel: LoginViewModel) {
         binding.viewModel = viewModel
-
         binding.btnLogin.setOnClickListener {
             val email: String = binding.edtEmail.text.toString()
             val password: String = binding.edtPassword.text.toString()
-            when {
-                email.isEmpty() -> {
-                    showShortToast(message = this.getString(R.string.app_error_empty_email))
-                }
-                !email.isValidEmail() -> {
-                    showShortToast(message = this.getString(R.string.app_error_invalid_email))
-                }
-                password.isEmpty() -> {
-                    showShortToast(message = this.getString(R.string.app_error_empty_password))
-                }
-                else -> {
-                    viewModel.doLogin(email = email, password = password)
-                }
-            }
+            viewModel.doLogin(email = email, password = password)
         }
 
         lifecycleScope.launchWhenStarted {
@@ -55,9 +39,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                     }
                     Status.ERROR -> {
                         binding.pbLogin.visibility = View.INVISIBLE
-                        showShortToast(message = tokenResource.error?.message ?: "")
                     }
-
                 }
             }
         }

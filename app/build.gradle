@@ -81,6 +81,7 @@ dependencies {
     //app libs
     implementation(AppDependencies.appLibraries)
     implementation AppDependencies.hiltAndroid
+    implementation project(path: ':errors')
 
     kapt AppDependencies.hiltAndroidCompiler
 
