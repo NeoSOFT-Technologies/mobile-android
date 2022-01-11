@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.arch.template">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,7 +16,8 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.arch.template.firebaseinitprovider" />
+            android:authorities="com.arch.template.firebaseinitprovider"
+            tools:replace="android:authorities" />
 
         <activity
             android:name=".feature.splash.SplashActivity"
