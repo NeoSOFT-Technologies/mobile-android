@@ -2,8 +2,4 @@
 
 package com.arch.error.presenters
 
-
-class BaseAlertErrorPresenter(
-    alertTitle: String = "",
-    positiveButtonText: String = ""
-) : BaseErrorPresenter<String>
+open class BaseAlertErrorPresenter() : BaseErrorPresenter<String>
