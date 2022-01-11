@@ -6,6 +6,13 @@ Its goal is to enable you to develop projects much faster than you could if you 
 This lets you creatively focus on your project by minimizing the amount of code needed for a given task. 
 
 
+## How to use 👣
+
+The app is no-frills, but sufficiently complex that you can use it as a template to build upon.
+
+Just click on [![Use this template](https://camo.githubusercontent.com/2a7da879baa8087a1b6b8cfbf8a82c29358f7a34e890d272a3053872be6c20a7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d5573652532307468697325323074656d706c6174652d627269676874677265656e)](https://github.com/NeoSOFT-Technologies/mobile-android/generate) button to create a new repo starting from this template.
+
+
 Architecture Design Pattern
 --------------
 **MVVM - Model View ViewModel**

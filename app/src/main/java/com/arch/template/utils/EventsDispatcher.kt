@@ -66,7 +66,6 @@ class EventsDispatcher<ListenerType : Any> : BaseEventsDispatcher<ListenerType> 
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
-        MyAppLogger.d("bind()")
     }
 
     override fun dispatchEvent(block: ListenerType.() -> Unit) {
