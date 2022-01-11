@@ -1,23 +1,23 @@
 package com.arch.template.crashlytics
 
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.reporting.CrashlyticsLogger
 
 object TemplateCrashlyticsLogger : CrashlyticsLogger() {
 
     override fun setUserId(userId: String) {
-        TODO("Not yet implemented")
+        FirebaseCrashlytics.getInstance().setUserId(userId)
     }
 
     override fun setCustomValue(value: String, forKey: String) {
-        TODO("Not yet implemented")
+        FirebaseCrashlytics.getInstance().setCustomKey(forKey, value)
     }
 
     override fun recordException(throwable: Throwable) {
-        TODO("Not yet implemented")
+        FirebaseCrashlytics.getInstance().recordException(throwable)
     }
 
     override fun log(message: String) {
-        //FirebaseCrashlytics.getInstance().log(message)
-        TODO("Not yet implemented")
+        FirebaseCrashlytics.getInstance().log(message)
     }
 }
