@@ -22,5 +22,4 @@ class OkHttpClientService @Inject constructor(
             .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
             .build()
 
-
 }

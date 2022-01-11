@@ -10,7 +10,7 @@ functionality, we need to define the following files & update the data services 
 1. **Database Properties**: The class contains the information about database configs in `DatabaseProperties`. You can modify the `DATABASE_NAME` name to be stored on disk to the desired values as required.
    Similarly `DATABASE_VERSION` can be incremeted & migration can be defined in the same config file.
 
-2. **Database Class:** This provides the main access point to the underlying connection for the application’s persisted data. And this is annotated with ` @Database`
+2. **Database Class:** This provides the main access point to the underlying connection for the application’s persisted data. And this is annotated with` @Database`
 
    `AppDatabase` 
    ![image-20220110203508034](./assets/database/app-database.png)
