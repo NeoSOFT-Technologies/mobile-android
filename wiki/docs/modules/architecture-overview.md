@@ -1,6 +1,6 @@
 # Architectural Overview
 
-![arch_diagram.png](https://github.com/NeoSOFT-Technologies/mobile-android/blob/6ad55707fa1b84f743aaa6288608d401e4e75f1f/wiki/assets/arch_diagram.png)
+![arch_diagram.png](./assets/arch-diagram.png)
 
 
 ### Data Flow
