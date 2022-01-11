@@ -65,13 +65,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
 Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/extensions.html) and write as much Extensions functions as possible and less code in Activities and Fragments and only call those extension functions from Activities and Fragments.
 
-# ktlint
- - Integrate with Android Studio(Estimated Time:3 minutes): [Link](https://github.com/pinterest/ktlint#option-3)
-- Below command will check and output Kotlin file errors
-  - ./gradlew ktlint
-- Below command automatically formats all Kotlin files and fixes some of the lint errors outputted from the above Gradle task
-  - ./gradlew ktlintFormat
-- Even after above 2 commands, all the errors might not be solved. You have to solve them manually.
+
 
 ## Gradle Setup 
 
@@ -79,13 +73,43 @@ This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/u
 
 Dependencies are inside the *.kt files in the `buildSrc` folder. This provides convenient auto-completion when writing your gradle files.
 
+
+
+# Documentation
+
+
+
+### 1. Request & Response Flow
+
+Following diagram shows the diagram of how the request & response flow works for the boilerplate,
+
+![arch_diagram.png](https://github.com/NeoSOFT-Technologies/mobile-android/raw/main/wiki/docs/modules/assets/arch-diagram.png)
+
+[Go To Detailed Documentation](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer)
+
+### 2. Modules
+
+- [Architecture Overview](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
+- [Automatic Exception Handling](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/exception-handling.md)
+- [Database](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/database-flow.md)
+- [Network](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/network-flow.md)
+- [Crashlytics](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/crashlytics.md)
+- [Logger](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/logger.md)
+- [Request Handler](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/request-handler.md)
+- [Dependency Injection](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/dependency-injection.md)
+
+
+
 # Coding Guidelines
 
 - [Kotlin Coding Conventions](https://kotlinlang.org/docs/reference/coding-conventions.html)
 - [Kotlin Style Guide](wiki/docs/guide/KOTLIN_STYLE_GUIDE.md)
 - [XML Style Guide](wiki/docs/guide/XML_STYLE_GUIDE.md)
 
+
+
 # Discussion
+
 * [Why Kotlin?](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_KOTLIN.md)
 * [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
 
