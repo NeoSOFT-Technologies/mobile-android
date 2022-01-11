@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import com.arch.template.base.BaseViewModel
 import com.arch.template.errors.presenters.AndroidErrorPresenter
 import com.arch.template.util.RequestManager
-import com.arch.template.utils.MyAppLogger
 import com.core.entity.User
 import com.core.error.AppError
 import com.core.error.AppErrorType
@@ -59,7 +58,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
     override fun getSelectorPresenter(throwable: Throwable): AndroidErrorPresenter<String> {
         return when (throwable) {
             is AppError -> {
-                toastErrorPresenter
+                alertErrorPresenter
             }
             else -> {
                 snackBarErrorPresenter
