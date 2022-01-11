@@ -8,6 +8,7 @@ object Versions {
     const val jacoco = "0.8.7"
     const val sonarqube = "2.7.1"
     const val hiltVersion = "2.38.1"
+    const val crashlyticsVersion = "2.8.1"
 
 
     //libs
@@ -26,6 +27,7 @@ object Versions {
     val timberVersion = "5.0.1"
     val reactiveStream = "2.4.0"
     val paging = "3.1.0"
+    val firebaseCrashlytics = "18.2.6"
 
 
     //test

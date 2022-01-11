@@ -10,4 +10,7 @@
     <string name="app_error_empty_password">Please enter password</string>
     <string name="app_error_invalid_email">Please enter valid email</string>
     <string name="dashboard_label_header_app">Blueprint app</string>
+    <string name="alert_error_title">Error</string>
+    <string name="alert_error_message">Unknown Error</string>
+    <string name="alert_error_positive">OK</string>
 </resources>

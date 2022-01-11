@@ -45,11 +45,15 @@ object AppDependencies {
     //Logging
     val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
 
+    //crash-reportiing
+    val crashlytics = "com.google.firebase:firebase-crashlytics-ktx:${Versions.firebaseCrashlytics}"
+
     //ktx
-    val reactiveStream= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
+    val reactiveStream =
+        "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
 
     //paging
-    val paging= "androidx.paging:paging-runtime:${Versions.paging}"
+    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
@@ -59,6 +63,9 @@ object AppDependencies {
         add(materialApp)
         add(fragmentKtx)
         add(timber)
+        add(crashlytics)
+        add(reactiveStream)
+        add(paging)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'com.google.firebase.crashlytics'
 }
 
 apply from: "../jacoco.gradle"
@@ -18,39 +20,66 @@ android {
         versionCode AppConfig.versionCode
         versionName AppConfig.versionName
 
+        //firebase config
+        buildConfigField "String", "MOBILE_SDK_APP_ID", System.getenv("MOBILE_SDK_APP_ID") ?: "\"YOUR_MOBILE_SDK_APP_ID\""
+        buildConfigField "String", "CURRENT_KEY", System.getenv("CURRENT_KEY") ?: "\"YOUR_CURRENT_KEY\""
+        buildConfigField "String", "FIREBASE_URL", System.getenv("FIREBASE_URL") ?: "\"YOUR_FIREBASE_URL\""
+        buildConfigField "String", "PROJECT_NUMBER", System.getenv("PROJECT_NUMBER") ?: "\"YOUR_PROJECT_NUMBER\""
+        buildConfigField "String", "STORAGE_BUCKET", System.getenv("STORAGE_BUCKET") ?: "\"YOUR_STORAGE_BUCKET\""
+        buildConfigField "String", "PROJECT_ID", System.getenv("PROJECT_ID") ?: "\"YOUR_PROJECT_ID\""
+
         testInstrumentationRunner AppConfig.androidTestInstrumentation
     }
 
     buildTypes {
+
         release {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             resValue "string", "app_name", "Blueprint"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         debug {
             testCoverageEnabled true
             resValue "string", "app_name", "Blueprint"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         dev {
             initWith buildTypes.release
             applicationIdSuffix ".dev"
             versionNameSuffix "-DEV"
             resValue "string", "app_name", "Blueprint DEV"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         qa {
             initWith buildTypes.release
             applicationIdSuffix ".qa"
             versionNameSuffix "-QA"
             resValue "string", "app_name", "Blueprint QA"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         staging {
             initWith buildTypes.release
             applicationIdSuffix ".staging"
             versionNameSuffix "-STAGING"
             resValue "string", "app_name", "Blueprint STAGING"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
         prod {
             initWith buildTypes.release
             resValue "string", "app_name", "Blueprint App"
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
         }
     }
 
@@ -84,9 +113,6 @@ dependencies {
     implementation project(path: ':errors')
 
     kapt AppDependencies.hiltAndroidCompiler
-
-    implementation AppDependencies.reactiveStream
-    implementation AppDependencies.paging
 
     //test libs
     testImplementation(AppDependencies.testLibraries)

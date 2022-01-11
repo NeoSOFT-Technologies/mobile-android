@@ -6,10 +6,7 @@ import com.arch.error.presenters.SnackBarDuration
 import com.arch.error.presenters.ToastDuration
 import com.arch.template.errors.handler.AndroidExceptionHandlerBinder
 import com.arch.template.errors.handler.AndroidExceptionHandlerBinderImpl
-import com.arch.template.errors.presenters.AndroidErrorPresenter
-import com.arch.template.errors.presenters.SelectorAndroidErrorPresenter
-import com.arch.template.errors.presenters.SnackBarAndroidErrorPresenter
-import com.arch.template.errors.presenters.ToastAndroidErrorPresenter
+import com.arch.template.errors.presenters.*
 import com.arch.template.utils.MyAppLogger
 
 abstract class BaseViewModel :
@@ -25,6 +22,9 @@ abstract class BaseViewModel :
         ToastAndroidErrorPresenter(
             duration = ToastDuration.LONG
         )
+    }
+    val alertErrorPresenter by lazy {
+        AlertAndroidErrorPresenter()
     }
 
     init {
