@@ -12,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueprintApplication">
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.arch.template.firebaseinitprovider" />
+
         <activity
             android:name=".feature.splash.SplashActivity"
             android:exported="true"
