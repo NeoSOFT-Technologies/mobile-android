@@ -8,27 +8,29 @@ Request manager is used to process any request from viewmodel to respective repo
 
 1. Wrap the request inside the RequestManager object like below,
 
-```
-object : RequestManager<User>(preCheck = {
-    when {
-        Validator.isEmpty(email) -> throw AppError(
-            appErrorType = AppErrorType.EmailEmpty,
-        )
-        !Validator.isValidEmail(email) -> throw AppError(
-            appErrorType = AppErrorType.InvalidEmail,
-        )
-        Validator.isEmpty(password) -> throw AppError(
-            appErrorType = AppErrorType.PasswordEmpty,
-        )
-    }
-}) {
-    override suspend fun createCall(): Either<BaseError, User> {
-        return userRepository.login(email, password)
-    }
-}.asFlow().collect {
-    _tokenFlow.value = it
-}
-```
+   ```
+   object : RequestManager<User>(preCheck = {
+       when {
+           Validator.isEmpty(email) -> throw AppError(
+               appErrorType = AppErrorType.EmailEmpty,
+           )
+           !Validator.isValidEmail(email) -> throw AppError(
+               appErrorType = AppErrorType.InvalidEmail,
+           )
+           Validator.isEmpty(password) -> throw AppError(
+               appErrorType = AppErrorType.PasswordEmpty,
+           )
+       }
+   }) {
+       override suspend fun createCall(): Either<BaseError, User> {
+           return userRepository.login(email, password)
+       }
+   }.asFlow().collect {
+       _tokenFlow.value = it
+   }
+   ```
+
+   
 
 2. **precheck** : It will check all the presentation validation like checking if email is present and is it valid or not.
 
@@ -70,5 +72,5 @@ object : RequestManager<User>(preCheck = {
 
 6. To manage the exception its important to return **true** from the catch block to handle the exception and **false** to handle by system.
 
-To learn more about architecture see [exception handler](exception-handling.md)
+  To learn more about architecture see [exception handler](exception-handling.md)
 
