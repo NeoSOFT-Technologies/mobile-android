@@ -30,21 +30,15 @@ Request manager is used to process any request from Viewmodel to respective Repo
    }
    ```
 
-   
-
 2. **precheck** : It will check all the presentation validation like checking if email is present and is it valid or not.
 
 3. **createCall** :- Any request which is suspend function can be executed here.
 
-4. **Resource**:- Result will be wrapped inside [Resource](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/domain/src/main/java/com/core/utils/Resource.kt) where below status are present, 
+4. the result from request can be captured or collected as a flow using **asFlow**
 
-   - Resource.LOADING
+5. The result returns an instance of a  [Resource](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/domain/src/main/java/com/core/utils/Resource.kt) which contains data that can be used by the UI - this includes the ResourceState(LOADING,SUCCESS,ERROR), data to be used by the UI and a message if required (for error states).
 
-   - Resource.SUCCESS
-
-   - Resource.ERROR
-
-3. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.Request is handled via exception handler and the exception is received in the catch block.
+6. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.Request is handled via exception handler and the exception is received in the catch block.		
 
    ```
    exceptionHandler.handle {
@@ -72,7 +66,7 @@ Request manager is used to process any request from Viewmodel to respective Repo
    }.execute()
    ```
 
-6. If you wish to handle the exception to make some custom behaviour to your UI you can return **true** else return **false** when u want the automatic exception handler behaviour defined in the viewmodel.
+7. If you wish to handle the exception to make some custom behaviour to your UI you can return **true** else return **false** when u want the automatic exception handler behaviour defined in the viewmodel.
 
   	 To learn more about architecture see [exception handler](exception-handling.md)
 
