@@ -72,5 +72,5 @@ Request manager is used to process any request from viewmodel to respective repo
 
 6. To manage the exception its important to return **true** from the catch block to handle the exception and **false** to handle by system.
 
-  To learn more about architecture see [exception handler](exception-handling.md)
+   To learn more about architecture see [exception handler](exception-handling.md)
 
