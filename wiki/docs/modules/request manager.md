@@ -40,7 +40,7 @@ object : RequestManager<User>(preCheck = {
    	1. Resource.SUCCESS
    	1. Resource.ERROR
 
-5. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.
+5. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.Request is handled via exception handler and the exception is received in the catch block.
 
    ```
    exceptionHandler.handle {
@@ -67,8 +67,6 @@ object : RequestManager<User>(preCheck = {
        false
    }.execute()
    ```
-
-​    	request is handled via exception handler and the exception is received in  		the catch block.
 
 6. To manage the exception its important to return **true** from the catch block to handle the exception and **false** to handle by system.
 
