@@ -1,15 +1,15 @@
 # Request Manager
 
-Request manager is used to process any request from viewmodel to respective repositories.
+Request manager is used to process any request from Viewmodel to respective Repositories.
 
 
 
 ## Usability
 
-1. Wrap the request inside the RequestManager object like below,
+1. Wrap the request inside the RequestManager object like below,here T can be class of interest for example User in this case
 
    ```
-   object : RequestManager<User>(preCheck = {
+   object : RequestManager<T>(preCheck = {
        when {
            Validator.isEmpty(email) -> throw AppError(
                appErrorType = AppErrorType.EmailEmpty,
@@ -34,15 +34,17 @@ Request manager is used to process any request from viewmodel to respective repo
 
 2. **precheck** : It will check all the presentation validation like checking if email is present and is it valid or not.
 
-3. **createCall** :- Where repository method will be executed and result will be get in collect.
+3. **createCall** :- Any request which is suspend function can be executed here.
 
 4. **Resource**:- Result will be wrapped inside [Resource](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/domain/src/main/java/com/core/utils/Resource.kt) where below status are present, 
 
-   	1. Resource.LOADING
-   	1. Resource.SUCCESS
-   	1. Resource.ERROR
+   - Resource.LOADING
 
-5. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.Request is handled via exception handler and the exception is received in the catch block.
+   - Resource.SUCCESS
+
+   - Resource.ERROR
+
+3. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically.Request is handled via exception handler and the exception is received in the catch block.
 
    ```
    exceptionHandler.handle {
@@ -70,7 +72,7 @@ Request manager is used to process any request from viewmodel to respective repo
    }.execute()
    ```
 
-6. To manage the exception its important to return **true** from the catch block to handle the exception and **false** to handle by system.
+6. If you wish to handle the exception to make some custom behaviour to your UI you can return **true** else return **false** when u want the automatic exception handler behaviour defined in the viewmodel.
 
-   To learn more about architecture see [exception handler](exception-handling.md)
+  	 To learn more about architecture see [exception handler](exception-handling.md)
 
