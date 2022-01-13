@@ -13,4 +13,11 @@
     <string name="alert_error_title">Error</string>
     <string name="alert_error_message">Unknown Error</string>
     <string name="alert_error_positive">OK</string>
+    <string name="login_header_login">Login in to \nYour Account</string>
+    <string name="login_email_label">Email</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_dont_want_to_login">Don\'t want to login?</string>
+    <string name="login_skip">SKIP</string>
+    <string name="login_email">eve.holt@reqres.in</string>
+    <string name="login_password">cityslicka</string>
 </resources>
