@@ -120,7 +120,7 @@ To learn more about architecture see [The Architecture Overview](https://github.
 * [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
 
  * [When I can choose Coroutines or RX-Kotlin to do some behaviour ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
- * [Why Dependency Injection? Why HILT? ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
+ * [Why Dependency Injection? Why HILT? ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_DEPENDENCY_INJECTION.md)
 
 
 
