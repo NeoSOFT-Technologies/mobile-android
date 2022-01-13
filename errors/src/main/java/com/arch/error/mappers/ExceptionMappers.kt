@@ -8,7 +8,7 @@ import kotlin.reflect.KClass
 internal typealias ThrowableMapper = (Throwable) -> Any
 
 @Suppress("TooManyFunctions")
-object ExceptionMappersStorage {
+object ExceptionMappers {
 
     private val fallbackValuesMap: MutableMap<KClass<out Any>, Any> = mutableMapOf(
         String::class to ""
@@ -26,7 +26,7 @@ object ExceptionMappersStorage {
         resultClass: KClass<T>,
         exceptionClass: KClass<E>,
         mapper: (E) -> T
-    ): ExceptionMappersStorage {
+    ): ExceptionMappers {
         if (!mappersMap.containsKey(resultClass)) {
             mappersMap[resultClass] = mutableMapOf()
         }
@@ -40,7 +40,7 @@ object ExceptionMappersStorage {
     fun <T : Any> register(
         resultClass: KClass<T>,
         conditionPair: ConditionPair
-    ): ExceptionMappersStorage {
+    ): ExceptionMappers {
         if (!conditionMappers.containsKey(resultClass)) {
             conditionMappers[resultClass] = mutableListOf()
         }
@@ -53,7 +53,7 @@ object ExceptionMappersStorage {
      */
     inline fun <reified E : Throwable, reified T : Any> register(
         noinline mapper: (E) -> T
-    ): ExceptionMappersStorage {
+    ): ExceptionMappers {
         return register(
             T::class,
             E::class,
@@ -67,7 +67,7 @@ object ExceptionMappersStorage {
     inline fun <reified T : Any> condition(
         noinline condition: (Throwable) -> Boolean,
         noinline mapper: (Throwable) -> T
-    ): ExceptionMappersStorage = register(
+    ): ExceptionMappers = register(
         resultClass = T::class,
         conditionPair = ConditionPair(
             condition,
@@ -115,15 +115,15 @@ object ExceptionMappersStorage {
     /**
      * Sets fallback (default) value for [T] errors type.
      */
-    fun <T : Any> setFallbackValue(clazz: KClass<T>, value: T): ExceptionMappersStorage {
+    fun <T : Any> setFallbackValue(clazz: KClass<T>, value: T): ExceptionMappers {
         fallbackValuesMap[clazz] = value
-        return ExceptionMappersStorage
+        return ExceptionMappers
     }
 
     /**
      * Sets fallback (default) value for [T] errors type.
      */
-    inline fun <reified T : Any> setFallbackValue(value: T): ExceptionMappersStorage =
+    inline fun <reified T : Any> setFallbackValue(value: T): ExceptionMappers =
         setFallbackValue(T::class, value)
 
     /**

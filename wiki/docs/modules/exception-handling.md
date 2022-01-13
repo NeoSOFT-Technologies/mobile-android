@@ -18,7 +18,7 @@ Implementation structure:
 
 - **ExceptionHandler** implements safe code execution and automatic exception display using **ErrorPresenter**.
 
-- **ExceptionMappersStorage** singleton object, storage that stores a set of exception converters to error classes required for **ErrorPresenter** objects.
+- **ExceptionMappers** singleton object, storage that stores a set of exception converters to error classes required for **ErrorPresenter** objects.
 
 - **ErrorPresenter** classes implements a strategy for displaying exceptions in a user-friendly form on the platforms. Converts the exception class to an error object to display. 
 
@@ -33,12 +33,12 @@ Implementation structure:
 
 ### Usage
 
-#### ExceptionMappersStorage	
+#### ExceptionMappers
 
 Register a simple custom exceptions mapper in the singleton storage:
 
 ```kotlin
-ExceptionMappersStorage
+ExceptionMappers
     .register<IllegalArgumentException, String> {   // Will map all IllegalArgumentException instances to String
         "Illegal argument was passed!"
     }
@@ -50,7 +50,7 @@ ExceptionMappersStorage
 Registration of custom exception mapper with condition:
 
 ```kotlin
-ExceptionMappersStorage.condition<String>(              // Registers exception mapper Throwable -> String
+ExceptionMappers.condition<String>(              // Registers exception mapper Throwable -> String
     condition = { it is CustomException && it.code == 10 }, // Condition that maps Throwable -> Boolean
     mapper = { "Custom error happened!" }            // Mapper for Throwable that matches to the condition
 )
@@ -59,17 +59,17 @@ ExceptionMappersStorage.condition<String>(              // Registers exception m
 For every error type you should to set fallback (default) value using method `setFallbackValue`
 
 ```kotlin
-ExceptionMappersStorage
+ExceptionMappers
     .setFallbackValue<Int>(250) // Sets for Int error type default value as 250
 
 // Creates new mapper that for any unregistered exception will return the fallback value - 250
-val throwableToIntMapper: (Throwable) -> Int = ExceptionMappersStorage.throwableMapper()
+val throwableToIntMapper: (Throwable) -> Int = ExceptionMappers.throwableMapper()
 ```
 
 Using factory method `throwableMapper` you can create exception mappers automaticlly:
 
 ```kotlin
-val throwableToIntMapper: (Throwable) -> Int = ExceptionMappersStorage.throwableMapper()
+val throwableToIntMapper: (Throwable) -> Int = ExceptionMappers.throwableMapper()
 ```
 
 If a default value is not found when creating a mapper using factory method `throwableMapper`, an exception will be thrown `FallbackValueNotFoundException`
@@ -77,7 +77,7 @@ If a default value is not found when creating a mapper using factory method `thr
 The registration can be done in the form of an endless chain:
 
 ```kotlin
-ExceptionMappersStorage
+ExceptionMappers
     .condition<String>(
         condition = { it is CustomException && it.code == 10 },
         mapper = { "Custom error happened!"}
@@ -121,7 +121,7 @@ class SampleViewModel(
    ```kotlin
    ExceptionHandler<String>(
        errorPresenter = errorsPresenterInstance,                    // Concrete ErrorPresenter implementation
-       exceptionMapper = ExceptionMappersStorage.throwableMapper(), // Create mapper (Throwable) -> String from ExceptionMappersStorage
+       exceptionMapper = ExceptionMappers.throwableMapper(), // Create mapper (Throwable) -> String from ExceptionMappers
        onCatch = {                                                  // Optional global catcher
            println("Got exception: $it")                            // E.g. here we can log all exceptions that are handled by ExceptionHandler
        }
@@ -208,6 +208,6 @@ And pass some `ErrorPresenter` to `ErrorHandler`:
 ```kotlin
 val exceptionHandler = ExceptionHandler(
     errorPresenter = selectorErrorPresenter,
-    exceptionMapper = ExceptionMappersStorage.throwableMapper()
+    exceptionMapper = ExceptionMappers.throwableMapper()
 )
 ```

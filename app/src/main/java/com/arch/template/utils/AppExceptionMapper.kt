@@ -1,7 +1,7 @@
 package com.arch.template.utils
 
 import android.content.Context
-import com.arch.error.mappers.ExceptionMappersStorage
+import com.arch.error.mappers.ExceptionMappers
 import com.arch.template.R
 import com.core.error.AppError
 import com.core.error.AppErrorType
@@ -9,7 +9,7 @@ import com.core.error.NetworkError
 
 object AppExceptionMapper {
     fun init(context: Context) {
-        ExceptionMappersStorage
+        ExceptionMappers
             .condition(
                 condition = { it is NetworkError },
                 mapper = {

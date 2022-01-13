@@ -18,6 +18,12 @@ Architecture Design Pattern
 **MVVM - Model View ViewModel**
 * Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
 
+## Screenshots
+
+​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen" style="zoom:20%;" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen" style="zoom:20%;" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen" style="zoom:20%;" />
+
+
+
 Libraries Used
 --------------
 * [Architecture](https://developer.android.com/topic/libraries/architecture)
@@ -95,7 +101,7 @@ Following diagram shows the diagram of how the request & response flow works for
 - [Network](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/network-flow.md)
 - [Crashlytics](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/crashlytics.md)
 - [Logger](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/logger.md)
-- [Request Handler](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/request-handler.md)
+- [Request Manager](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/request-manager.md)
 - [Dependency Injection](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/dependency-injection.md)
 
 
