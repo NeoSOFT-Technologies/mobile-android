@@ -1,7 +1,7 @@
 package com.arch.template.base
 
 import androidx.lifecycle.ViewModel
-import com.arch.error.mappers.ExceptionMappersStorage
+import com.arch.error.mappers.ExceptionMappers
 import com.arch.error.presenters.SnackBarDuration
 import com.arch.error.presenters.ToastDuration
 import com.arch.template.errors.handler.AndroidExceptionHandlerBinder
@@ -32,7 +32,7 @@ abstract class BaseViewModel :
             androidErrorPresenter = SelectorAndroidErrorPresenter { throwable ->
                 getSelectorPresenter(throwable) ?: toastErrorPresenter
             },
-            exceptionMapper = ExceptionMappersStorage.throwableMapper(),
+            exceptionMapper = ExceptionMappers.throwableMapper(),
             onCatch = {
                 MyAppLogger.d("Got exception: $it")
             }

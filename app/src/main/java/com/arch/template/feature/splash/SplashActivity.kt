@@ -30,6 +30,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
                             this@SplashActivity, LoginActivity::class.java
                         )
                     )
+                    finish()
                 }
             }
         }

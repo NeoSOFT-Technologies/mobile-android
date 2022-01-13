@@ -29,7 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.login.LoginActivity" />
+        <activity
+            android:name=".feature.login.LoginActivity"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
         <activity
             android:name=".feature.resource.ResourceActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
