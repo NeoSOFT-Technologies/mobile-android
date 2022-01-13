@@ -20,7 +20,7 @@ Architecture Design Pattern
 
 ## Screenshots
 
-​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen" style="zoom:20%;" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen" style="zoom:20%;" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen" style="zoom:20%;" />
+​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen"  width="200" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen"  width="200" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen"  width="200" />
 
 
 
