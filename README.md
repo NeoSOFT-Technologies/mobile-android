@@ -36,14 +36,24 @@ Libraries Used
 * Logging
   * [Timber](https://github.com/JakeWharton/timber) - A logger with a small, extensible API which provides utility on top of Android's normal Log class.
   * [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+* Database
+  * [Room](https://developer.android.com/jetpack/androidx/releases/room) - Store offline database
+  
 * Networking
   * [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android
-  * [Coroutines](https://developer.android.com/kotlin/coroutines) - Light wight threads for asynchronous programming
-  * [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
+* [Coroutines](https://developer.android.com/kotlin/coroutines) - Light wight threads for asynchronous programming
+* CI
+  - [GitHub Actions](https://github.com/features/actions)
+  - Automatic PR verification including tests, linters and sonarqube analysis
+* Gradle
+  - [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+* [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
+
 
 
 Common Features
 -------------------
+
 * Adhering to SOLID Principles 
 * Repository Pattern for code separations 
 * Dependency Injection 
@@ -58,7 +68,9 @@ Common Features
 * Use SonarQube Analysis & generate reports 
 * Crashlytics/Analytics
 
-# Project Architecture Guidelines
+
+
+## Project Architecture Guidelines
 
 * [App Architecture Design Pattern](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) = **MVVM**
 * Every Activity needs to extend BaseActivity
@@ -81,7 +93,7 @@ Dependencies are inside the *.kt files in the `buildSrc` folder. This provides c
 
 
 
-# Documentation
+## Documentation
 
 
 
@@ -91,7 +103,7 @@ Following diagram shows the diagram of how the request & response flow works for
 
 ![arch_diagram.png](https://github.com/NeoSOFT-Technologies/mobile-android/raw/main/wiki/docs/modules/assets/arch-diagram.png)
 
-To learn more about architecture see [The Architecture Overview](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
+To learn more about the architecture see [Architecture Overview](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
 
 ### 2. Modules
 
@@ -106,7 +118,25 @@ To learn more about architecture see [The Architecture Overview](https://github.
 
 
 
-# Coding Guidelines
+## CI Pipeline
+
+CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in the [.github/workflows](.github/workflows) folder.
+
+
+
+## PR Verification
+
+Series of workflows runs (in parallel) for every opened PR and after merging PR to `main` branch:
+
+- `./gradlew lintDebug` - Runs Android lint
+- `./gradlew testDebugUnitTest` - Run unit tests
+- `./gradlew build sonarqube --info` - Analyzing Using Gradle Sonar Plugin
+
+To learn more about contributing to this project see [Guiding principles for contributing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
+
+### 
+
+## Coding Guidelines
 
 - [Kotlin Coding Conventions](https://kotlinlang.org/docs/reference/coding-conventions.html)
 - [Kotlin Style Guide](wiki/docs/guide/KOTLIN_STYLE_GUIDE.md)
@@ -114,22 +144,45 @@ To learn more about architecture see [The Architecture Overview](https://github.
 
 
 
-# Discussion
+## Discussion
 
 * [Why Kotlin?](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_KOTLIN.md)
 * [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
-
  * [When I can choose Coroutines or RX-Kotlin to do some behaviour ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
  * [Why Dependency Injection? Why HILT? ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
 
 
 
-# Contributing to this Project
+## Inspiration
+
+This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at additional resources.
+
+### Cheat sheet
+
+- [Core App Quality Checklist](https://developer.android.com/quality) - learn about building the high-quality app
+- [Android Ecosystem Cheat Sheet](https://github.com/igorwojda/android-ecosystem-cheat-sheet) - board containing 200+ most important tools
+- [Kotlin Coroutines - Use Cases on Android](https://github.com/LukasLechnerDev/Kotlin-Coroutine-Use-Cases-on-Android) - most popular coroutine usages
+
+### Android projects
+
+Other high-quality projects will help you to find solutions that work for your project:
+
+- [Android Architecture Blueprints v2](https://github.com/googlesamples/android-architecture) - a showcase of various Android architecture approaches
+- [Android sunflower](https://github.com/googlesamples/android-sunflower) complete `Jetpack` sample covering all libraries
+- [GithubBrowserSample](https://github.com/googlesamples/android-architecture-components) - multiple small projects demonstrating usage of Android Architecture Components
+- [Plaid](https://github.com/android/plaid) - a showcase of Android material design
+- [Clean Architecture boilerplate](https://github.com/bufferapp/android-clean-architecture-boilerplate) - contains nice diagrams of Clean Architecture layers
+- [Android samples](https://github.com/android) - official Android samples repository
+- [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good documentation
+- [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds.
+
+## Contributing to this Project
 
 Contributions are welcome from anyone and everyone. We encourage you to review the [guiding principles for contributing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/contribution/CONTRIBUTING.md)
 
 
-# App Versioning Syntax
+
+## App Versioning Syntax
 
 [Android Mobile App Versioning](wiki/docs/guide/VERSIONING_GUIDE.md)
 
