@@ -6,17 +6,13 @@ Its goal is to enable you to develop projects much faster than you could if you 
 This lets you creatively focus on your project by minimizing the amount of code needed for a given task. 
 
 
+
 ## How to use 👣
 
 The app is no-frills, but sufficiently complex that you can use it as a template to build upon.
 
 Just click on [![Use this template](https://camo.githubusercontent.com/2a7da879baa8087a1b6b8cfbf8a82c29358f7a34e890d272a3053872be6c20a7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d5573652532307468697325323074656d706c6174652d627269676874677265656e)](https://github.com/NeoSOFT-Technologies/mobile-android/generate) button to create a new repo starting from this template.
 
-
-Architecture Design Pattern
---------------
-**MVVM - Model View ViewModel**
-* Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
 
 ## Screenshots
 
@@ -70,21 +66,6 @@ Common Features
 
 
 
-## Project Architecture Guidelines
-
-* [App Architecture Design Pattern](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) = **MVVM**
-* Every Activity needs to extend BaseActivity
-* Every Activity will have a DataBinding object and ViewModel object defined in this way:
-
-```KOTLIN
-abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
-
-```
-
-Make use of [Kotlin Extension functions](https://kotlinlang.org/docs/reference/extensions.html) and write as much Extensions functions as possible and less code in Activities and Fragments and only call those extension functions from Activities and Fragments.
-
-
-
 ## Gradle Setup 
 
 This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/userguide/kotlin_dsl.html) as well as the [Plugin DSL](https://docs.gradle.org/current/userguide/plugins.html#sec:plugins_block) to setup the build.
@@ -92,8 +73,26 @@ This template is using [**Gradle Kotlin DSL**](https://docs.gradle.org/current/u
 Dependencies are inside the *.kt files in the `buildSrc` folder. This provides convenient auto-completion when writing your gradle files.
 
 
-
 ## Documentation
+
+
+
+* **MVVM - Model View ViewModel**
+
+  * Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
+
+  To learn more about the different architecture approach see, [Common Architecture Design Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) 
+
+* **Basic Clean Architecture** for separation of concern & **modular approach**
+
+* Every Activity/Fragment needs to extend BaseActivity/BaseFragment
+
+* Every Activity will have a DataBinding object and ViewModel object defined in this way:
+
+```KOTLIN
+abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
+
+```
 
 
 
@@ -153,6 +152,12 @@ To learn more about contributing to this project see [Guiding principles for con
 
 
 
+## Upcoming Improvements
+
+Checklist of all upcoming [enhancements](https://github.com/NeoSOFT-Technologies/mobile-android/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Aenhancement).
+
+
+
 ## Inspiration
 
 This is project is a sample, to inspire you and should handle most of the common cases, but please take a look at additional resources.
@@ -175,6 +180,14 @@ Other high-quality projects will help you to find solutions that work for your p
 - [Android samples](https://github.com/android) - official Android samples repository
 - [Roxie](https://github.com/ww-tech/roxie) - solid example of `common state` approach together witch very good documentation
 - [Kotlin Android template](https://github.com/cortinico/kotlin-android-template) - template that lets you create an Android/Kotlin project and be up and running in a few seconds.
+
+
+
+## Known Issues
+
+* delay(timeMillis: 1L) added to avoid manual Resource state emission. ([Issue 25](https://github.com/NeoSOFT-Technologies/mobile-android/issues/25))
+
+
 
 ## Contributing to this Project
 
