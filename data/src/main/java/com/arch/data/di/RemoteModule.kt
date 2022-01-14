@@ -5,8 +5,8 @@ import com.arch.data.BuildConfig
 import com.arch.data.network.RetrofitAppServices
 import com.arch.data.network.RetrofitService
 import com.arch.data.network.okhttp.OkHttpClientService
-import com.arch.data.source.user.remote.ResourceRemoteDataSource
-import com.arch.data.source.user.remote.ResourceRemoteDataSourceImpl
+import com.arch.data.source.resource.remote.ResourceRemoteDataSource
+import com.arch.data.source.resource.remote.ResourceRemoteDataSourceImpl
 import com.arch.data.source.user.remote.UserRemoteDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSourceImpl
 import dagger.Module

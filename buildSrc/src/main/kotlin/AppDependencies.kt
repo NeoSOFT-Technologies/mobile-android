@@ -36,6 +36,9 @@ object AppDependencies {
     private val junit = "junit:junit:${Versions.junit}"
     private val extJUnit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    private val mockito = "org.mockito:mockito-core:${Versions.espresso}"
+    private val androidCoreTesting =
+        "androidx.arch.core:core-testing:${Versions.androidCoreTesting}"
 
     //Room libs
     val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
@@ -71,10 +74,12 @@ object AppDependencies {
     val androidTestLibraries = arrayListOf<String>().apply {
         add(extJUnit)
         add(espressoCore)
+        add(androidCoreTesting)
     }
 
     val testLibraries = arrayListOf<String>().apply {
         add(junit)
+        add(mockito)
     }
     val kpatLibraries = arrayListOf<String>().apply {
         add(hiltAndroidCompiler)

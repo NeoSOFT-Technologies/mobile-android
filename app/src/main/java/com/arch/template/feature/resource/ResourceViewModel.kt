@@ -3,6 +3,7 @@ package com.arch.template.feature.resource
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.arch.template.base.BaseViewModel
 import com.arch.template.util.RequestManager
@@ -32,7 +33,7 @@ class ResourceViewModel @Inject constructor(private val resourceRepository: Reso
                     true
                 }) {
                     override suspend fun createCall(): Either<BaseError, Pager<Int, ResourceData>> {
-                        return resourceRepository.getResourceData()
+                        return resourceRepository.getResourceData(PagingConfig(pageSize = 4))
                     }
                 }
                     .asFlow().collect {
