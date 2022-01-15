@@ -8,7 +8,7 @@ import com.arch.data.source.user.remote.UserRemoteDataSource
 import com.core.error.NetworkError
 import com.core.repository.UserRepository
 import com.core.utils.Either
-import junit.framework.Assert.assertEquals
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Before
@@ -42,12 +42,13 @@ class UserRepositoryImplTest {
         //given
         val email = TestDataGenerator.getEmail()
         val password = TestDataGenerator.getPassword()
+        val loginRequestEntity = TestDataGenerator.getLoginRequestEntity()
         val token = TestDataGenerator.getToken()
         val response = Response.success(UserResponseEntity(token))
         runBlocking {
 
             //when
-            `when`(userRemoteDataSource.loginUser(email, password)).thenReturn(response)
+            `when`(userRemoteDataSource.loginUser(loginRequestEntity)).thenReturn(response)
             when (val result = userRepository.login(email, password)) {
                 is Either.Right -> {
 
@@ -57,7 +58,7 @@ class UserRepositoryImplTest {
             }
 
             //verify remote source call for api once
-            verify(userRemoteDataSource, times(1)).loginUser(email, password)
+            verify(userRemoteDataSource, times(1)).loginUser(loginRequestEntity)
             //verify local source call for saving user info once
             verify(userLocalDataSource, times(1)).saveUserInfo(
                 response.body()?.transform() ?: UserEntity()
@@ -70,13 +71,14 @@ class UserRepositoryImplTest {
         //given
         val email = TestDataGenerator.getEmail()
         val password = TestDataGenerator.getPassword()
+        val loginRequestEntity = TestDataGenerator.getLoginRequestEntity()
 
         runBlocking {
 
             //when
-            `when`(userRemoteDataSource.loginUser(email, password)).thenReturn(
+            `when`(userRemoteDataSource.loginUser(loginRequestEntity)).thenReturn(
                 Response.error(
-                    404,
+                    502,
                     "{}".toResponseBody()
                 )
             )
@@ -84,12 +86,12 @@ class UserRepositoryImplTest {
                 is Either.Left -> {
 
                     //then test
-                    assertEquals(404, (result.left as NetworkError).httpError)
+                    assertEquals(502, (result.left as NetworkError).httpError)
                 }
             }
 
             //verify remote source call for api once
-            verify(userRemoteDataSource, times(1)).loginUser(email, password)
+            verify(userRemoteDataSource, times(1)).loginUser(loginRequestEntity)
             //verify no saving user info due to exception
             verify(userLocalDataSource, times(0)).saveUserInfo(UserEntity())
         }
