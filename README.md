@@ -39,7 +39,11 @@ Libraries Used
 * Networking
   * [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android
   * [Coroutines](https://developer.android.com/kotlin/coroutines) - Light wight threads for asynchronous programming
-  * [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
+* [Test](https://developer.android.com/training/testing/) - An Android testing framework for unit and runtime UI tests.
+  * [Unit Tests](https://en.wikipedia.org/wiki/Unit_testing) ([JUnit 5](https://junit.org/junit5/) via [android-junit5](https://github.com/mannodermaus/android-junit5))
+  * [UT Tests](https://en.wikipedia.org/wiki/Graphical_user_interface_testing) ([Espresso](https://developer.android.com/training/testing/espresso))
+  * [Mockk](https://mockk.io/) - mocking framework
+  
 
 
 Common Features
@@ -103,6 +107,7 @@ To learn more about architecture see [The Architecture Overview](https://github.
 - [Logger](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/logger.md)
 - [Request Manager](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/request-manager.md)
 - [Dependency Injection](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/dependency-injection.md)
+- [App Testing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/app-testing.md)
 
 
 
