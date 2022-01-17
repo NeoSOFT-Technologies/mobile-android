@@ -1,6 +1,5 @@
 package com.core.error
 
-import android.util.Log
 import com.core.entity.Error
 
 sealed class BaseError @JvmOverloads constructor(
@@ -14,7 +13,6 @@ sealed class BaseError @JvmOverloads constructor(
     abstract fun getFriendlyMessage(): String
 
     init {
-        Log.d("ERROR", "Error: $message")
         cause?.printStackTrace()
     }
 

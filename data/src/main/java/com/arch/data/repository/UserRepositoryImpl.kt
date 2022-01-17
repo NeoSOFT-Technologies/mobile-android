@@ -1,5 +1,6 @@
 package com.arch.data.repository
 
+import com.arch.data.entity.request.LoginRequestEntity
 import com.arch.data.network.utils.safeApiCall
 import com.arch.data.source.user.local.UserLocalDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSource
@@ -17,7 +18,7 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun login(username: String, password: String): Either<BaseError, User> {
         return when (val response = safeApiCall {
             userRemoteDataSource.loginUser(
-                username, password
+                LoginRequestEntity(username, password)
             )
         }) {
             is Either.Left -> Either.Left(

@@ -9,9 +9,9 @@ import javax.inject.Inject
 class UserRemoteDataSourceImpl @Inject constructor(
     private val retrofitAppServices: RetrofitAppServices,
 ) : UserRemoteDataSource {
-    override suspend fun loginUser(email: String, password: String): Response<UserResponseEntity> {
+    override suspend fun loginUser(loginRequestEntity: LoginRequestEntity): Response<UserResponseEntity> {
         return retrofitAppServices.login(
-            loginRequestEntity = LoginRequestEntity(email = email, password = password)
+            loginRequestEntity = loginRequestEntity
         )
     }
 }

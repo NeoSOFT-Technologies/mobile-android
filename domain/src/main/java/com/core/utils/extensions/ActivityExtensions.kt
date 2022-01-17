@@ -5,10 +5,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 fun Activity.showShortToast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) =
-    Toast(this).apply {
-        this.duration = duration
-        this.setText(message.toString())
-    }.show()
+    Toast.makeText(
+        this,
+        message.toString(),
+        duration
+    ).show()
 
 fun Activity.showLongToast(message: CharSequence, duration: Int = Toast.LENGTH_LONG) =
     Toast(this).apply {

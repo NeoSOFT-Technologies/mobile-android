@@ -1,4 +1,4 @@
-package com.arch.data.source.user.remote
+package com.arch.data.source.resource.remote
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
