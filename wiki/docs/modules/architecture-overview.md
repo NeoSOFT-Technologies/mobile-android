@@ -55,6 +55,9 @@ Following are the project modules,
    Components:
 
    - **Repository** is exposing data to the `domain` layer. Depending on application structure and quality of the external APIs repository can also merge, filter, and transform the data. The intention of these operations is to create high-quality data source for the `domain` layer, not to perform any business logic (`domain` layer `use case` responsibility).
+     To learn more about repository pattern see,
+     - [ Why should you use the repository pattern?](../discussion/WHY_REPOSITORY.md)
+     - [ The Repository Pattern](repository-pattern.md).
    - **Mapper** - maps `data model` to `domain model` (to keep `domain` layer independent from the `data` layer).
    - **RetrofitService** - defines a set of API endpoints.
    - **AppDatabase** - makes room database accessible through data access objects (`dao`) 

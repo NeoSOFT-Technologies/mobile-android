@@ -23,6 +23,7 @@ Use the Repository pattern to achieve one or more of the following objectives:
 - You want to use business entities that are strongly typed so that you can identify problems at compile time instead of at run time.
 - You want to associate a behavior with the related data. For example, you want to calculate fields or enforce complex relationships or business rules between the data elements within an entity.
 - You want to apply a domain model to simplify complex business logic.
+  
 
 > Repository architectural pattern creates a uniform layer of data repositories that can be used for CRUD operations.
 
@@ -40,7 +41,7 @@ For example, the data source layer can be a database, a shared preference, or a 
 
 ![arch_diagram.png](./assets/repository-pattern/repository-sequence.png)
 
-
+​		*In the above diagram, the **aCriteria** refers to a usecase requested by presentation layer/client*
 
 The repository mediates between the data source layer and the business layers of the application. It queries the data source for the data, maps the data from the data source to a business entity, and persists changes in the business entity to the data source. A repository separates the business logic from the interactions with the underlying data source or Web service. The separation between the data and business tiers has three benefits:
 

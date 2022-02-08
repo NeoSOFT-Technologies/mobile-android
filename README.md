@@ -84,7 +84,7 @@ Dependencies are inside the *.kt files in the `buildSrc` folder. This provides c
 
   * Robust, testable, and maintainable app with classes for managing your UI component lifecycle and handling data persistence.
 
-  To learn more about the different architecture approach see, [Common Architecture Design Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) 
+  To learn more about the different architecture approach see, [Common Architecture Design Patterns](wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) 
 
 * **Basic Clean Architecture** for separation of concern & **modular approach**
 
@@ -94,7 +94,6 @@ Dependencies are inside the *.kt files in the `buildSrc` folder. This provides c
 
 ```KOTLIN
 abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
-
 ```
 
 
@@ -105,19 +104,19 @@ Following diagram shows the diagram of how the request & response flow works for
 
 ![arch_diagram.png](https://github.com/NeoSOFT-Technologies/mobile-android/raw/main/wiki/docs/modules/assets/arch-diagram.png)
 
-To learn more about the architecture see [Architecture Overview](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
+To learn more about the architecture see [Architecture Overview](wiki/docs/modules/architecture-overview.md)
 
 ### 2. Modules
 
-- [Architecture Overview](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
-- [Automatic Exception Handling](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/exception-handling.md)
-- [Database](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/database-flow.md)
-- [Network](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/network-flow.md)
-- [Crashlytics](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/crashlytics.md)
-- [Logger](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/logger.md)
-- [Request Manager](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/request-manager.md)
-- [Dependency Injection](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/dependency-injection.md)
-- [App Testing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/app-testing.md)
+- [Architecture Overview](wiki/docs/modules/architecture-overview.md)
+- [Automatic Exception Handling](wiki/docs/modules/exception-handling.md)
+- [Database](wiki/docs/modules/database-flow.md)
+- [Network](wiki/docs/modules/network-flow.md)
+- [Crashlytics](wiki/docs/modules/crashlytics.md)
+- [Logger](wiki/docs/modules/logger.md)
+- [Request Manager](wiki/docs/modules/request-manager.md)
+- [Dependency Injection](wiki/docs/modules/dependency-injection.md)
+- [App Testing](wiki/docs/modules/app-testing.md)
 
 
 
@@ -135,7 +134,7 @@ Series of workflows runs (in parallel) for every opened PR and after merging PR 
 - `./gradlew testDebugUnitTest` - Run unit tests
 - `./gradlew build sonarqube --info` - Analyzing Using Gradle Sonar Plugin
 
-To learn more about contributing to this project see [Guiding principles for contributing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/modules/architecture-overview.md)
+To learn more about contributing to this project see [Guiding principles for contributing](wiki/docs/contribution/CONTRIBUTING.md)
 
 ### 
 
@@ -147,12 +146,13 @@ To learn more about contributing to this project see [Guiding principles for con
 
 
 
-## Discussion
+## Discussion (The WHY Series)
 
-* [Why Kotlin?](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_KOTLIN.md)
-* [Why MVVM & Common Android Archiectural Patterns](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
- * [When I can choose Coroutines or RX-Kotlin to do some behaviour ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
- * [Why Dependency Injection? Why HILT? ](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/discussion/WHY_DEPENDENCY_INJECTION.md)
+* [Why Kotlin?](wiki/docs/discussion/WHY_KOTLIN.md)
+* [Why MVVM & Common Android Archiectural Patterns](wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md)
+ * [When I can choose Coroutines or RX-Kotlin to do some behaviour ](wiki/docs/discussion/WHEN_COROUTINES_AND_RxJAVA.md)
+ * [Why Dependency Injection? Why HILT? ](wiki/docs/discussion/WHY_DEPENDENCY_INJECTION.md)
+ * [Why should you use the repository pattern?](wiki/docs/discussion/WHY_REPOSITORY.md)
 
 
 
@@ -195,7 +195,7 @@ Other high-quality projects will help you to find solutions that work for your p
 
 ## Contributing to this Project
 
-Contributions are welcome from anyone and everyone. We encourage you to review the [guiding principles for contributing](https://github.com/NeoSOFT-Technologies/mobile-android/blob/main/wiki/docs/contribution/CONTRIBUTING.md)
+Contributions are welcome from anyone and everyone. We encourage you to review the [guiding principles for contributing](wiki/docs/contribution/CONTRIBUTING.md)
 
 
 
