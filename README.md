@@ -118,6 +118,74 @@ To learn more about the architecture see [Architecture Overview](wiki/docs/modul
 - [Dependency Injection](wiki/docs/modules/dependency-injection.md)
 - [App Testing](wiki/docs/modules/app-testing.md)
 
+### 3. File Structure
+
+Folder structure options and naming conventions for software projects
+
+#### Top-level directory layout
+
+```
+app                          # Application core implementation
+├── .github/workflows        # Github workflow files
+├── buildSrc                 # Kotlin DSL for setup build & dependencies 
+├── crash-reporting          # Crash reporting module/lib
+├── data                     # Layer exposes all data source
+├── domain                   # Domain layer contains all the use cases of your application
+├── errors                   # Exception handling core Kotlin implementation
+├── logger                   # Text-based logging library
+├── screenshots              # Project screenshots
+├── utils                    # Project utils
+└── wiki                     # Documentation files
+```
+
+> Use short lowercase names at least for the top-level files and folders except `LICENSE`, `README.md`
+
+
+
+#### Documentation files
+
+```
+app
+├── ...
+└── wiki
+    └── docs  # Documentation files
+        ├── contribution
+        │   └── CONTRIBUTING.md                           # Contribution doc
+        ├── discussion                                    # WHY-Series documents
+        │   ├── COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md
+        │   ├── WHEN_COROUTINES_AND_RxJAVA.md
+        │   ├── WHY_DEPENDENCY_INJECTION.md
+        │   ├── WHY_KOTLIN.md
+        │   └── WHY_REPOSITORY.md
+        ├── guide                                         # Project practices guides
+        │   ├── KOTLIN_STYLE_GUIDE.md
+        │   ├── VERSIONING_GUIDE.md
+        │   └── XML_STYLE_GUIDE.md
+        └── modules
+            ├── assets                                    # Wiki Artifacts
+            └── *.md                                      # Module level wiki documents
+```
+
+
+
+#### Automated tests
+
+Automated tests are usually placed into the `test` or, less commonly, into the `tests` folder.
+
+> **Q: Why tests are placed into a separate folder, as opposed to having them closer to the code under test?**
+>
+> **A:** Because you don't want to test the code, you want to test the *program*.
+
+```
+.
+├── ...
+├── src
+│   ├── androidTest/  # Instrumented test, which will execute on an Android device
+│   ├── ..
+│   └── test/         # Example local unit test, which will execute on the development machine (host)
+└── ...
+```
+
 
 
 ## CI Pipeline
