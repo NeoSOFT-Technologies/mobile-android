@@ -2,7 +2,7 @@
 
 Request manager is used to process any request from Viewmodel to respective Repositories.
 
-
+![image-20220110203508034](./assets/request-manager/request-manager.png)
 
 ## Usability
 

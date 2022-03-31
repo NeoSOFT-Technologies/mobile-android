@@ -115,7 +115,7 @@ To learn more about the architecture see [Architecture Overview](wiki/docs/modul
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
 - [Logger](wiki/docs/modules/logger.md)
 - [Request Manager](wiki/docs/modules/request-manager.md)
-- [Dependency Injection](wiki/docs/modules/dependency-injection.md)
+- [Dependency Injection]()
 - [App Testing](wiki/docs/modules/app-testing.md)
 
 ### 3. File Structure
