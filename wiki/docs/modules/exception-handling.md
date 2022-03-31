@@ -31,7 +31,15 @@ Implementation structure:
   3. `SnackBarErrorPresenter` - displays errors text in snackbar for Android.
   4. `SelectorErrorPresenter` - for selecting error presenter by some custom condition.
 
+![image-20220110203508034](/Users/apple/Documents/Workspace/COE/mobile-android/wiki/docs/modules/assets/exception-handler/automatic-exception-structure.png)
+
 ### Usage
+
+
+
+![image-20220110203508034](./assets/exception-handler/exception-handling-flow.png)
+
+
 
 #### ExceptionMappers
 
