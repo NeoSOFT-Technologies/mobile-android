@@ -1,56 +1,70 @@
 apply plugin: 'jacoco'
 
-ext {
-    coverageExclusions = [
-            '**/*Activity*.*',
-            '**/*Fragment*.*',
-            '**/R.class',
-            '**/R$*.class',
-            '**/BuildConfig.*',
-    ]
-}
-
-jacoco {
-    toolVersion = "${Versions.jacoco}"
-    reportsDir = file("$buildDir/reports")
-}
-
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
-    // https://github.com/gradle/gradle/issues/5184#issuecomment-457865951
     jacoco.excludes = ['jdk.internal.*']
 }
 
-
-tasks.withType(Test) {
-    finalizedBy jacocoTestReport // report is always generated after tests run
+ext {
+    coverageExclusions = [
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            'android/**/*.*',
+            'androidx/**/*.*',
+            '**/*$ViewInjector*.*',
+            '**/*Dagger*.*',
+            '**/*MembersInjector*.*',
+            '**/*_Factory.*',
+            '**/*_Provide*Factory*.*',
+            '**/*_ViewBinding*.*',
+            '**/AutoValue_*.*',
+            '**/R2.class',
+            '**/R2$*.class',
+            '**/*Directions$*',
+            '**/*Directions.*',
+            '**/*Binding.*'
+    ]
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports for Debug build"
+project.afterEvaluate {
 
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: coverageExclusions)
-    def kotlinDebugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debug", excludes: coverageExclusions)
-    def mainSrc = "${project.projectDir}/src/main/java"
+    (android.hasProperty('applicationVariants') ? android.'applicationVariants' : android.'libraryVariants')
+            .all { variant ->
+                def variantName = variant.name
+                def capVariantName = variantName.capitalize()
+                def testTaskName = "test${capVariantName}UnitTest"
+                tasks.create(name: "${variantName}Coverage", type: JacocoReport, dependsOn: testTaskName) {
 
-    additionalSourceDirs.from = files(mainSrc)
-    sourceDirectories.from = files([mainSrc])
-    classDirectories.from = files([debugTree], [kotlinDebugTree])
+                    group = "Reporting"
+                    description = "Generate Jacoco coverage reports for the ${variantName} build."
 
-    executionData(
-            project.fileTree(project.rootDir.absolutePath).include(
-                    "**/*.exec", // JaCoCo unit tests binary report
-                    "**/*.ec" // JaCoCo android tests binary report
-            )
-    )
+                    reports {
+                        xml.required.set(true)
+                        html.required.set(true)
+                    }
 
-    reports {
-        xml.required.set(true)
-        html.required.set(true)
-        csv.required.set(true)
-        xml.destination file("$reportsDir/jacoco/jacoco.xml")
-        html.destination file("$reportsDir/jacoco/coverage")
-        csv.destination file("$reportsDir/jacoco/jacoco.csv")
+                    def jClasses = "${project.buildDir}/intermediates/javac/${variantName}/classes"
+                    def kClasses = "${project.buildDir}/tmp/kotlin-classes/${variantName}"
+                    def javaClasses = fileTree(dir: jClasses, excludes: coverageExclusions)
+
+                    def kotlinClasses = fileTree(dir: kClasses, excludes: coverageExclusions)
+
+                    classDirectories.from = files([javaClasses, kotlinClasses])
+                    def sourceDirs = ["${project.projectDir}/src/main/java", "${project.projectDir}/src/main/kotlin",
+                                      "${project.projectDir}/src/${variantName}/java", "${project.projectDir}/src/${variantName}/kotlin"]
+
+                    sourceDirectories.from = files(sourceDirs)
+
+                    executionData.from = files(["${project.buildDir}/jacoco/${testTaskName}.exec"])
+                }
+            }
+
+    tasks.register('coverAllVariants') {
+        dependsOn(provider {
+            tasks.findAll { task -> task.name.endsWith('Coverage') }
+        })
     }
 }
