@@ -63,7 +63,7 @@ dependencies {
 
     //app libs
     implementation(AppDependencies.appLibraries)
-
+    implementation AppDependencies.hiltAndroid
     //paging
     implementation AppDependencies.paging
 
