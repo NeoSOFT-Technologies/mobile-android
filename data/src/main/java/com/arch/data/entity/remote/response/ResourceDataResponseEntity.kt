@@ -1,7 +1,7 @@
 package com.arch.data.entity.remote.response
 
-import com.core.entity.ResourceData
-import com.core.utils.mapper.BaseLayerDataTransformer
+import com.arch.entity.ResourceData
+import com.arch.utils.mapper.BaseLayerDataTransformer
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.JsonClass
 

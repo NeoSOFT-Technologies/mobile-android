@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.arch.template.feature.resource.ResourceViewModel" />
+            type="com.arch.presentation.viewmodels.resources.ResourceViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

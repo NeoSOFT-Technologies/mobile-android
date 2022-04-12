@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.arch.error.presenters.BaseToastErrorPresenter
 import com.arch.error.presenters.ToastDuration
+import com.arch.presentation.error.presenter.AndroidErrorPresenter
 import com.arch.template.utils.MyAppLogger
 
 

@@ -3,7 +3,7 @@ package com.arch.data.source.resource.remote
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.arch.data.network.RetrofitAppServices
-import com.core.entity.ResourceData
+import com.arch.entity.ResourceData
 import retrofit2.Response
 import javax.inject.Inject
 

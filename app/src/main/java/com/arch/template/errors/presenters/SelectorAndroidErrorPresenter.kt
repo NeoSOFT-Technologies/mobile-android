@@ -2,6 +2,7 @@ package com.arch.template.errors.presenters
 
 import androidx.fragment.app.FragmentActivity
 import com.arch.error.presenters.BaseSelectorErrorPresenter
+import com.arch.presentation.error.presenter.AndroidErrorPresenter
 
 class SelectorAndroidErrorPresenter constructor(
     private val errorPresenterSelector: (Throwable) -> AndroidErrorPresenter<String>

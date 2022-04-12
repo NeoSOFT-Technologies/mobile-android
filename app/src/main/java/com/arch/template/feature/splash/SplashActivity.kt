@@ -3,6 +3,7 @@ package com.arch.template.feature.splash
 import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.arch.presentation.viewmodels.splash.SplashViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding

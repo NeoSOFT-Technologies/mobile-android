@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.arch.error.presenters.BaseSnackBarErrorPresenter
 import com.arch.error.presenters.SnackBarDuration
+import com.arch.presentation.error.presenter.AndroidErrorPresenter
 import com.google.android.material.snackbar.Snackbar
 
 class SnackBarAndroidErrorPresenter constructor(

@@ -3,6 +3,7 @@ package com.arch.template.errors.presenters
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.arch.error.presenters.BaseAlertErrorPresenter
+import com.arch.presentation.error.presenter.AndroidErrorPresenter
 import com.arch.template.R
 
 class AlertAndroidErrorPresenter(

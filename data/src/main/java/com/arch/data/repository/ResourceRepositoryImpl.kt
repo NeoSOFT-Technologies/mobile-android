@@ -4,10 +4,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.arch.data.network.utils.safeApiCall
 import com.arch.data.source.resource.remote.ResourceRemoteDataSource
-import com.core.entity.ResourceData
-import com.core.error.NetworkError
-import com.core.repository.ResourceRepository
-import com.core.utils.Either
+import com.arch.entity.ResourceData
+import com.arch.error.NetworkError
+import com.arch.repository.ResourceRepository
+import com.arch.utils.Either
 import javax.inject.Inject
 
 class ResourceRepositoryImpl @Inject constructor(

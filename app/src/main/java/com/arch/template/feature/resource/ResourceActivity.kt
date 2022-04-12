@@ -2,6 +2,7 @@ package com.arch.template.feature.resource
 
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.arch.presentation.viewmodels.resources.ResourceViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityResourceBinding

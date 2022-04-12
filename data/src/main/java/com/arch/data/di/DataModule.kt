@@ -5,8 +5,8 @@ import com.arch.data.repository.UserRepositoryImpl
 import com.arch.data.source.resource.remote.ResourceRemoteDataSource
 import com.arch.data.source.user.local.UserLocalDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSource
-import com.core.repository.ResourceRepository
-import com.core.repository.UserRepository
+import com.arch.repository.ResourceRepository
+import com.arch.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.template.R
 import com.arch.template.databinding.ItemResourceBinding
-import com.core.entity.ResourceData
+import com.arch.entity.ResourceData
 
 class ResourceDataAdapter :
     PagingDataAdapter<ResourceData, ResourceDataAdapter.ViewHolder>(DiffUtilCallBack) {
