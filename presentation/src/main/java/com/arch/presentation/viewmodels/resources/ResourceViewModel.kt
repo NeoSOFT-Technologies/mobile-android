@@ -11,7 +11,7 @@ import com.arch.error.BaseError
 import com.arch.error.presenters.BaseErrorPresenter
 import com.arch.logger.AppLogger
 import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
-import com.arch.presentation.model.ResourceDataModel
+import com.arch.presentation.model.ResourceDataPresentation
 import com.arch.presentation.viewmodels.base.BaseViewModel
 import com.arch.usecase.GetResourcesUseCase
 import com.arch.utils.Either
@@ -30,10 +30,10 @@ class ResourceViewModel @Inject constructor(
     defaultAndroidErrorPresenter: BaseErrorPresenter<String>, logger: AppLogger,
 ) :
     BaseViewModel(exceptionHandler, defaultAndroidErrorPresenter, logger) {
-    private val _resourcePagingFlow: MutableSharedFlow<PagingData<ResourceDataModel>> =
+    private val _resourcePagingFlow: MutableSharedFlow<PagingData<ResourceDataPresentation>> =
         MutableSharedFlow()
 
-    val resourcePagingFlow: SharedFlow<PagingData<ResourceDataModel>> = _resourcePagingFlow
+    val resourcePagingFlow: SharedFlow<PagingData<ResourceDataPresentation>> = _resourcePagingFlow
     fun getResourceData() {
         viewModelScope.launch {
             exceptionHandler.handle {
@@ -49,7 +49,7 @@ class ResourceViewModel @Inject constructor(
                 }.asFlow().collect {
                     it.data?.flow?.collect { pagingData ->
                         _resourcePagingFlow.emit(pagingData.map { resource ->
-                            ResourceDataModel().restore(resource)
+                            ResourceDataPresentation().restore(resource)
                         })
                     }
                 }
