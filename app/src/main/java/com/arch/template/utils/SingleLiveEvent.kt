@@ -1,4 +1,4 @@
-package com.arch.utils
+package com.arch.template.utils
 
 import androidx.annotation.MainThread
 import androidx.annotation.Nullable

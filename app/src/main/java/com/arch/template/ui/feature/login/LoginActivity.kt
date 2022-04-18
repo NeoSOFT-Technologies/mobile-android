@@ -10,7 +10,7 @@ import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityLoginBinding
 import com.arch.template.ui.feature.resource.ResourceActivity
 import com.arch.utils.Status
-import com.arch.utils.extensions.showShortToast
+import com.arch.template.utils.extension.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 

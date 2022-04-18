@@ -1,4 +1,4 @@
-package com.arch.utils.extensions
+package com.arch.template.utils.extension
 
 import android.app.Activity
 import android.widget.Toast
