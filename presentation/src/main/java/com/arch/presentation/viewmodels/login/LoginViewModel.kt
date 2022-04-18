@@ -5,8 +5,8 @@ import com.arch.entity.User
 import com.arch.error.BaseError
 import com.arch.logger.AppLogger
 import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
-import com.arch.presentation.model.UserModel
 import com.arch.presentation.qualifier.handler.LoginViewModelExceptionHandler
+import com.arch.presentation.model.UserPresentation
 import com.arch.presentation.viewmodels.base.BaseViewModel
 import com.arch.usecase.LoginUseCase
 import com.arch.utils.Either
@@ -27,10 +27,10 @@ class LoginViewModel @Inject constructor(
 ) :
     BaseViewModel(exceptionHandler, logger) {
 
-    private val _tokenFlow: MutableStateFlow<Resource<UserModel>> =
+    private val _tokenFlow: MutableStateFlow<Resource<UserPresentation>> =
         MutableStateFlow(Resource.error(""))
 
-    val tokenFlow: StateFlow<Resource<UserModel>> = _tokenFlow
+    val tokenFlow: StateFlow<Resource<UserPresentation>> = _tokenFlow
 
 
     fun doLogin(email: String, password: String) {
@@ -47,7 +47,7 @@ class LoginViewModel @Inject constructor(
                 }.asFlow().collect {
                     _tokenFlow.value = Resource(
                         status = it.status,
-                        data = if (it.data != null) UserModel("").restore(it.data!!) else null,
+                        data = if (it.data != null) UserPresentation("").restore(it.data!!) else null,
                         error = it.error,
                         message = it.message,
                     )
