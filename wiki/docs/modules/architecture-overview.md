@@ -8,7 +8,7 @@
 Let’s start explaining Data Flow in the Architecture as follows,
 
 1. UI (Activity/Fragment) calls method from `ViewModel`.
-2. `ViewModel` executes request with the help of [Request Manager](request-manager.md).
+2. `ViewModel` executes request(use-case) with the help of [Request Manager](request-manager.md).
 3. The request is further wrapped within a [exception handler](exception-handling.md) to manage automatic exception handling.
 4. The request combines data from multiple repositories.
 5. Each Repository can return data from multiple **Data Source** (Cached, Remote or more).
@@ -25,20 +25,32 @@ The application adopts modularized code-base approach which provides few benefit
 
 Following are the project modules,
 
-1. #### Presentation layer or `app` **module** 
+1. #### App/UI Layer or `app` **module** 
 
-   This is the main module. It contains code that wires multiple modules together (dependency injection setup, etc.) and fundamental application configuration (network configuration, database configuration, required permissions setup, custom application class, etc). The app layer also has the presentation layer included.
+   This is the main module. It contains code that wires multiple modules together (dependency injection setup, etc.) and fundamental application configuration (network configuration, database configuration, required permissions setup, custom application class, etc).
 
-   This layer is closest to what the user sees on the screen. The `presentation` layer is a mix of `MVVM` (Jetpack `ViewModel` used to preserve data across activity restart) (actions that modify the ` state` of the view and then new state is edited to a view via `LiveData` to be rendered).
+   This layer is closest to what the user sees on the screen. The `UI` layer has actions that modify the ` state` of the view and then new state is edited to a view via `LiveData` to be rendered.
+
+   Components:
+   - **View (Activity/Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
+   - **Screen Navigation** - That facilitates handling all navigation between different activities.
+
+2. #### Presentation layer
+
+   The `presentation` layer is a mix of `MVVM` (Jetpack `ViewModel` used to preserve data across activity restart)
+   
+   The presentation layer prepares data for the application layer. The presentation layer takes any data transmitted by the application layer and prepares it for transmission over the other layer & vice versa.
+
 
    Components:
 
-   - **View (Fragment)** - presents data on the screen and pass user interactions to View Model. Views are hard to test, so they should be as simple as possible.
    - **ViewModel** - dispatches (through `LiveData`) state changes to the view and deals with user interactions (these view models are not simply [POJO classes](https://en.wikipedia.org/wiki/Plain_old_Java_object)).
    - **ViewState** - state for a single view witin the viewmodel
-   - **Screen Navigation** - That facilitates handling all navigation between different activities.
 
-2. #### Domain layer
+
+
+
+3. #### Domain layer
 
    This is the core layer of the application. Notice that the `domain` layer is independent of any other layers. This allows to make domain models and business logic independent from other layers. In other words, changes in other layers will have no effect on `domain` layer eg. changing database (`data` layer) or screen UI (`presentation` layer) ideally will not result in any code change withing `domain` layer.
 
@@ -47,8 +59,8 @@ Following are the project modules,
    - **UseCase/Requests** - contains business logic for a particular scenario
    - **Domain Models** - defines the core structure of the data that will be used within the application. This is the source of truth for application data.
    - **Repository interface** - required to keep the `domain` layer independent from the `data layer` ([Dependency inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)).
-
-3. #### Data layer
+   
+4. #### Data layer
 
    Manages application data and exposes these data sources as repositories to the `domain` layer. Typical responsibilities of this layer would be to retrieve data from the internet and optionally cache this data locally.
 
