@@ -8,31 +8,19 @@ Request manager is used to process any request from Viewmodel to respective Repo
 
 1. Wrap the request inside the `RequestManager` object like below, here `T` can be class of interest for example User in this case,
 
-   ```
-   object : RequestManager<T>(preCheck = {
-       when {
-           Validator.isEmpty(email) -> throw AppError(
-               appErrorType = AppErrorType.EmailEmpty,
-           )
-           !Validator.isValidEmail(email) -> throw AppError(
-               appErrorType = AppErrorType.InvalidEmail,
-           )
-           Validator.isEmpty(password) -> throw AppError(
-               appErrorType = AppErrorType.PasswordEmpty,
-           )
-       }
-   }) {
+   ```kotlin
+   object : RequestManager<T>(params:Params) {
        override suspend fun createCall(): Either<BaseError, User> {
-           return userRepository.login(email, password)
+           return userRepository.login(params)
        }
    }.asFlow().collect {
        _tokenFlow.value = it
    }
    ```
+   
+2. **params** : It will check all the presentation validation like checking if email is present and is it valid or not or any parameters which needs to be verified before executing the use case.
 
-2. **precheck** : It will check all the presentation validation like checking if email is present and is it valid or not.
-
-3. **createCall** :- Any request which is suspend function can be executed here.
+3. **createCall** :- Any request/use-case which is suspend function can be executed here.
 
 4. The result from request can be captured or collected as a flow using `asFlow`
 
@@ -40,23 +28,11 @@ Request manager is used to process any request from Viewmodel to respective Repo
 
 6. To handle the exception for the each request we need to wrap the above RequestManager call in ExceptionHandler to manage the exception automatically. Request is handled via exception handler and the exception is received in the catch block.		
 
-   ```
+   ```kotlin
    exceptionHandler.handle {
-       object : RequestManager<User>(preCheck = {
-           when {
-               Validator.isEmpty(email) -> throw AppError(
-                   appErrorType = AppErrorType.EmailEmpty,
-               )
-               !Validator.isValidEmail(email) -> throw AppError(
-                   appErrorType = AppErrorType.InvalidEmail,
-               )
-               Validator.isEmpty(password) -> throw AppError(
-                   appErrorType = AppErrorType.PasswordEmpty,
-               )
-           }
-       }) {
+       object : RequestManager<User>(params = params) {
            override suspend fun createCall(): Either<BaseError, User> {
-               return userRepository.login(email, password)
+               return userRepository.login(params)
            }
        }.asFlow().collect {
            _tokenFlow.value = it
@@ -65,7 +41,7 @@ Request manager is used to process any request from Viewmodel to respective Repo
        false
    }.execute()
    ```
-
+   
 7. If you wish to handle the exception to make some custom behaviour to your UI you can return `true` else return `false` when u want the automatic exception handler behaviour defined in the viewmodel.
 
   	 To learn more about architecture see [`ExceptionHandler`](exception-handling.md)

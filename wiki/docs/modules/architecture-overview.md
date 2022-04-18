@@ -75,7 +75,7 @@ Following are the project modules,
    - **AppDatabase** - makes room database accessible through data access objects (`dao`) 
    - **DataModel** - defines the structure of the data retrieved from the network , database  or any other datasource for instance retrofit model class has annotations, so Retrofit (Moshi) understands how to parse this network data (XML, JSON, Binary...) this data into objects.
 
-
+To know more about CLEAN architecture in Android please refer [here](app-clean-arch-overview.md).
 
 ## Dependency management
 

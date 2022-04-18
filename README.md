@@ -86,7 +86,7 @@ Dependencies are inside the *.kt files in the `buildSrc` folder. This provides c
 
   To learn more about the different architecture approach see, [Common Architecture Design Patterns](wiki/docs/discussion/COMMON_ANDROID_ARCHITECTURAL_PATTERNS.md) 
 
-* **Basic Clean Architecture** for separation of concern & **modular approach**
+* [**Clean Architecture**](wiki/docs/modules/app-clean-arch-overview.md) for separation of concern & **modular approach**
 
 * Every Activity/Fragment needs to extend BaseActivity/BaseFragment
 
@@ -96,7 +96,11 @@ Dependencies are inside the *.kt files in the `buildSrc` folder. This provides c
 abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 ```
 
+### Clean Architecture & Components in Android App
 
+![clean-android-app.svg](/Users/apple/Documents/Workspace/COE/mobile-android/wiki/docs/modules/assets/clean/clean-android-app.svg)
+
+To learn more about the app architecture see [Architecture Overview](wiki/docs/modules/architecture-overview.md)
 
 ### 1. Request & Response Flow
 
@@ -104,7 +108,7 @@ Following diagram shows the diagram of how the request & response flow works for
 
 ![arch_diagram.png](https://github.com/NeoSOFT-Technologies/mobile-android/raw/main/wiki/docs/modules/assets/arch-diagram.png)
 
-To learn more about the architecture see [Architecture Overview](wiki/docs/modules/architecture-overview.md)
+
 
 ### 2. Modules
 
@@ -118,6 +122,8 @@ To learn more about the architecture see [Architecture Overview](wiki/docs/modul
 - [Dependency Injection]()
 - [App Testing](wiki/docs/modules/app-testing.md)
 
+
+
 ### 3. File Structure
 
 Folder structure options and naming conventions for software projects
@@ -125,17 +131,19 @@ Folder structure options and naming conventions for software projects
 #### Top-level directory layout
 
 ```
-app                          # Application core implementation
-├── .github/workflows        # Github workflow files
-├── buildSrc                 # Kotlin DSL for setup build & dependencies 
-├── crash-reporting          # Crash reporting module/lib
-├── data                     # Layer exposes all data source
-├── domain                   # Domain layer contains all the use cases of your application
-├── errors                   # Exception handling core Kotlin implementation
-├── logger                   # Text-based logging library
-├── screenshots              # Project screenshots
-├── utils                    # Project utils
-└── wiki                     # Documentation files
+.
+└── app                          # Application or UI layer
+    ├── .github/workflows        # Github workflow files
+    ├── buildSrc                 # Kotlin DSL for setup build & dependencies
+    ├── crash-reporting          # Crash reporting module/lib
+    ├── data                     # Layer exposes all data source
+    ├── domain                   # Domain layer contains all the use cases of your application
+    ├── errors                   # Exception handling pure Kotlin implementation
+    ├── logger                   # Text-based logging library
+    ├── presentation             # Prepares data for the application layer & maintains state
+    ├── screenshots              # Project screenshots
+    ├── utils                    # Project utils
+    └── wiki                     # Documentation files
 ```
 
 > Use short lowercase names at least for the top-level files and folders except `LICENSE`, `README.md`
