@@ -1,4 +1,4 @@
-package com.arch.template.errors.presenters
+package com.arch.template.ui.errors.presenters
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity

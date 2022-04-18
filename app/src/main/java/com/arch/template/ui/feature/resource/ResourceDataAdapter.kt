@@ -1,4 +1,4 @@
-package com.arch.template.feature.resource
+package com.arch.template.ui.feature.resource
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

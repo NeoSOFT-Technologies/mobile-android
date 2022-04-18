@@ -1,4 +1,4 @@
-package com.arch.template.feature.login
+package com.arch.template.ui.feature.login
 
 import android.content.Intent
 import android.view.View
@@ -8,7 +8,7 @@ import com.arch.presentation.viewmodels.login.LoginViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityLoginBinding
-import com.arch.template.feature.resource.ResourceActivity
+import com.arch.template.ui.feature.resource.ResourceActivity
 import com.arch.utils.Status
 import com.arch.utils.extensions.showShortToast
 import dagger.hilt.android.AndroidEntryPoint

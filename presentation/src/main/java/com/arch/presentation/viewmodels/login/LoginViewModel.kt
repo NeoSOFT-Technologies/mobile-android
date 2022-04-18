@@ -3,10 +3,10 @@ package com.arch.presentation.viewmodels.login
 import androidx.lifecycle.viewModelScope
 import com.arch.entity.User
 import com.arch.error.BaseError
-import com.arch.error.presenters.BaseErrorPresenter
 import com.arch.logger.AppLogger
 import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
 import com.arch.presentation.model.UserModel
+import com.arch.presentation.qualifier.handler.LoginViewModelExceptionHandler
 import com.arch.presentation.viewmodels.base.BaseViewModel
 import com.arch.usecase.LoginUseCase
 import com.arch.utils.Either
@@ -22,15 +22,16 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    exceptionHandler: AndroidExceptionHandlerBinder,
-    defaultAndroidErrorPresenter: BaseErrorPresenter<String>, logger: AppLogger,
+    @LoginViewModelExceptionHandler exceptionHandler: AndroidExceptionHandlerBinder,
+    logger: AppLogger,
 ) :
-    BaseViewModel(exceptionHandler, defaultAndroidErrorPresenter, logger) {
+    BaseViewModel(exceptionHandler, logger) {
 
     private val _tokenFlow: MutableStateFlow<Resource<UserModel>> =
         MutableStateFlow(Resource.error(""))
 
     val tokenFlow: StateFlow<Resource<UserModel>> = _tokenFlow
+
 
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {

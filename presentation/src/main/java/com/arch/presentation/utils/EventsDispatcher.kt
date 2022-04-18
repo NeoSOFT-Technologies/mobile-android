@@ -1,6 +1,6 @@
 
 
-package com.arch.template.utils
+package com.arch.presentation.utils
 
 import android.os.Handler
 import android.os.Looper

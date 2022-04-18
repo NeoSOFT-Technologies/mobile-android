@@ -20,7 +20,7 @@
             tools:replace="android:authorities" />
 
         <activity
-            android:name=".feature.splash.SplashActivity"
+            android:name="com.arch.template.ui.feature.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar">
             <intent-filter>
@@ -30,10 +30,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.login.LoginActivity"
+            android:name="com.arch.template.ui.feature.login.LoginActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
         <activity
-            android:name=".feature.resource.ResourceActivity"
+            android:name="com.arch.template.ui.feature.resource.ResourceActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
     </application>
 

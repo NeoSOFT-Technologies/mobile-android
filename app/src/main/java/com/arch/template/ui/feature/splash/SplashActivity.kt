@@ -1,4 +1,4 @@
-package com.arch.template.feature.splash
+package com.arch.template.ui.feature.splash
 
 import android.content.Intent
 import androidx.activity.viewModels
@@ -7,7 +7,7 @@ import com.arch.presentation.viewmodels.splash.SplashViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivitySplashBinding
-import com.arch.template.feature.login.LoginActivity
+import com.arch.template.ui.feature.login.LoginActivity
 import com.arch.template.utils.MyAppLogger
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect

@@ -1,4 +1,4 @@
-package com.arch.template.errors.presenters
+package com.arch.template.ui.errors.presenters
 
 import android.app.Dialog
 import android.os.Bundle

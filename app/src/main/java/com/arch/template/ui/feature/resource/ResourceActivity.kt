@@ -1,4 +1,4 @@
-package com.arch.template.feature.resource
+package com.arch.template.ui.feature.resource
 
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope

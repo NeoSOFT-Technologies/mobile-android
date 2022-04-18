@@ -1,4 +1,4 @@
-package com.arch.template.errors.handler
+package com.arch.presentation.error.handler
 
 
 import androidx.fragment.app.FragmentActivity
@@ -6,10 +6,8 @@ import androidx.lifecycle.LifecycleOwner
 import com.arch.error.ErrorEventListener
 import com.arch.error.handler.ExceptionMapper
 import com.arch.error.handler.PresenterExceptionHandler
-import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
 import com.arch.presentation.error.presenter.AndroidErrorPresenter
-import com.arch.template.utils.EventsDispatcher
-import com.arch.template.utils.MyAppLogger
+import com.arch.presentation.utils.EventsDispatcher
 
 
 open class AndroidExceptionHandlerBinderImpl<T : Any> constructor(
@@ -33,7 +31,6 @@ open class AndroidExceptionHandlerBinderImpl<T : Any> constructor(
         private val androidErrorPresenter: AndroidErrorPresenter<T>
     ) : ErrorEventListener<T> {
         override fun showError(throwable: Throwable, data: T) {
-            MyAppLogger.d("EventsListener showError")
             androidErrorPresenter.show(throwable, activity, data)
         }
     }

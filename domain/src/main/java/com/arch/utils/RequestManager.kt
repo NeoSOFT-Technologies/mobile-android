@@ -11,16 +11,14 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 abstract class RequestManager<ResultType>(
-    var params: Params? = null
+    var params: Params
 ) {
     private var result: Flow<Resource<ResultType>>
 
     init {
         result = flow {
             emit(Resource.loading(null))
-            if (params != null && !params!!.verify()) {
-              // This Condition throws exception if it fails
-            } else {
+            if (params.verify()) {
                 when (val response: Either<BaseError, ResultType> = createCall()) {
                     is Either.Left -> {
                         throw response.left
@@ -30,8 +28,6 @@ abstract class RequestManager<ResultType>(
                     }
                 }
             }
-
-
         }.catch { throwable ->
             emit(Resource.error("${throwable.message}", appError = throwable as BaseError))
             delay(1L)

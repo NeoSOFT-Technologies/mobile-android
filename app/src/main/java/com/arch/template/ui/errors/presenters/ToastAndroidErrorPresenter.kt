@@ -1,6 +1,6 @@
 
 
-package com.arch.template.errors.presenters
+package com.arch.template.ui.errors.presenters
 
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
