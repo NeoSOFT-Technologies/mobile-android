@@ -98,7 +98,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
 
 ### Clean Architecture & Components in Android App
 
-![clean-android-app.svg](/Users/apple/Documents/Workspace/COE/mobile-android/wiki/docs/modules/assets/clean/clean-android-app.svg)
+![clean-android-app.svg](wiki/docs/modules/assets/clean/clean-android-app.svg)
 
 To learn more about the app architecture see [Architecture Overview](wiki/docs/modules/architecture-overview.md)
 
