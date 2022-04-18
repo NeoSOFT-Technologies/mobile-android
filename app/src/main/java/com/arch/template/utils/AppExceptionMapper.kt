@@ -3,9 +3,9 @@ package com.arch.template.utils
 import android.content.Context
 import com.arch.error.mappers.ExceptionMappers
 import com.arch.template.R
-import com.core.error.AppError
-import com.core.error.AppErrorType
-import com.core.error.NetworkError
+import com.arch.error.AppError
+import com.arch.error.AppErrorType
+import com.arch.error.NetworkError
 
 object AppExceptionMapper {
     fun init(context: Context) {

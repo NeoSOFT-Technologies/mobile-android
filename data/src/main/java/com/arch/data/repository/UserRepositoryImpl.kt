@@ -4,11 +4,11 @@ import com.arch.data.entity.request.LoginRequestEntity
 import com.arch.data.network.utils.safeApiCall
 import com.arch.data.source.user.local.UserLocalDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSource
-import com.core.entity.User
-import com.core.error.BaseError
-import com.core.error.NetworkError
-import com.core.repository.UserRepository
-import com.core.utils.Either
+import com.arch.entity.User
+import com.arch.error.BaseError
+import com.arch.error.NetworkError
+import com.arch.repository.UserRepository
+import com.arch.utils.Either
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(

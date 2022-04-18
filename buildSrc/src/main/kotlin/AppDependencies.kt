@@ -12,9 +12,12 @@ object AppDependencies {
     private val materialApp = "com.google.android.material:material:${Versions.materialApp}"
 
     //Dependency Injection
+    private val hiltCore = "com.google.dagger:hilt-core:${Versions.hiltVersion}"
     private val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     private val hiltAndroidCompiler =
         "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
+    private val hiltCoreCompiler =
+        "androidx.hilt:hilt-compiler:${Versions.hiltOnlyCompilerVersion}"
     private val javaxInject = "javax.inject:javax.inject:${Versions.javaxInjectVersion}"
 
     // http
@@ -56,7 +59,8 @@ object AppDependencies {
         "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.reactiveStream}"
 
     //paging
-    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    val pagingAndroid = "androidx.paging:paging-runtime:${Versions.paging}"
+    val pagingCoreCommon = "androidx.paging:paging-common:${Versions.paging}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
@@ -68,7 +72,7 @@ object AppDependencies {
         add(timber)
         add(crashlytics)
         add(reactiveStream)
-        add(paging)
+        add(pagingAndroid)
     }
 
     val androidTestLibraries = arrayListOf<String>().apply {

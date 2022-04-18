@@ -87,7 +87,7 @@ dependencies {
     implementation AppDependencies.hiltAndroid
     kapt AppDependencies.hiltAndroidCompiler
 
-    implementation AppDependencies.paging
+    implementation AppDependencies.pagingAndroid
 
     //test libs
     testImplementation(AppDependencies.testLibraries)

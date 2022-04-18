@@ -4,7 +4,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.arch.data.network.RetrofitAppServices
-import com.core.entity.ResourceData
+import com.arch.entity.ResourceData
 import retrofit2.HttpException
 import java.io.IOException
 

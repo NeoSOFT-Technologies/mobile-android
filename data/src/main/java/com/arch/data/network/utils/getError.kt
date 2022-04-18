@@ -3,8 +3,8 @@ package com.arch.data.network.utils
 
 import com.arch.data.entity.remote.error.ErrorResponseEntity
 import com.arch.data.utils.NonNullUtils
-import com.core.error.NetworkError
-import com.core.utils.Either
+import com.arch.error.NetworkError
+import com.arch.utils.Either
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import retrofit2.Response

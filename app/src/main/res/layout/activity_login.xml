@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.arch.template.feature.login.LoginViewModel" />
+            type="com.arch.presentation.viewmodels.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        tools:context=".feature.login.LoginActivity">
+        tools:context=".ui.feature.login.LoginActivity">
 
         <TextView
             android:id="@+id/tvHeader"

@@ -1,7 +1,7 @@
 package com.arch.data.entity.remote.response
 
 import com.arch.data.entity.local.UserEntity
-import com.core.utils.mapper.BaseLayerDataTransformer
+import com.arch.utils.mapper.BaseLayerDataTransformer
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

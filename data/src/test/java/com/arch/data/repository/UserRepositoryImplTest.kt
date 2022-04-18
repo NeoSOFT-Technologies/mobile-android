@@ -5,9 +5,9 @@ import com.arch.data.entity.local.UserEntity
 import com.arch.data.entity.remote.response.UserResponseEntity
 import com.arch.data.source.user.local.UserLocalDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSource
-import com.core.error.NetworkError
-import com.core.repository.UserRepository
-import com.core.utils.Either
+import com.arch.error.NetworkError
+import com.arch.repository.UserRepository
+import com.arch.utils.Either
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import okhttp3.ResponseBody.Companion.toResponseBody

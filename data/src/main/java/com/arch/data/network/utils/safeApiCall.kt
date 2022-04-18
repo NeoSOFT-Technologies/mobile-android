@@ -1,8 +1,8 @@
 package com.arch.data.network.utils
 
 
-import com.core.error.NetworkError
-import com.core.utils.Either
+import com.arch.error.NetworkError
+import com.arch.utils.Either
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException

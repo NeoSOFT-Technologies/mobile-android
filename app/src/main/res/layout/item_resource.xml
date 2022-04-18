@@ -7,7 +7,7 @@
 
         <variable
             name="resourceData"
-            type="com.core.entity.ResourceData" />
+            type="com.arch.presentation.model.ResourceDataPresentation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

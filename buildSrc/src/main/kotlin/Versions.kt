@@ -8,6 +8,7 @@ object Versions {
     const val jacoco = "0.8.7"
     const val sonarqube = "2.7.1"
     const val hiltVersion = "2.38.1"
+    const val hiltOnlyCompilerVersion = "1.0.0"
     const val crashlyticsVersion = "2.8.1"
 
 
