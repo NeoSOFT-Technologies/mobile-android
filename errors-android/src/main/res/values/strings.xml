@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alert_error_title">Error</string>
+    <string name="alert_error_message">Unknown Error</string>
+    <string name="alert_error_positive">OK</string>
+</resources>

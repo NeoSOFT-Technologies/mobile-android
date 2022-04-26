@@ -21,9 +21,16 @@ abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel> : AppCompat
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViewModel(viewModel)
+
         viewModel.exceptionHandler.bind(
             lifecycleOwner = this,
             activity = this
+        )
+
+        // Prepares the permissions controller and binds it to the activity lifecycle.
+        viewModel.permissionHandler.bind(
+            lifecycle = this.lifecycle,
+            fragmentManager = supportFragmentManager
         )
     }
 

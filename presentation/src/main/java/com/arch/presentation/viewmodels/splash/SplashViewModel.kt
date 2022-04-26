@@ -2,8 +2,9 @@ package com.arch.presentation.viewmodels.splash
 
 
 import androidx.lifecycle.viewModelScope
+import com.arch.errors.android.handler.IAndroidExceptionHandler
 import com.arch.logger.AppLogger
-import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
+import com.arch.permissions.android.IAndroidPermissionsController
 import com.arch.presentation.viewmodels.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -16,10 +17,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    exceptionHandler: AndroidExceptionHandlerBinder,
+    exceptionHandler: IAndroidExceptionHandler,
+    permissionHandler: IAndroidPermissionsController,
     logger: AppLogger
 ) : BaseViewModel(
-    exceptionHandler, logger,
+    exceptionHandler, permissionHandler, logger,
 ) {
 
     private val _navigationFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)

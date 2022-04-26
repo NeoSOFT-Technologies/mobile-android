@@ -1,12 +1,14 @@
 package com.arch.presentation.viewmodels.base
 
 import androidx.lifecycle.ViewModel
+import com.arch.errors.android.handler.IAndroidExceptionHandler
 import com.arch.logger.AppLogger
-import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
+import com.arch.permissions.android.IAndroidPermissionsController
 
 
 abstract class BaseViewModel(
-    val exceptionHandler: AndroidExceptionHandlerBinder,
+    val exceptionHandler: IAndroidExceptionHandler,
+    val permissionHandler: IAndroidPermissionsController,
     protected val logger: AppLogger
 ) :
     ViewModel() {

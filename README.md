@@ -34,7 +34,6 @@ Libraries Used
   * [OkHttp Logging Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
 * Database
   * [Room](https://developer.android.com/jetpack/androidx/releases/room) - Store offline database
-  
 * Networking
   * [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android
 * [Coroutines](https://developer.android.com/kotlin/coroutines) - Light wight threads for asynchronous programming
@@ -53,13 +52,15 @@ Libraries Used
 Common Features
 -------------------
 
+* Clean Architecture
 * Adhering to SOLID Principles 
 * Repository Pattern for code separations 
 * Dependency Injection 
 * Simple Network Layer 
 * Simple Data Layer 
 * Better Logging
-* Error Handling 
+* Automatic Error Handling 
+* Generic Permission Handler
 * Flavors Sample 
 * Unit & Integration Tests 
 * CI for build release 
@@ -116,6 +117,7 @@ Following diagram shows the diagram of how the request & response flow works for
 - [Automatic Exception Handling](wiki/docs/modules/exception-handling.md)
 - [Database](wiki/docs/modules/database-flow.md)
 - [Network](wiki/docs/modules/network-flow.md)
+- [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
 - [Logger](wiki/docs/modules/logger.md)
 - [Request Manager](wiki/docs/modules/request-manager.md)
@@ -131,19 +133,21 @@ Folder structure options and naming conventions for software projects
 #### Top-level directory layout
 
 ```
-.
-└── app                          # Application or UI layer
-    ├── .github/workflows        # Github workflow files
-    ├── buildSrc                 # Kotlin DSL for setup build & dependencies
-    ├── crash-reporting          # Crash reporting module/lib
-    ├── data                     # Layer exposes all data source
-    ├── domain                   # Domain layer contains all the use cases of your application
-    ├── errors                   # Exception handling pure Kotlin implementation
-    ├── logger                   # Text-based logging library
-    ├── presentation             # Prepares data for the application layer & maintains state
-    ├── screenshots              # Project screenshots
-    ├── utils                    # Project utils
-    └── wiki                     # Documentation files
+app                          # Application core implementation
+├── .github/workflows        # Github workflow files
+├── buildSrc                 # Kotlin DSL for setup build & dependencies
+├── crash-reporting          # Crash reporting module/lib
+├── data                     # Layer exposes all data source
+├── domain                   # Domain layer contains all the use cases of your application
+├── presentation             # Prepares data for the application layer & maintains state
+├── errors                   # Exception handling pure Kotlin implementation
+├── errors-android           # Exception handling android counterpart implementation
+├── permissions              # Permission handling pure Kotlin implementation
+├── permissions-android      # Permission handling android counterpart implementation
+├── logger                   # Text-based logging library
+├── screenshots              # Project screenshots
+├── utils                    # Project utils
+└── wiki                     # Documentation files
 ```
 
 > Use short lowercase names at least for the top-level files and folders except `LICENSE`, `README.md`

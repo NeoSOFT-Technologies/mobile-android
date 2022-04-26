@@ -6,6 +6,7 @@ import com.arch.template.R
 import com.arch.error.AppError
 import com.arch.error.AppErrorType
 import com.arch.error.NetworkError
+import com.arch.permissions.exceptions.PermissionDeniedException
 
 object AppExceptionMapper {
     fun init(context: Context) {
@@ -42,6 +43,9 @@ object AppExceptionMapper {
             )
             .register<IllegalArgumentException, String> {
                 context.getString(R.string.dashboard_label_header_app)
+            }
+            .register<PermissionDeniedException, String> {
+                context.getString(R.string.resource_permission_denied)
             }
     }
 }

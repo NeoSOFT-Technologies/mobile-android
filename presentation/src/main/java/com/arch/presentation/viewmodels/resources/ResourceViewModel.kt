@@ -8,8 +8,12 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.arch.entity.ResourceData
 import com.arch.error.BaseError
+import com.arch.errors.android.handler.IAndroidExceptionHandler
 import com.arch.logger.AppLogger
-import com.arch.presentation.error.handler.AndroidExceptionHandlerBinder
+import com.arch.permissions.Permission
+import com.arch.permissions.android.IAndroidPermissionsController
+import com.arch.permissions.exceptions.PermissionDeniedAlwaysException
+import com.arch.permissions.exceptions.PermissionDeniedException
 import com.arch.presentation.model.ResourceDataPresentation
 import com.arch.presentation.viewmodels.base.BaseViewModel
 import com.arch.usecase.GetResourcesUseCase
@@ -25,14 +29,16 @@ import javax.inject.Inject
 @HiltViewModel
 class ResourceViewModel @Inject constructor(
     private val getResourcesUseCase: GetResourcesUseCase,
-    exceptionHandler: AndroidExceptionHandlerBinder,
-     logger: AppLogger,
+    exceptionHandler: IAndroidExceptionHandler,
+    permissionHandler: IAndroidPermissionsController,
+    logger: AppLogger,
 ) :
-    BaseViewModel(exceptionHandler,  logger) {
+    BaseViewModel(exceptionHandler, permissionHandler, logger) {
     private val _resourcePagingFlow: MutableSharedFlow<PagingData<ResourceDataPresentation>> =
         MutableSharedFlow()
 
     val resourcePagingFlow: SharedFlow<PagingData<ResourceDataPresentation>> = _resourcePagingFlow
+
     fun getResourceData() {
         viewModelScope.launch {
             exceptionHandler.handle {
@@ -82,6 +88,42 @@ class ResourceViewModel @Inject constructor(
             }.finally {
                 logger.d("Got CustomException finally!")
             }.execute()
+        }
+    }
+
+    fun requestForGalleryPermission() {
+        viewModelScope.launch {
+            exceptionHandler.handle {
+                permissionHandler.requestPermission(Permission.CAMERA)
+                // Permission has been granted successfully.
+                logger.d("Permission Granted")
+                // give callback to perform some action or future code to execute
+            }.catch<Exception> {
+                val handled: Boolean = when (it) {
+
+                    // Permission is always denied.
+                    is PermissionDeniedAlwaysException -> {
+                        logger.d("PermissionDeniedAlwaysException, show rational settings dialog")
+                        // show rational in activity by callback
+
+                        // we tell the exceptionHandler that
+                        // we are handling the error by our own & return
+                        // true to tell the system to ignore
+                        true
+                    }
+
+                    // Permission was denied.
+                    is PermissionDeniedException -> {
+                        logger.d("Permission DeniedException")
+                        // show system level default error
+                        false
+                    }
+                    else -> false // here the system is told to handle the error
+                }
+
+                handled
+            }.execute()
+
         }
     }
 

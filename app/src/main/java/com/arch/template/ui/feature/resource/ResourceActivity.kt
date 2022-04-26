@@ -28,6 +28,9 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
         binding.tvHeader.setOnClickListener {
             viewModel.tryError()
         }
+        binding.fabRequestPermission.setOnClickListener {
+            viewModel.requestForGalleryPermission()
+        }
     }
 
     private val resourceAdapter by lazy {

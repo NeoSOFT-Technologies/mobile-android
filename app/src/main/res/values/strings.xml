@@ -20,4 +20,6 @@
     <string name="login_skip">SKIP</string>
     <string name="login_email">eve.holt@reqres.in</string>
     <string name="login_password">cityslicka</string>
+    <string name="resource_permission_denied">Permission denied</string>
+    <string name="generic_error">Something went wrong, Please try again.</string>
 </resources>
