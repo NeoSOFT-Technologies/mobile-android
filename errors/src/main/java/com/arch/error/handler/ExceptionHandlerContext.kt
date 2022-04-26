@@ -2,9 +2,10 @@
 
 package com.arch.error.handler
 
-import com.arch.error.BaseEventsDispatcher
+
 import com.arch.error.ErrorEventListener
 import com.arch.error.HandlerResult
+import com.arch.error.IEventsDispatcher
 
 abstract class ExceptionHandlerContext<R> {
     abstract suspend fun execute(): HandlerResult<R, Throwable>
@@ -26,7 +27,7 @@ abstract class ExceptionHandlerContext<R> {
     companion object {
         operator fun <T : Any, R> invoke(
             exceptionMapper: ExceptionMapper<T>,
-            baseEventsDispatcher: BaseEventsDispatcher<ErrorEventListener<T>>,
+            baseEventsDispatcher: IEventsDispatcher<ErrorEventListener<T>>,
             onCatch: ((Throwable) -> Unit)?,
             block: suspend () -> R
         ): ExceptionHandlerContext<R> {

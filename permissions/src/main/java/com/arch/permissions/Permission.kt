@@ -1,6 +1,6 @@
 package com.arch.permissions
 
-enum class Permission {
+public enum class Permission {
     CAMERA,
     GALLERY,
     STORAGE,

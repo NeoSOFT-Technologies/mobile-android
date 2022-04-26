@@ -108,6 +108,9 @@ dependencies {
     implementation project(path: ':crash-reporting')
     implementation project(path: ':logger')
     implementation project(path: ':errors')
+    implementation project(path: ':errors-android')
+    implementation project(path: ':permissions')
+    implementation project(path: ':permissions-android')
 
     //app libs
     implementation(AppDependencies.appLibraries)

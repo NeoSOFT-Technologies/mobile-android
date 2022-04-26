@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk AppConfig.compileSdk
+
+    defaultConfig {
+        minSdk AppConfig.minSdk
+        targetSdk AppConfig.targetSdk
+
+        testInstrumentationRunner AppConfig.androidTestInstrumentation
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        dev {
+            initWith buildTypes.release
+        }
+
+        qa {
+            initWith buildTypes.release
+        }
+
+        staging {
+            initWith buildTypes.release
+        }
+
+        prod {
+            initWith buildTypes.release
+        }
+
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+}
+
+dependencies {
+    //std lib
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':errors')
+    implementation project(path: ':logger')
+
+
+    implementation AppDependencies.materialApp
+
+    //kpat libs
+    implementation AppDependencies.hiltAndroid
+    kapt AppDependencies.hiltCoreCompiler
+    kapt AppDependencies.hiltAndroidCompiler
+
+    //test libs
+    testImplementation(AppDependencies.testLibraries)
+    androidTestImplementation(AppDependencies.androidTestLibraries)
+}
