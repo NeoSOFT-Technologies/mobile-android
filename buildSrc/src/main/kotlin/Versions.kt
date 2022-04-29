@@ -29,6 +29,7 @@ object Versions {
     val reactiveStream = "2.4.0"
     val paging = "3.1.0"
     val firebaseCrashlytics = "18.2.6"
+    val ktxCoroutinesCore = "1.6.1"
 
 
     //test

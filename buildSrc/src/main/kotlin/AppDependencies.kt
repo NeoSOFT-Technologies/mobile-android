@@ -62,6 +62,11 @@ object AppDependencies {
     val pagingAndroid = "androidx.paging:paging-runtime:${Versions.paging}"
     val pagingCoreCommon = "androidx.paging:paging-common:${Versions.paging}"
 
+    val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.ktxCoroutinesCore}"
+
+    // coroutines
+
+
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
         add(coreKtx)
