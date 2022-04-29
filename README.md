@@ -118,6 +118,7 @@ Following diagram shows the diagram of how the request & response flow works for
 - [Database](wiki/docs/modules/database-flow.md)
 - [Network](wiki/docs/modules/network-flow.md)
 - [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
+- [Pagination](wiki/docs/modules/paging.md)
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
 - [Logger](wiki/docs/modules/logger.md)
 - [Request Manager](wiki/docs/modules/request-manager.md)
