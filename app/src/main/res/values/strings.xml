@@ -22,4 +22,6 @@
     <string name="login_password">cityslicka</string>
     <string name="resource_permission_denied">Permission denied</string>
     <string name="generic_error">Something went wrong, Please try again.</string>
+    <string name="location_request_start">Location Start</string>
+    <string name="location_request_stop">Location Stop</string>
 </resources>

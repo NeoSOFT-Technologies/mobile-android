@@ -7,6 +7,7 @@ object AppDependencies {
     //android UI
     private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+    val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coreCoroutines}"
     private val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     private val materialApp = "com.google.android.material:material:${Versions.materialApp}"
@@ -61,6 +62,11 @@ object AppDependencies {
     //paging
     val pagingAndroid = "androidx.paging:paging-runtime:${Versions.paging}"
     val pagingCoreCommon = "androidx.paging:paging-common:${Versions.paging}"
+
+    //location
+    val locations = "com.google.android.gms:play-services-location:${Versions.location}"
+
+
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)

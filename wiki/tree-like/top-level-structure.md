@@ -11,6 +11,7 @@ app                          # Application core implementation
   presentation             # Prepares data for the application layer & maintains state
   errors                   # Exception handling pure Kotlin implementation
   errors-android           # Exception handling android counterpart implementation
+  geolocation              # Module to track user geolocation
   permissions              # Permission handling pure Kotlin implementation
   permissions-android      # Permission handling android counterpart implementation
   logger                   # Text-based logging library

@@ -17,19 +17,29 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
     override fun getLayoutRes() = R.layout.activity_resource
 
     override fun initViewModel(viewModel: ResourceViewModel) {
+
+        // Specify the current activity as the lifecycle owner.
+        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
+
         binding.rvResource.adapter = resourceAdapter
         lifecycleScope.launchWhenStarted {
             viewModel.resourcePagingFlow.collect {
                 resourceAdapter.submitData(lifecycle, it)
             }
         }
+        viewModel.geoLocationTracker.bind(lifecycle, this, supportFragmentManager)
         viewModel.getResourceData()
         binding.tvHeader.setOnClickListener {
             viewModel.tryError()
         }
         binding.fabRequestPermission.setOnClickListener {
             viewModel.requestForGalleryPermission()
+        }
+
+        binding.fabRequestLocation.setOnClickListener {
+            viewModel.toggleLocationRequest()
         }
     }
 

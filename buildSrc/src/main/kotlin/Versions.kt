@@ -14,6 +14,7 @@ object Versions {
 
     //libs
     val coreKtx = "1.7.0"
+    val coreCoroutines = "1.6.1"
     val appcompat = "1.4.0"
     val constraintLayout = "2.1.2"
     val materialApp = "1.4.0"
@@ -29,6 +30,7 @@ object Versions {
     val reactiveStream = "2.4.0"
     val paging = "3.1.0"
     val firebaseCrashlytics = "18.2.6"
+    val location = "18.0.0"
 
 
     //test
