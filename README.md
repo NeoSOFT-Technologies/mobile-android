@@ -114,13 +114,14 @@ Following diagram shows the diagram of how the request & response flow works for
 ### 2. Modules
 
 - [Architecture Overview](wiki/docs/modules/architecture-overview.md)
+- [Request Manager](wiki/docs/modules/request-manager.md)
 - [Automatic Exception Handling](wiki/docs/modules/exception-handling.md)
+- [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
+- [GeoLocation Tracker](wiki/docs/modules/geo-location.md)
 - [Database](wiki/docs/modules/database-flow.md)
 - [Network](wiki/docs/modules/network-flow.md)
-- [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
 - [Logger](wiki/docs/modules/logger.md)
-- [Request Manager](wiki/docs/modules/request-manager.md)
 - [Dependency Injection]()
 - [App Testing](wiki/docs/modules/app-testing.md)
 
@@ -142,6 +143,7 @@ app                          # Application core implementation
 ├── presentation             # Prepares data for the application layer & maintains state
 ├── errors                   # Exception handling pure Kotlin implementation
 ├── errors-android           # Exception handling android counterpart implementation
+├── geolocation              # Module to track user geolocation
 ├── permissions              # Permission handling pure Kotlin implementation
 ├── permissions-android      # Permission handling android counterpart implementation
 ├── logger                   # Text-based logging library

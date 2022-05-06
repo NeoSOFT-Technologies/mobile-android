@@ -111,6 +111,8 @@ dependencies {
     implementation project(path: ':errors-android')
     implementation project(path: ':permissions')
     implementation project(path: ':permissions-android')
+    implementation project(path: ':geolocation')
+
 
     //app libs
     implementation(AppDependencies.appLibraries)

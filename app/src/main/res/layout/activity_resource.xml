@@ -103,6 +103,40 @@
             app:pressedTranslationZ="12dp"
             app:srcCompat="@android:drawable/ic_menu_gallery" />
 
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_request_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            android:elevation="6dp"
+            android:text="@string/location_request_start"
+            android:foregroundGravity="left|center"
+            app:backgroundTint="@color/sunflower_yellow"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:pressedTranslationZ="12dp" />
+
+        <TextView
+            android:id="@+id/text_view1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.textLocation}"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.textExtendedLocation}"
+            app:layout_constraintBottom_toTopOf="@+id/fab_request_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
