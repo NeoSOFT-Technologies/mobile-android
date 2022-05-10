@@ -9,7 +9,7 @@ import com.arch.permissions.android.IAndroidPermissionsController
 abstract class BaseViewModel(
     val exceptionHandler: IAndroidExceptionHandler,
     val permissionHandler: IAndroidPermissionsController,
-    protected val logger: AppLogger
+    val logger: AppLogger
 ) :
     ViewModel() {
 

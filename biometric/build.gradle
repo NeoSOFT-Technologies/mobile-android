@@ -1,10 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
-apply from: "../jacoco.gradle"
 
 android {
     compileSdk AppConfig.compileSdk
@@ -58,30 +58,20 @@ android {
     }
 }
 
-dependencies {
-    //std lib
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':utils')
-    implementation project(path: ':errors')
-    implementation project(path: ':domain')
-    implementation project(path: ':logger')
-    implementation project(path: ':errors-android')
-    implementation project(path: ':permissions-android')
-    implementation project(path: ':permissions')
-    implementation project(path: ':geolocation')
-    implementation project(path: ':biometric')
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
-    //app libs
-    implementation(AppDependencies.appLibraries)
-    kapt AppDependencies.hiltAndroidCompiler
+dependencies {
+    implementation AppDependencies.coreKtx
+    implementation AppDependencies.biometrics
+
     implementation AppDependencies.hiltAndroid
+    kapt AppDependencies.hiltCoreCompiler
+    kapt AppDependencies.hiltAndroidCompiler
 
     //test libs
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

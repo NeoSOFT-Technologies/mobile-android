@@ -31,6 +31,7 @@ object Versions {
     val paging = "3.1.0"
     val firebaseCrashlytics = "18.2.6"
     val location = "18.0.0"
+    val biometrics = "1.1.0"
 
 
     //test

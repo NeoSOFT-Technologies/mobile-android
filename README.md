@@ -118,6 +118,7 @@ Following diagram shows the diagram of how the request & response flow works for
 - [Automatic Exception Handling](wiki/docs/modules/exception-handling.md)
 - [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
 - [GeoLocation Tracker](wiki/docs/modules/geo-location.md)
+- [Biometric Authenticator](wiki/docs/modules/biometric.md)
 - [Database](wiki/docs/modules/database-flow.md)
 - [Network](wiki/docs/modules/network-flow.md)
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
@@ -138,6 +139,7 @@ app                          # Application core implementation
 ├── .github/workflows        # Github workflow files
 ├── buildSrc                 # Kotlin DSL for setup build & dependencies
 ├── crash-reporting          # Crash reporting module/lib
+├── biometric                # Biometric Authenticator 
 ├── data                     # Layer exposes all data source
 ├── domain                   # Domain layer contains all the use cases of your application
 ├── presentation             # Prepares data for the application layer & maintains state

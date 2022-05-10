@@ -112,6 +112,7 @@ dependencies {
     implementation project(path: ':permissions')
     implementation project(path: ':permissions-android')
     implementation project(path: ':geolocation')
+    implementation project(path: ':biometric')
 
 
     //app libs

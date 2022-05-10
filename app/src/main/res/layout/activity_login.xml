@@ -109,12 +109,30 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="24dp"
             android:text="@string/login_btn_login"
-            android:layout_marginBottom="48dp"
             android:textSize="11sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tlPassword" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBiometric"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+
+            android:layout_marginTop="36dp"
+            android:stateListAnimator="@null"
+            android:text="@string/login_btn_biometric"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:backgroundTint="@android:color/transparent"
+            app:elevation="0dp"
+            app:icon="@drawable/fingerprint"
+            app:iconGravity="textStart"
+            app:iconSize="@dimen/icon_size_small"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
         <TextView
             app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +145,18 @@
             android:textColor="@color/marine_blue"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tvOr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:textColor="@color/marine_blue"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnBiometric"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
         <TextView
             android:id="@+id/tvLoginSkip"

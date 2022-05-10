@@ -1,6 +1,7 @@
 package com.arch.presentation.viewmodels.login
 
 import androidx.lifecycle.viewModelScope
+import com.arch.biometric.IAndroidBiometryAuthenticator
 import com.arch.entity.User
 import com.arch.error.BaseError
 import com.arch.errors.android.handler.IAndroidExceptionHandler
@@ -13,6 +14,7 @@ import com.arch.usecase.LoginUseCase
 import com.arch.utils.Either
 import com.arch.utils.RequestManager
 import com.arch.utils.Resource
+import com.arch.utils.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,6 +28,7 @@ class LoginViewModel @Inject constructor(
     @LoginViewModelExceptionHandler exceptionHandler: IAndroidExceptionHandler,
     permissionHandler: IAndroidPermissionsController,
     logger: AppLogger,
+    val biometryAuthenticator: IAndroidBiometryAuthenticator
 ) :
     BaseViewModel(exceptionHandler, permissionHandler, logger) {
 
@@ -34,6 +37,10 @@ class LoginViewModel @Inject constructor(
 
     val tokenFlow: StateFlow<Resource<UserPresentation>> = _tokenFlow
 
+    private val _bioLogin: MutableStateFlow<Resource<Boolean>> =
+        MutableStateFlow(Resource.error(""))
+
+    val bioLogin: StateFlow<Resource<Boolean>> = _bioLogin
 
     fun doLogin(email: String, password: String) {
         viewModelScope.launch {
@@ -57,6 +64,28 @@ class LoginViewModel @Inject constructor(
             }.catch<Exception> {
                 false
             }.execute()
+        }
+    }
+
+    fun openBiometricCheck() {
+        viewModelScope.launch {
+            try {
+                val isSuccess: Boolean =
+                    biometryAuthenticator.checkBiometryAuthentication("Just for test", "Oops")
+                if (isSuccess) {
+                    _bioLogin.tryEmit(
+                        Resource(
+                            status = Status.SUCCESS,
+                            data = true,
+                            message = "",
+                            error = null
+                        )
+                    )
+
+                }
+            } catch (throwable: Throwable) {
+                logger.d("throwable $throwable")
+            }
         }
     }
 
