@@ -70,4 +70,8 @@ dependencies {
     implementation AppDependencies.hiltAndroid
     kapt AppDependencies.hiltCoreCompiler
     kapt AppDependencies.hiltAndroidCompiler
+
+    //test libs
+    testImplementation(AppDependencies.testLibraries)
+    androidTestImplementation(AppDependencies.androidTestLibraries)
 }
