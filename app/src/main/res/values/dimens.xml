@@ -11,6 +11,7 @@
 
 
     <dimen name="icon_size">72dp</dimen>
+    <dimen name="icon_size_small">28dp</dimen>
 
     <!--Typography-->
     <dimen name="helper_text_size">12sp</dimen>

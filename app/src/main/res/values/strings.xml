@@ -24,4 +24,6 @@
     <string name="generic_error">Something went wrong, Please try again.</string>
     <string name="location_request_start">Location Start</string>
     <string name="location_request_stop">Location Stop</string>
+    <string name="login_btn_biometric">Biometric Login</string>
+    <string name="or">Or</string>
 </resources>

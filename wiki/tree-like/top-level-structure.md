@@ -6,6 +6,7 @@ app                          # Application core implementation
   .github/workflows        # Github workflow files
   buildSrc                 # Kotlin DSL for setup build & dependencies
   crash-reporting          # Crash reporting module/lib
+  biometric                # Biometric Authenticator
   data                     # Layer exposes all data source
   domain                   # Domain layer contains all the use cases of your application
   presentation             # Prepares data for the application layer & maintains state
