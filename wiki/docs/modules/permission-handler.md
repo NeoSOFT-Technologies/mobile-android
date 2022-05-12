@@ -89,7 +89,7 @@ class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>(
 
     override fun getLayoutRes() = R.layout.activity_example
 
-    override fun initViewModel(viewModel: ResourceViewModel) {
+    override fun initViewModel(viewModel: ExampleViewModel) {
         binding.viewModel = viewModel
         
        // request the permission from the corresponding viewmodel

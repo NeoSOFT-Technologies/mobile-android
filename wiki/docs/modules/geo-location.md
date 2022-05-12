@@ -74,13 +74,12 @@ The `AndroidGeoLocationTracker` is constructor injected in the viewmodel using H
 
 ```kotlin
 class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>() {
-  	// Here the Baseactivity already binds the permission handler to activity lifecycle.
   
     override val viewModel by viewModels<ExampleViewModel>()
 
     override fun getLayoutRes() = R.layout.activity_example
 
-    override fun initViewModel(viewModel: ResourceViewModel) {
+    override fun initViewModel(viewModel: ExampleViewModel) {
         binding.viewModel = viewModel
       
       // bind tracker to lifecycle
