@@ -1,0 +1,67 @@
+version: 2
+updates:
+
+  - package-ecosystem: "gradle"
+    directory: "app/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "biometric/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "crash-reporting/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "data/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "domain/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "errors/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "errors-android/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "geolocation/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "logger/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "permissions/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "permissions-android/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "presentation/dependabot"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "utils/dependabot"
+    schedule:
+      interval: "daily"
