@@ -66,9 +66,11 @@ object AppDependencies {
     //location
     val locations = "com.google.android.gms:play-services-location:${Versions.location}"
 
-
     //biometrics
     val biometrics = "androidx.biometric:biometric:${Versions.biometrics}"
+
+    //exifInterface
+    val exifInterface = "androidx.exifinterface:exifinterface:${Versions.biometrics}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(kotlinStdLib)
