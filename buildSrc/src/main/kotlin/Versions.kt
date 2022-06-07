@@ -33,6 +33,7 @@ object Versions {
     val location = "18.0.0"
     val biometrics = "1.1.0"
     val exifInterface = "1.3.3"
+    val filePicker = "1.9.1"
 
 
     //test

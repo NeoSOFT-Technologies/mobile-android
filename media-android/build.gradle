@@ -65,10 +65,16 @@ java {
 
 dependencies {
     implementation AppDependencies.coreKtx
+    implementation AppDependencies.appcompat
     implementation project(path: ':media-library')
+    implementation project(path: ':permissions')
+    implementation project(path: ':permissions-android')
 
     implementation AppDependencies.hiltAndroid
     implementation AppDependencies.exifInterface
+
+    implementation 'com.github.Lobynya:MaterialFilePicker:1.9.1'//AppDependencies.filePicker
+
     kapt AppDependencies.hiltCoreCompiler
     kapt AppDependencies.hiltAndroidCompiler
 
@@ -76,3 +82,4 @@ dependencies {
     testImplementation(AppDependencies.testLibraries)
     androidTestImplementation(AppDependencies.androidTestLibraries)
 }
+
