@@ -26,4 +26,8 @@
     <string name="location_request_stop">Location Stop</string>
     <string name="login_btn_biometric">Biometric Login</string>
     <string name="or">Or</string>
+    <string name="profile_add_photo">Add Photo</string>
+    <string name="profile_add_description">Take a picture or upload it\n from your phone</string>
+    <string name="profile_btn_gallery">Gallery</string>
+    <string name="profile_btn_file">File</string>
 </resources>

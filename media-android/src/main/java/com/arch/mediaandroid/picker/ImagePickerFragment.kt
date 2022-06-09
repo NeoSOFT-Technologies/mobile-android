@@ -162,7 +162,7 @@ class ImagePickerFragment : Fragment() {
     companion object {
         private const val DEFAULT_FILE_NAME = "image.png"
         private const val PHOTO_FILE_PATH_KEY = "photoFilePath"
-        private const val FILE_PROVIDER_SUFFIX = ".moko.media.provider"
+        private const val FILE_PROVIDER_SUFFIX = ".media.provider"
 
         private const val ARG_IMG_MAX_WIDTH = "args_img_max_width"
         private const val ARG_IMG_MAX_HEIGHT = "args_img_max_height"

@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toStartOf="@id/tvHeader"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fullcircle" />
+            app:srcCompat="@drawable/profile" />
 
         <TextView
             android:id="@+id/tvHeader"

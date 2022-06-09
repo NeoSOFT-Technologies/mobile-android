@@ -7,7 +7,6 @@ import com.arch.medialibrary.FileMedia
 import com.arch.medialibrary.Media
 import com.arch.medialibrary.picker.MediaPickerController
 import com.arch.medialibrary.picker.MediaSource
-import com.arch.permissions.IPermissionsController
 import com.arch.permissions.android.IAndroidPermissionsController
 
 
