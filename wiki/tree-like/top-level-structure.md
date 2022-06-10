@@ -1,7 +1,5 @@
 ## Top-level directory layout
 
-## Top-level directory layout
-
 app                          # Application core implementation
   .github/workflows        # Github workflow files
   buildSrc                 # Kotlin DSL for setup build & dependencies
@@ -13,6 +11,8 @@ app                          # Application core implementation
   errors                   # Exception handling pure Kotlin implementation
   errors-android           # Exception handling android counterpart implementation
   geolocation              # Module to track user geolocation
+  media-android            # Media Picker pure Kotlin implementation
+  media-library            # Media Picker android counterpart implementation
   permissions              # Permission handling pure Kotlin implementation
   permissions-android      # Permission handling android counterpart implementation
   logger                   # Text-based logging library

@@ -73,7 +73,7 @@ The `AndroidGeoLocationTracker` is constructor injected in the viewmodel using H
 #### App/UI Layer                   
 
 ```kotlin
-class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>() {
+class ExampleActivity : BaseActivity<ActivityExampleBinding, ExampleViewModel>() {
   
     override val viewModel by viewModels<ExampleViewModel>()
 
@@ -83,9 +83,9 @@ class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>(
         binding.viewModel = viewModel
       
       // bind tracker to lifecycle
-				viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
+	  viewModel.locationTracker.bind(lifecycle, this, supportFragmentManager)
       
-       // request the location information from the corresponding viewmodel
+       // request the information from the corresponding viewmodel
         binding.button.setOnClickListener {
             viewModel.onStartPressed() or viewModel.onStopPressed()
         }

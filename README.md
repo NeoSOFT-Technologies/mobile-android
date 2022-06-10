@@ -16,7 +16,7 @@ Just click on [![Use this template](https://camo.githubusercontent.com/2a7da879b
 
 ## Screenshots
 
-​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen"  width="250" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen"  width="250" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen"  width="250" />
+​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen"  width="150" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen"  width="180" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen"  width="180" /><img src="screenshots/profile.JPEG" alt="dashboard" title="Profile Screen"  width="150" />
 
 
 
@@ -60,6 +60,7 @@ Common Features
 * Simple Data Layer 
 * Better Logging
 * Automatic Error Handling 
+* Media Selection Module  
 * Generic Permission Handler
 * Flavors Sample 
 * Unit & Integration Tests 
@@ -119,6 +120,7 @@ Following diagram shows the diagram of how the request & response flow works for
 - [Generic Runtime Permission Handler](wiki/docs/modules/permission-handler.md)
 - [GeoLocation Tracker](wiki/docs/modules/geo-location.md)
 - [Biometric Authenticator](wiki/docs/modules/biometric.md)
+- [Media Selection](wiki/docs/modules/media-selection.md)
 - [Database](wiki/docs/modules/database-flow.md)
 - [Network](wiki/docs/modules/network-flow.md)
 - [Crashlytics](wiki/docs/modules/crashlytics.md)
@@ -139,13 +141,15 @@ app                          # Application core implementation
 ├── .github/workflows        # Github workflow files
 ├── buildSrc                 # Kotlin DSL for setup build & dependencies
 ├── crash-reporting          # Crash reporting module/lib
-├── biometric                # Biometric Authenticator 
+├── biometric                # Biometric Authenticator
 ├── data                     # Layer exposes all data source
 ├── domain                   # Domain layer contains all the use cases of your application
 ├── presentation             # Prepares data for the application layer & maintains state
 ├── errors                   # Exception handling pure Kotlin implementation
 ├── errors-android           # Exception handling android counterpart implementation
 ├── geolocation              # Module to track user geolocation
+├── media-android            # Media Picker pure Kotlin implementation
+├── media-library            # Media Picker android counterpart implementation
 ├── permissions              # Permission handling pure Kotlin implementation
 ├── permissions-android      # Permission handling android counterpart implementation
 ├── logger                   # Text-based logging library

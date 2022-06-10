@@ -49,7 +49,7 @@ val biometryAuthenticator: IAndroidBiometryAuthenticator) : BaseViewModel(except
 #### App/UI Layer
 
 ```kotlin
-class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>() {
+class ExampleActivity : BaseActivity<ActivityExampleBinding, ExampleViewModel>() {
   
     override val viewModel by viewModels<ExampleViewModel>()
 
@@ -59,9 +59,9 @@ class ExampleActivity : BaseActivity<ActivityResourceBinding, ExampleViewModel>(
         binding.viewModel = viewModel
       
       // bind authenticator to lifecycle
-				viewModel.biometryAuthenticator.bind(lifecycle, supportFragmentManager)
+	  viewModel.biometryAuthenticator.bind(lifecycle, supportFragmentManager)
       
-       // request the location information from the corresponding viewmodel
+       // request the information from the corresponding ViewModel
         binding.button.setOnClickListener {
             viewModel.openBiometricAuthenticator()
         }
