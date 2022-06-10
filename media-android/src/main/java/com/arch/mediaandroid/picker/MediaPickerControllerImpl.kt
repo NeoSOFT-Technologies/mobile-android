@@ -60,8 +60,8 @@ internal class MediaPickerControllerImpl(
         }
 
         val currentFragment: Fragment? = fragmentManager.findFragmentByTag(pickerFragmentTag)
-        val imagePickerFragment: ImagePickerFragment = if (currentFragment != null) {
-            currentFragment as ImagePickerFragment
+        val imagePickerFragment: ImagePickerFragment = if (currentFragment != null && currentFragment is ImagePickerFragment) {
+            currentFragment
         } else {
             ImagePickerFragment.newInstance(maxWidth, maxHeight).also {
                 fragmentManager
@@ -89,8 +89,8 @@ internal class MediaPickerControllerImpl(
         permissionsController.requestPermission(Permission.GALLERY)
 
         val currentFragment: Fragment? = fragmentManager.findFragmentByTag(pickerFragmentTag)
-        val pickerFragment: MediaPickerFragment = if (currentFragment != null) {
-            currentFragment as MediaPickerFragment
+        val pickerFragment: MediaPickerFragment = if (currentFragment != null && currentFragment is MediaPickerFragment) {
+            currentFragment
         } else {
             MediaPickerFragment().apply {
                 fragmentManager
@@ -113,8 +113,8 @@ internal class MediaPickerControllerImpl(
         permissionsController.requestPermission(Permission.STORAGE)
 
         val currentFragment: Fragment? = fragmentManager.findFragmentByTag(filePickerFragmentTag)
-        val pickerFragment: FilePickerFragment = if (currentFragment != null) {
-            currentFragment as FilePickerFragment
+        val pickerFragment: FilePickerFragment = if (currentFragment != null && currentFragment is FilePickerFragment) {
+            currentFragment
         } else {
             FilePickerFragment().apply {
                 fragmentManager

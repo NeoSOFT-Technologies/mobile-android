@@ -11,7 +11,7 @@ This page outlines the usage of library for providing Media selection & presenti
 
 ## Features
 
-- **AndroidMediaPickerController** - Controller used to access media files via camera or gallery.
+- **AndroidMediaPickerController** - Controller used to access media files via camera or gallery or file explorer.
 
 
 
@@ -28,6 +28,7 @@ The `AndroidMediaPickerController` is constructor injected in the ViewModel usin
     permissionHandler: IAndroidPermissionsController,
     logger: AppLogger) : BaseViewModel(exceptionHandler, permissionHandler, logger) {
     
+    //Select file from Camera
     fun onSelectPhotoPressed() {
         viewModelScope.launch {
             try {
@@ -37,6 +38,35 @@ The `AndroidMediaPickerController` is constructor injected in the ViewModel usin
                 // cancel capture
             } catch(error: Throwable) {
                 // denied permission or file read error
+            }
+        }
+    }
+   
+    //Select file from Gallery
+    fun onSelectPhotoPressedFromGallery() {
+        viewModelScope.launch {
+            try {
+                val bitmap = mediaController.pickImage(MediaControllerSource.GALLERY)
+                // captured photo in bitmap
+            } catch(_: CanceledException) {
+                // cancel capture
+            } catch(error: Throwable) {
+                // denied permission or file read error
+            }
+        }
+    }
+
+    //Selecting file from explorer
+    fun selectFile() {
+        viewModelScope.launch {
+            try {
+                val file = androidMediaPickerController.pickFiles()
+                // get file path & name
+                _textState.value = file.name
+            } catch (canceled: CanceledException) {
+                // error
+            } catch (exc: Exception) {
+               // error
             }
         }
     }
