@@ -1,11 +1,14 @@
 package com.arch.template.ui.feature.resource
 
+import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.arch.presentation.viewmodels.resources.ResourceViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityResourceBinding
+import com.arch.template.ui.feature.geolocation.GeolocationActivity
+import com.arch.template.ui.feature.profile.ProfileActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -29,7 +32,7 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
                 resourceAdapter.submitData(lifecycle, it)
             }
         }
-        viewModel.geoLocationTracker.bind(lifecycle, this, supportFragmentManager)
+
         viewModel.getResourceData()
         binding.tvHeader.setOnClickListener {
             viewModel.tryError()
@@ -38,9 +41,30 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
             viewModel.requestForGalleryPermission()
         }
 
-        binding.fabRequestLocation.setOnClickListener {
-            viewModel.toggleLocationRequest()
+
+        binding.ivFullCircle.setOnClickListener {
+            goToProfile()
         }
+
+        binding.ivLocation.setOnClickListener {
+            goToGeoLocation()
+        }
+    }
+
+    private fun goToProfile() {
+        startActivity(
+            Intent(
+                this@ResourceActivity, ProfileActivity::class.java
+            )
+        )
+    }
+
+    private fun goToGeoLocation() {
+        startActivity(
+            Intent(
+                this@ResourceActivity, GeolocationActivity::class.java
+            )
+        )
     }
 
     private val resourceAdapter by lazy {

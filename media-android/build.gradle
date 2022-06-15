@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk AppConfig.compileSdk
+
+    defaultConfig {
+        minSdk AppConfig.minSdk
+        targetSdk AppConfig.targetSdk
+
+        testInstrumentationRunner AppConfig.androidTestInstrumentation
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        dev {
+            initWith buildTypes.release
+        }
+
+        qa {
+            initWith buildTypes.release
+        }
+
+        staging {
+            initWith buildTypes.release
+        }
+
+        prod {
+            initWith buildTypes.release
+        }
+
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation AppDependencies.coreKtx
+    implementation AppDependencies.appcompat
+    implementation project(path: ':media-library')
+    implementation project(path: ':permissions')
+    implementation project(path: ':permissions-android')
+
+    implementation AppDependencies.hiltAndroid
+    implementation AppDependencies.exifInterface
+
+    implementation 'com.github.Lobynya:MaterialFilePicker:1.9.1'//AppDependencies.filePicker
+
+    kapt AppDependencies.hiltCoreCompiler
+    kapt AppDependencies.hiltAndroidCompiler
+
+    //test libs
+    testImplementation(AppDependencies.testLibraries)
+    androidTestImplementation(AppDependencies.androidTestLibraries)
+}
+

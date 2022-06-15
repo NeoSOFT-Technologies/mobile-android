@@ -70,6 +70,8 @@ dependencies {
     implementation project(path: ':permissions')
     implementation project(path: ':geolocation')
     implementation project(path: ':biometric')
+    implementation project(path: ':media-android')
+    implementation project(path: ':media-library')
 
     //app libs
     implementation(AppDependencies.appLibraries)

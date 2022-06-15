@@ -39,6 +39,12 @@
         <activity
             android:name="com.arch.template.ui.feature.resource.ResourceActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
+        <activity
+            android:name="com.arch.template.ui.feature.profile.ProfileActivity"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
+        <activity
+            android:name="com.arch.template.ui.feature.geolocation.GeolocationActivity"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
     </application>
 
 </manifest>

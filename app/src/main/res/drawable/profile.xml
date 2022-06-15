@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--res/drawable/circular.xml-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle"
+            android:useLevel="false">
+
+            <size
+                android:width="70dp"
+                android:height="70dp" />
+
+            <corners android:radius="70dp" />
+            <stroke
+                android:width="4dp"
+                android:color="@color/sunflower_yellow" />
+            <solid android:color="@color/orange" />
+
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_launcher_foreground" />
+</layer-list>
