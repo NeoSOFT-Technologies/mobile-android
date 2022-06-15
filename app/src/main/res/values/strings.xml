@@ -31,4 +31,10 @@
     <string name="profile_btn_gallery">Gallery</string>
     <string name="profile_btn_camera">Camera</string>
     <string name="profile_btn_file">File</string>
+    <string name="geolocation_location">Location</string>
+    <string name="geolocation_description">Fetch Live Location information</string>
+    <string name="geolocation_prop_location">Location</string>
+    <string name="geolocation_prop_latitude">Latitude</string>
+    <string name="geolocation_prop_longitude">Longitude</string>
+    <string name="geolocation_prop_speed">Speed</string>
 </resources>

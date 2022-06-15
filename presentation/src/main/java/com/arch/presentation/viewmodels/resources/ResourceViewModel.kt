@@ -2,8 +2,6 @@ package com.arch.presentation.viewmodels.resources
 
 
 import androidx.databinding.Observable
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -12,7 +10,6 @@ import androidx.paging.map
 import com.arch.entity.ResourceData
 import com.arch.error.BaseError
 import com.arch.errors.android.handler.IAndroidExceptionHandler
-import com.arch.geolocation.AndroidGeoLocationTracker
 import com.arch.logger.AppLogger
 import com.arch.permissions.Permission
 import com.arch.permissions.android.IAndroidPermissionsController
@@ -27,7 +24,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -37,7 +33,6 @@ class ResourceViewModel @Inject constructor(
     exceptionHandler: IAndroidExceptionHandler,
     permissionHandler: IAndroidPermissionsController,
     logger: AppLogger,
-    val geoLocationTracker: AndroidGeoLocationTracker,
 ) :
     ObservableBaseViewModel(exceptionHandler, permissionHandler, logger), Observable {
 
@@ -46,39 +41,6 @@ class ResourceViewModel @Inject constructor(
         MutableSharedFlow()
 
     val resourcePagingFlow: SharedFlow<PagingData<ResourceDataPresentation>> = _resourcePagingFlow
-
-    private val _textLocation: MutableLiveData<String> = MutableLiveData("no data")
-    val textLocation: LiveData<String> = _textLocation
-
-    private val _textExtendedLocation: MutableLiveData<String> = MutableLiveData("no data")
-    val textExtendedLocation: LiveData<String> = _textExtendedLocation
-
-    init {
-        viewModelScope.launch {
-            geoLocationTracker.getLocationsFlow()
-                .distinctUntilChanged()
-                .collect { _textLocation.value = it.toString() }
-        }
-
-        viewModelScope.launch {
-            geoLocationTracker.getExtendedLocationsFlow()
-                .distinctUntilChanged()
-                .collect {
-                    _textExtendedLocation.value = """
-                        locationAccuracy=${it.location.coordinatesAccuracyMeters}
-                        
-                        ${it.altitude}
-                        
-                        ${it.azimuth}
-                        
-                        ${it.speed}
-                        
-                        timestamp=${it.timestampMs}
-                    """.trimIndent()
-                    logger.d("Location!! ${_textExtendedLocation.value}")
-                }
-        }
-    }
 
 
     fun getResourceData() {
@@ -166,21 +128,6 @@ class ResourceViewModel @Inject constructor(
                 handled
             }.execute()
 
-        }
-    }
-
-    fun toggleLocationRequest() {
-        if(geoLocationTracker.isStarted){
-            geoLocationTracker.stopTracking()
-        }else{
-            viewModelScope.launch {
-                try {
-                    geoLocationTracker.startTracking()
-                } catch (exc: Throwable) {
-                    _textLocation.value = exc.toString()
-                    _textExtendedLocation.value = exc.toString()
-                }
-            }
         }
     }
 

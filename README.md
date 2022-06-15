@@ -16,8 +16,9 @@ Just click on [![Use this template](https://camo.githubusercontent.com/2a7da879b
 
 ## Screenshots
 
-​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen"  width="150" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen"  width="180" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen"  width="180" /><img src="screenshots/profile.JPEG" alt="dashboard" title="Profile Screen"  width="150" />
+​    <img src="screenshots/splash.JPEG" alt="splash" title="Splash Screen"  width="150" /><img src="screenshots/login.JPEG" alt="Login" title="Login screen"  width="150" /><img src="screenshots/dashboard.JPEG" alt="dashboard" title="Dashboard Screen"  width="150" />
 
+​    <img src="screenshots/profile.JPEG" alt="profile" title="Profile Screen"  width="150" /><img src="screenshots/location.JPEG" alt="location" title="Location Screen"  width="150" />
 
 
 Libraries Used
