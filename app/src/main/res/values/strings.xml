@@ -37,4 +37,8 @@
     <string name="geolocation_prop_latitude">Latitude</string>
     <string name="geolocation_prop_longitude">Longitude</string>
     <string name="geolocation_prop_speed">Speed</string>
+    <string name="resource_details_title">Resource Details</string>
+    <string name="resource_details_name">Name</string>
+    <string name="resource_details_year">Year</string>
+    <string name="resource_details_patone">Pantone</string>
 </resources>

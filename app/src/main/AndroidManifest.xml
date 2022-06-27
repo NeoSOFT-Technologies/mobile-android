@@ -40,6 +40,9 @@
             android:name="com.arch.template.ui.feature.resource.ResourceActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
         <activity
+            android:name="com.arch.template.ui.feature.resourcedetails.ResourceDetailActivity"
+            android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
+        <activity
             android:name="com.arch.template.ui.feature.profile.ProfileActivity"
             android:theme="@style/Theme.BlueprintApplication.NoActionBar" />
         <activity

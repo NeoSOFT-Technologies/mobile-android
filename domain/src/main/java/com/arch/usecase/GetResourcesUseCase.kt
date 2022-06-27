@@ -16,7 +16,7 @@ class GetResourcesUseCase @Inject constructor(
 ) : BaseUseCase<GetResourcesUseCase.ResourcesParams, Either<BaseError, Pager<Int, ResourceData>>> {
 
     override suspend fun execute(params: ResourcesParams): Either<BaseError, Pager<Int, ResourceData>> {
-        return resourceRepository.getResourceData(params.pagingConfig)
+        return resourceRepository.getResourceList(params.pagingConfig)
     }
 
     class ResourcesParams(

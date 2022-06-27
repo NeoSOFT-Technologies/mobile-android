@@ -69,6 +69,7 @@ android {
 dependencies {
     implementation AppDependencies.coreKtx
     implementation project(path:':domain')
+    implementation project(path: ':logger')
 
     //room
     api AppDependencies.roomRuntime

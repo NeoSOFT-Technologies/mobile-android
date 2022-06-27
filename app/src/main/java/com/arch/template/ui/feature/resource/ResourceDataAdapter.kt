@@ -10,7 +10,7 @@ import com.arch.presentation.model.ResourceDataPresentation
 import com.arch.template.R
 import com.arch.template.databinding.ItemResourceBinding
 
-class ResourceDataAdapter :
+class ResourceDataAdapter(private val onSelect: (ResourceDataPresentation) -> Unit) :
     PagingDataAdapter<ResourceDataPresentation, ResourceDataAdapter.ViewHolder>(DiffUtilCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,12 +29,18 @@ class ResourceDataAdapter :
 
     inner class ViewHolder(private val binding: ItemResourceBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: ResourceDataPresentation) {
             with(binding) {
                 resourceData = item
             }
+            binding.root.setOnClickListener {
+                onSelect(item)
+            }
         }
     }
+
+
 
     object DiffUtilCallBack : DiffUtil.ItemCallback<ResourceDataPresentation>() {
         override fun areItemsTheSame(

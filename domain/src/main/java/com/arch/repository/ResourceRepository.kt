@@ -5,7 +5,12 @@ import androidx.paging.PagingConfig
 import com.arch.entity.ResourceData
 import com.arch.error.NetworkError
 import com.arch.utils.Either
+import com.arch.utils.Resource
+import kotlinx.coroutines.flow.Flow
 
 interface ResourceRepository {
-    suspend fun getResourceData(pagingConfig: PagingConfig): Either<NetworkError, Pager<Int, ResourceData>>
+
+    suspend fun getResourceList(pagingConfig: PagingConfig): Either<NetworkError, Pager<Int, ResourceData>>
+
+    suspend fun getResourceDetails(id: Int): Flow<Resource<ResourceData?>>
 }

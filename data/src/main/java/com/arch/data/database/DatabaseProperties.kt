@@ -5,7 +5,7 @@ import androidx.room.Room
 
 object DatabaseProperties {
     private const val DATABASE_NAME = "com_arch_blueprint_app"
-    const val DATABASE_VERSION = 1
+    const val DATABASE_VERSION = 3
 
     @Volatile
     private var instance: AppDatabase? = null

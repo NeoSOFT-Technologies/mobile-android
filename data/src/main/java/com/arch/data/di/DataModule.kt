@@ -2,9 +2,11 @@ package com.arch.data.di
 
 import com.arch.data.repository.ResourceRepositoryImpl
 import com.arch.data.repository.UserRepositoryImpl
+import com.arch.data.source.resource.local.ResourceLocalDataSource
 import com.arch.data.source.resource.remote.ResourceRemoteDataSource
 import com.arch.data.source.user.local.UserLocalDataSource
 import com.arch.data.source.user.remote.UserRemoteDataSource
+import com.arch.logger.AppLogger
 import com.arch.repository.ResourceRepository
 import com.arch.repository.UserRepository
 import dagger.Module
@@ -27,6 +29,8 @@ class DataModule {
     @Provides
     fun resourceRepository(
         resourceRemoteDataSource: ResourceRemoteDataSource,
+        resourceLocalDataSource: ResourceLocalDataSource,
+        logger: AppLogger
     ): ResourceRepository =
-        ResourceRepositoryImpl(resourceRemoteDataSource)
+        ResourceRepositoryImpl(resourceRemoteDataSource, resourceLocalDataSource, logger)
 }

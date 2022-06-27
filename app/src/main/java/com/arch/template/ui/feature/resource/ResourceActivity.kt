@@ -3,12 +3,14 @@ package com.arch.template.ui.feature.resource
 import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.arch.presentation.model.ResourceDataPresentation
 import com.arch.presentation.viewmodels.resources.ResourceViewModel
 import com.arch.template.R
 import com.arch.template.base.BaseActivity
 import com.arch.template.databinding.ActivityResourceBinding
 import com.arch.template.ui.feature.geolocation.GeolocationActivity
 import com.arch.template.ui.feature.profile.ProfileActivity
+import com.arch.template.ui.feature.resourcedetails.ResourceDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -67,8 +69,22 @@ class ResourceActivity : BaseActivity<ActivityResourceBinding, ResourceViewModel
         )
     }
 
+    private fun goToResourceDetails(id: Int) {
+        startActivity(
+            Intent(
+                this@ResourceActivity, ResourceDetailActivity::class.java
+            ).apply {
+                putExtra("id", id)
+            }
+        )
+    }
+
     private val resourceAdapter by lazy {
-        ResourceDataAdapter()
+        ResourceDataAdapter(::onSelect)
+    }
+
+    private fun onSelect(item: ResourceDataPresentation) {
+        item.id?.let { goToResourceDetails(it) }
     }
 
 

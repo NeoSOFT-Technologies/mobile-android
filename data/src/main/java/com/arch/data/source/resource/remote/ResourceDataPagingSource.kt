@@ -21,7 +21,7 @@ class ResourceDataPagingSource(
                 page = pageIndex,
             )
             val resourceData: List<ResourceData> = response.body()?.data?.map {
-                it.transform()
+                it.transform().transform()
             } ?: emptyList()
             val nextKey =
                 if (resourceData.isEmpty()) {
